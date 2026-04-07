@@ -24,7 +24,11 @@ function setCookie(name: string, value: string, days: number) {
 function getCookie(name: string): string | null {
   const cookies = document.cookie.split(";");
   for (const cookie of cookies) {
-    const [key, val] = cookie.trim().split("=");
+    const trimmed = cookie.trim();
+    const eqIndex = trimmed.indexOf("=");
+    if (eqIndex === -1) continue;
+    const key = trimmed.substring(0, eqIndex);
+    const val = trimmed.substring(eqIndex + 1);
     if (key === name) return decodeURIComponent(val);
   }
   return null;
