@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { LocaleProvider } from "@/lib/locale-context"
+import { AutoLocaleProvider as LocaleProvider } from "@/components/AutoLocaleProvider"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/sections/footer"
 

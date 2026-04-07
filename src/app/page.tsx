@@ -1,6 +1,6 @@
 "use client";
 
-import { LocaleProvider } from "@/lib/locale-context";
+import { AutoLocaleProvider as LocaleProvider } from "@/components/AutoLocaleProvider";
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { LogoBar } from "@/components/sections/logo-bar";

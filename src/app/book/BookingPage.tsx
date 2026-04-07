@@ -1,7 +1,8 @@
 "use client"
 
 import { useEffect } from "react"
-import { LocaleProvider, useLocale } from "@/lib/locale-context"
+import { AutoLocaleProvider as LocaleProvider } from "@/components/AutoLocaleProvider"
+import { useLocale } from "@/lib/locale-context"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/sections/footer"
 

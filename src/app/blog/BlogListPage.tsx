@@ -1,7 +1,7 @@
 "use client"
 
 import { useLocale } from "@/lib/locale-context"
-import { LocaleProvider } from "@/lib/locale-context"
+import { AutoLocaleProvider as LocaleProvider } from "@/components/AutoLocaleProvider"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/sections/footer"
 import { BlogList } from "@/components/blog/BlogList"
