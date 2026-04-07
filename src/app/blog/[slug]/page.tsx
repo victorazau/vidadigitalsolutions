@@ -121,11 +121,27 @@ export default async function BlogSlugPage({
     })),
   } : null;
 
+  // JSON-LD BreadcrumbList
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://vidadigitalsolutions.com" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://vidadigitalsolutions.com/blog" },
+      { "@type": "ListItem", position: 3, name: mainPost.category, item: "https://vidadigitalsolutions.com/blog" },
+      { "@type": "ListItem", position: 4, name: mainPost.title, item: `https://vidadigitalsolutions.com/blog/${mainPost.slug}` },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {faqJsonLd && (
         <script
