@@ -46,6 +46,21 @@ function loadGoogleAnalytics() {
   gtag("config", "G-6L8QCB30PB", { anonymize_ip: true });
 }
 
+function loadClarity() {
+  if (typeof window === "undefined") return;
+  if ((window as unknown as Record<string, unknown>).clarity) return;
+
+  const script = document.createElement("script");
+  script.innerHTML = `
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "w7qafbay73");
+  `;
+  document.head.appendChild(script);
+}
+
 function loadMetaPixel() {
   if (typeof window === "undefined") return;
   if ((window as unknown as Record<string, unknown>).fbq) return;
@@ -91,7 +106,7 @@ export default function CookieBanner() {
     }
     try {
       const parsed = JSON.parse(decodeURIComponent(saved));
-      if (parsed.analytics) loadGoogleAnalytics();
+      if (parsed.analytics) { loadGoogleAnalytics(); loadClarity(); }
       if (parsed.marketing) loadMetaPixel();
     } catch {}
   }, []);
@@ -99,7 +114,7 @@ export default function CookieBanner() {
   function saveConsent(state: ConsentState, status: ConsentStatus) {
     const payload = JSON.stringify({ ...state, status, timestamp: new Date().toISOString() });
     setCookie(COOKIE_KEY, encodeURIComponent(payload), COOKIE_EXPIRES_DAYS);
-    if (state.analytics) loadGoogleAnalytics();
+    if (state.analytics) { loadGoogleAnalytics(); loadClarity(); }
     if (state.marketing) loadMetaPixel();
     setVisible(false);
   }
