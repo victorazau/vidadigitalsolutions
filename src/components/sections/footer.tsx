@@ -45,6 +45,16 @@ export function Footer() {
         </nav>
       </div>
 
+      {/* Contact info */}
+      <div className="mx-auto max-w-6xl border-t border-[#4B6CB7]/10 py-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
+        <span className="text-[11px] text-[#2a4a7a]">
+          📍 28 W Flagler St — Miami, FL 33130
+        </span>
+        <a href="mailto:info@vidadigitalsolutions.com" className="text-[11px] text-[#2a4a7a] hover:text-white transition-colors">
+          ✉ info@vidadigitalsolutions.com
+        </a>
+      </div>
+
       {/* Bottom row */}
       <div className="mx-auto max-w-6xl border-t border-[#4B6CB7]/10 py-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         {/* Legal + policy links */}
