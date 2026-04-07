@@ -176,6 +176,12 @@ export function Cases() {
               style={{ top: s.top, left: s.left, width: s.s, height: s.s, opacity: s.o }} />
           ))}
 
+          {/* Left progress bar */}
+          <div className="absolute left-0 top-0 w-[3px] h-full bg-[rgba(75,108,183,0.12)] rounded-r-sm overflow-hidden">
+            <motion.div className="w-full rounded-r-sm"
+              style={{ height: progressWidth, background: "linear-gradient(180deg,#1B2F5E,#4B6CB7,#00C4A0)" }} />
+          </div>
+
           {/* Section header */}
           <div className="relative z-10 text-center mb-8">
             <p className="text-[10px] font-extrabold tracking-[0.2em] uppercase text-[#00C4A0] mb-3">
