@@ -5,6 +5,7 @@ import { content } from "@/lib/content"
 import { motion } from "framer-motion"
 import { MessageCircle, CalendarDays } from "lucide-react"
 import { AuroraBackground } from "@/components/ui/aurora-background"
+import { trackWhatsAppClick, trackBookingClick } from "@/components/TrackingEvents"
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -67,6 +68,7 @@ export function CTAFinal() {
             href="https://wa.me/14382985740"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={trackWhatsAppClick}
             className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-extrabold bg-[#00C4A0] hover:bg-[#00C4A0]/90 text-[#060D1C] rounded-lg transition-colors"
           >
             <MessageCircle className="w-4 h-4" />
@@ -74,6 +76,7 @@ export function CTAFinal() {
           </a>
           <a
             href="/book"
+            onClick={trackBookingClick}
             className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-medium rounded-lg border border-[#2a3a5a] text-white hover:bg-white/5 transition-colors"
           >
             <CalendarDays className="w-4 h-4" />

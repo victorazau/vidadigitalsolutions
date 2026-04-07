@@ -46,10 +46,30 @@ function loadGoogleAnalytics() {
   gtag("config", "G-6L8QCB30PB", { anonymize_ip: true });
 }
 
+function loadMetaPixel() {
+  if (typeof window === "undefined") return;
+  if ((window as unknown as Record<string, unknown>).fbq) return;
+
+  /* eslint-disable */
+  const script = document.createElement("script");
+  script.innerHTML = `
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+    (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','1241390329847733');
+    fbq('track','PageView');
+  `;
+  document.head.appendChild(script);
+  /* eslint-enable */
+}
+
 declare global {
   interface Window {
     dataLayer: unknown[];
     gtag?: (...args: unknown[]) => void;
+    fbq?: (...args: unknown[]) => void;
   }
 }
 
@@ -72,6 +92,7 @@ export default function CookieBanner() {
     try {
       const parsed = JSON.parse(decodeURIComponent(saved));
       if (parsed.analytics) loadGoogleAnalytics();
+      if (parsed.marketing) loadMetaPixel();
     } catch {}
   }, []);
 
@@ -79,6 +100,7 @@ export default function CookieBanner() {
     const payload = JSON.stringify({ ...state, status, timestamp: new Date().toISOString() });
     setCookie(COOKIE_KEY, encodeURIComponent(payload), COOKIE_EXPIRES_DAYS);
     if (state.analytics) loadGoogleAnalytics();
+    if (state.marketing) loadMetaPixel();
     setVisible(false);
   }
 

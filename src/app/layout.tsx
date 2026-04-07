@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import CookieBanner from "@/components/CookieBanner";
+import { TrackingEvents } from "@/components/TrackingEvents";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -140,6 +141,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full bg-white text-[#0A0A0F] font-[family-name:var(--font-inter)]">
         {children}
+        <TrackingEvents />
         <CookieBanner />
       </body>
     </html>
