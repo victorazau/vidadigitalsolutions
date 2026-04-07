@@ -4,7 +4,7 @@ import Image from "next/image"
 import { useLocale } from "@/lib/locale-context"
 import { content } from "@/lib/content"
 
-const linkHrefs = ["#services", "#cases", "#process", "/blog", "https://quasarcrm.com", "#contact"]
+const linkHrefs = ["/#services", "/#cases", "/#process", "/blog", "https://quasarcrm.com", "/#contact"]
 
 export function Footer() {
   const { locale } = useLocale()

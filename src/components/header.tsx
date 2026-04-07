@@ -28,12 +28,12 @@ export function Header() {
         {/* Nav */}
         <nav className="hidden items-center gap-6 lg:flex">
           {[
-            { href: "#services", label: text.nav.services },
-            { href: "#cases", label: text.nav.cases },
-            { href: "#process", label: text.nav.process },
+            { href: "/#services", label: text.nav.services },
+            { href: "/#cases", label: text.nav.cases },
+            { href: "/#process", label: text.nav.process },
             { href: "/blog", label: "Blog" },
-            { href: "#quasar", label: text.nav.quasar },
-            { href: "#contact", label: text.nav.contact },
+            { href: "https://quasarcrm.com", label: text.nav.quasar, external: true },
+            { href: "/#contact", label: text.nav.contact },
           ].map((link) => (
             <a
               key={link.href}
