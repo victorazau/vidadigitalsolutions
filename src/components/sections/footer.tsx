@@ -17,11 +17,11 @@ export function Footer() {
         {/* Logo + tagline */}
         <div className="flex items-center gap-3">
           <Image
-            src="/logo-h.png"
+            src="/logo-h-white.png"
             alt="Vida Digital Solutions"
             width={160}
             height={36}
-            className="h-7 md:h-8 w-auto brightness-0 invert"
+            className="h-7 md:h-8 w-auto"
             unoptimized
           />
           <div className="hidden sm:block w-px h-8 bg-[#4B6CB7]/20 mx-3" />

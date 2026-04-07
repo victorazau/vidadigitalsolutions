@@ -27,11 +27,11 @@ export default function NotFound() {
 
       <div className="relative z-10">
         <Image
-          src="/logo-h.png"
+          src="/logo-h-white.png"
           alt="Vida Digital Solutions"
           width={160}
           height={36}
-          className="h-8 w-auto mx-auto mb-8 brightness-0 invert"
+          className="h-8 w-auto mx-auto mb-8"
           unoptimized
         />
 
