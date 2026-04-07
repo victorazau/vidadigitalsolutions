@@ -74,8 +74,23 @@ export default async function BlogSlugPage({
   const adjPT = getAdjacentPosts(slug, "pt")
   const adjES = getAdjacentPosts(slug, "es")
 
-  // JSON-LD
-  const jsonLd = {
+  // Extract FAQ from content (lines with **Q:** and **A:**)
+  const faqItems: { question: string; answer: string }[] = [];
+  const lines = mainPost.content.split("\n");
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    if (line.includes("**Q:**")) {
+      const question = line.replace(/\*\*Q:\*\*\s*/, "").trim();
+      const nextLine = lines[i + 1] || "";
+      const answer = nextLine.replace(/\*\*A:\*\*\s*/, "").trim();
+      if (question && answer) {
+        faqItems.push({ question, answer });
+      }
+    }
+  }
+
+  // JSON-LD Article
+  const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: mainPost.title,
@@ -92,12 +107,32 @@ export default async function BlogSlugPage({
     },
   }
 
+  // JSON-LD FAQPage (if article has FAQ)
+  const faqJsonLd = faqItems.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  } : null;
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <BlogPostPage
         postEN={postEN}
         postPT={postPT}

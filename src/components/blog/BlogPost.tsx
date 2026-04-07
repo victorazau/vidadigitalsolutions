@@ -6,6 +6,8 @@ import { useLocale } from "@/lib/locale-context"
 import type { Post, PostMeta } from "@/lib/posts"
 import { motion, AnimatePresence } from "framer-motion"
 import { Clock, User, ChevronDown, ChevronLeft, ChevronRight, MessageCircle } from "lucide-react"
+import { ReadingProgress } from "./ReadingProgress"
+import { ShareButtons } from "./ShareButtons"
 
 const categoryColors: Record<string, string> = {
   GoHighLevel: "bg-[#1B2F5E]",
@@ -173,6 +175,7 @@ export function BlogPostView({ post, relatedPosts, categoryCounts, prevPost, nex
 
   return (
     <div className="bg-white">
+      <ReadingProgress />
       {/* Breadcrumb */}
       <div className="bg-[#F5F7FA] border-b border-[#E2E8F0] px-6 pt-20 pb-4">
         <div className="mx-auto max-w-6xl">
@@ -215,8 +218,11 @@ export function BlogPostView({ post, relatedPosts, categoryCounts, prevPost, nex
               </span>
             </div>
 
-            {/* Divider */}
-            <div className="h-px bg-[#E2E8F0] my-8" />
+            {/* Share + Divider */}
+            <div className="flex items-center justify-between my-6">
+              <ShareButtons title={post.title} slug={post.slug} />
+            </div>
+            <div className="h-px bg-[#E2E8F0] mb-8" />
 
             {/* Content */}
             <div className="prose-vida">
