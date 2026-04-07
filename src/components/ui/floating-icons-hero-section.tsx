@@ -142,9 +142,9 @@ const FloatingIconsHero = React.forwardRef<
 
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
+          transition={{ delay: 0, duration: 0.4 }}
           className="text-6xl md:text-7xl lg:text-[80px] font-extrabold tracking-[-0.05em] leading-[0.95]"
         >
           <span className="text-[#0A0A0F]">Vida Digital</span>
@@ -154,9 +154,9 @@ const FloatingIconsHero = React.forwardRef<
 
         {titleAccent && (
           <motion.p
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.8 }}
+            transition={{ delay: 0.15, duration: 0.5 }}
             className="mt-6 text-2xl md:text-3xl lg:text-4xl font-medium tracking-[-0.02em] leading-snug text-[#475569] whitespace-pre-line"
           >
             {titleAccent}
@@ -177,7 +177,7 @@ const FloatingIconsHero = React.forwardRef<
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
           className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a

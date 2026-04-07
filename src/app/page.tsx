@@ -5,10 +5,10 @@ import { AutoLocaleProvider as LocaleProvider } from "@/components/AutoLocalePro
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { LogoBar } from "@/components/sections/logo-bar";
+import { Benefits } from "@/components/sections/benefits";
 import { Footer } from "@/components/sections/footer";
 
-// Lazy load heavy sections — only load when needed
-const Benefits = dynamic(() => import("@/components/sections/benefits").then(m => ({ default: m.Benefits })), { ssr: true });
+// Lazy load sections below the fold (not visible on initial load)
 const Cases = dynamic(() => import("@/components/sections/cases").then(m => ({ default: m.Cases })), { ssr: true });
 const Services = dynamic(() => import("@/components/sections/services").then(m => ({ default: m.Services })), { ssr: true });
 const Process = dynamic(() => import("@/components/sections/process").then(m => ({ default: m.Process })), { ssr: true });
