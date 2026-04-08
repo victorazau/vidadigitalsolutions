@@ -28,17 +28,50 @@ export const metadata: Metadata = {
     // City targeting — Miami
     "GoHighLevel Miami", "CRM automation Miami", "business automation Miami FL",
     "GHL implementation Miami", "marketing automation Miami",
-    // City targeting — South Florida
+    // South Florida
     "CRM automation South Florida", "business automation Fort Lauderdale",
     "GoHighLevel Boca Raton", "marketing automation Doral",
+    "CRM automation Pompano Beach", "GoHighLevel Aventura",
+    "business automation Coral Springs", "CRM Hallandale Beach",
+    // Florida — Brazilian communities
+    "GoHighLevel Orlando", "CRM automation Orlando FL",
+    "business automation Kissimmee", "CRM automation Davenport FL",
+    "GoHighLevel Tampa", "business automation Tampa Bay",
+    "CRM automation Jacksonville", "GoHighLevel Palm Beach",
+    // Massachusetts — Brazilian hub
+    "GoHighLevel Boston", "CRM automation Boston MA",
+    "business automation Framingham MA", "GoHighLevel Framingham",
+    "CRM automation Marlborough MA", "business automation Somerville MA",
+    "GoHighLevel Lowell MA", "CRM automation Brockton MA",
+    "business automation Massachusetts", "automação empresarial Massachusetts",
+    // New Jersey / New York — Brazilian communities
+    "GoHighLevel Newark NJ", "CRM automation Newark New Jersey",
+    "business automation Elizabeth NJ", "GoHighLevel New York",
+    "CRM automation Astoria Queens", "business automation Long Island City",
+    // Connecticut — Brazilian hub
+    "GoHighLevel Danbury CT", "CRM automation Bridgeport CT",
+    "business automation Waterbury CT", "GoHighLevel Hartford CT",
+    // Georgia — Brazilian community
+    "GoHighLevel Atlanta", "CRM automation Marietta GA",
+    "business automation Atlanta GA",
+    // Texas — Brazilian community
+    "GoHighLevel Houston", "CRM automation Houston TX",
+    "business automation Dallas TX", "GoHighLevel Austin TX",
+    // California
+    "GoHighLevel Los Angeles", "CRM automation San Francisco",
+    "business automation San Diego",
     // US general
     "GoHighLevel implementation USA", "CRM automation United States",
     "business process automation US", "GHL agency USA",
-    // Brazil
+    // Brazil — major cities
     "GoHighLevel Brasil", "automação empresarial", "implementação GHL",
     "CRM automação Brasil", "automação de processos",
-    // Spanish
+    "GoHighLevel São Paulo", "CRM automação Belo Horizonte",
+    "automação empresarial Rio de Janeiro", "GoHighLevel Curitiba",
+    // Spanish — LATAM
     "GoHighLevel implementación", "automatización CRM", "automatización empresarial",
+    "GoHighLevel México", "CRM automatización Colombia",
+    "automatización Argentina", "GoHighLevel Chile",
     // Industry specific
     "CRM for cleaning companies", "CRM for law firms", "CRM for real estate",
     "CRM for medical clinics", "CRM for accounting firms",
@@ -153,7 +186,17 @@ const jsonLd = {
       },
       areaServed: [
         { "@type": "City", name: "Miami", containedInPlace: { "@type": "State", name: "Florida" } },
+        { "@type": "City", name: "Orlando", containedInPlace: { "@type": "State", name: "Florida" } },
+        { "@type": "City", name: "Fort Lauderdale", containedInPlace: { "@type": "State", name: "Florida" } },
+        { "@type": "City", name: "Tampa", containedInPlace: { "@type": "State", name: "Florida" } },
+        { "@type": "City", name: "Boston", containedInPlace: { "@type": "State", name: "Massachusetts" } },
+        { "@type": "City", name: "Framingham", containedInPlace: { "@type": "State", name: "Massachusetts" } },
+        { "@type": "City", name: "Newark", containedInPlace: { "@type": "State", name: "New Jersey" } },
+        { "@type": "City", name: "New York", containedInPlace: { "@type": "State", name: "New York" } },
+        { "@type": "City", name: "Atlanta", containedInPlace: { "@type": "State", name: "Georgia" } },
+        { "@type": "City", name: "Houston", containedInPlace: { "@type": "State", name: "Texas" } },
         { "@type": "State", name: "Florida" },
+        { "@type": "State", name: "Massachusetts" },
         { "@type": "Country", name: "United States" },
         { "@type": "Country", name: "Brazil" },
         { "@type": "Place", name: "Global" },
