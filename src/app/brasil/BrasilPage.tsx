@@ -210,8 +210,7 @@ export function BrasilPage() {
         {/* Hero */}
         <AuroraBackground className="pt-28 pb-20 px-6 min-h-0 h-auto" starCount={40}>
           <div className="max-w-4xl mx-auto text-center">
-            <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.5 }}
-              className="flex flex-col items-center gap-4 mb-8">
+            <div className="flex flex-col items-center gap-4 mb-8">
               <div className="relative">
                 <div className="absolute inset-0 bg-[#00C4A0]/10 blur-2xl rounded-full scale-150" />
                 <Image
@@ -221,17 +220,18 @@ export function BrasilPage() {
                   height={72}
                   className="relative h-20 md:h-24 w-auto"
                   unoptimized
+                  priority
                 />
               </div>
               <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-sm">
                 <span className="h-2 w-2 rounded-full bg-[#00C4A0]" />
                 <span className="text-[12px] text-white/70">Uma divisão da Vida Digital Solutions</span>
               </div>
-            </motion.div>
+            </div>
 
             <motion.h1
-              initial="hidden" animate="visible" variants={fadeUp}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0 }}
               className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.04em] leading-tight mb-4"
             >
               Dos anúncios às automações.
@@ -240,16 +240,16 @@ export function BrasilPage() {
             </motion.h1>
 
             <motion.p
-              initial="hidden" animate="visible" variants={fadeUp}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
               className="text-lg text-[#94A3B8] max-w-2xl mx-auto mb-8 font-light"
             >
               Tráfego pago, CRM, automação e IA para empresas brasileiras que querem vender mais sem depender só de anúncio.
             </motion.p>
 
             <motion.div
-              initial="hidden" animate="visible" variants={fadeUp}
-              transition={{ duration: 0.5, delay: 0.3 }}
+              initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.15 }}
             >
               <a
                 href="https://wa.me/5531999700039"
