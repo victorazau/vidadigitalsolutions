@@ -254,7 +254,7 @@ export function BrasilPage() {
               transition={{ duration: 0.5, delay: 0.5 }}
               className="mt-10 flex flex-col items-center gap-4"
             >
-              <p className="text-[12px] text-white/40">Mais de 99 empresas atendidas em 3 países · 5.0 ★ no Google</p>
+              <p className="text-[12px] text-white/40">Agência com 5.0 ★ no Google e mais de 100 empresas atendidas.</p>
               <div className="flex items-center gap-3">
                 {[
                   "/logos/logo-prin-modas.jpg",
@@ -603,6 +603,86 @@ export function BrasilPage() {
               — Viveza Pratas, cliente Vida Marketing
             </p>
           </motion.div>
+        </section>
+
+        {/* Google Reviews */}
+        <section className="py-16 px-6 bg-white">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial="hidden" whileInView="visible" viewport={{ once: true }}
+              variants={fadeUp} transition={{ duration: 0.5 }}
+              className="flex items-center justify-center gap-2 mb-8"
+            >
+              <div className="flex items-center gap-1">
+                {[1,2,3,4,5].map((s) => (
+                  <svg key={s} className="w-4 h-4 text-[#FBBC05]" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                ))}
+              </div>
+              <span className="text-[14px] font-extrabold text-[#0A0A0F]">5.0</span>
+              <span className="text-[13px] text-[#94A3B8]">no Google</span>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[
+                {
+                  name: "Tifani Adrieli",
+                  date: "Dez 2024",
+                  text: "Empresa muito séria e que atende nossas necessidades ajudando em tudo sempre! Eu estou amando a experiência com a empresa.",
+                },
+                {
+                  name: "Fernando Braga",
+                  date: "Jul 2024",
+                  text: "A empresa é muito boa, atende todos os prazos combinados, profissionais altamente qualificados e o resultado é impressionante.",
+                },
+                {
+                  name: "Brenda Pinheiro",
+                  date: "Set 2024",
+                  text: "Maravilhosa. O suporte e a prestação de serviço dos meninos é impecável. Minha empresa mudou muito desde que começamos a trabalhar juntos.",
+                },
+              ].map((review, i) => (
+                <motion.div key={i}
+                  initial="hidden" whileInView="visible" viewport={{ once: true }}
+                  variants={fadeUp} transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="rounded-xl border border-[#E2E8F0] p-5"
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-8 h-8 rounded-full bg-[#1B2F5E]/10 flex items-center justify-center text-[11px] font-extrabold text-[#1B2F5E]">
+                      {review.name[0]}
+                    </div>
+                    <div>
+                      <p className="text-[13px] font-extrabold text-[#0A0A0F]">{review.name}</p>
+                      <div className="flex items-center gap-1">
+                        {[1,2,3,4,5].map((s) => (
+                          <svg key={s} className="w-3 h-3 text-[#FBBC05]" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                          </svg>
+                        ))}
+                        <span className="text-[10px] text-[#94A3B8] ml-1">{review.date}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-[13px] text-[#475569] leading-relaxed">{review.text}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              initial="hidden" whileInView="visible" viewport={{ once: true }}
+              variants={fadeUp} transition={{ duration: 0.5, delay: 0.4 }}
+              className="text-center mt-6"
+            >
+              <a
+                href="https://share.google/f7axPqGRNuyy8O8hl"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[13px] text-[#4B6CB7] hover:text-[#1B2F5E] transition-colors"
+              >
+                Ver todas as avaliações no Google →
+              </a>
+            </motion.div>
+          </div>
         </section>
 
         {/* FAQ */}
