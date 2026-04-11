@@ -254,7 +254,7 @@ export function BrasilPage() {
               transition={{ duration: 0.5, delay: 0.5 }}
               className="mt-10 flex flex-col items-center gap-4"
             >
-              <p className="text-[12px] text-white/40">Mais de 35 empresas atendidas em 3 países</p>
+              <p className="text-[12px] text-white/40">Mais de 99 empresas atendidas em 3 países · 5.0 ★ no Google</p>
               <div className="flex items-center gap-3">
                 {[
                   "/logos/logo-prin-modas.jpg",
