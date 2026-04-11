@@ -2,6 +2,7 @@ import { BrasilPage } from "./BrasilPage"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
+  icons: { icon: "/logos/fav-icon-vida-mkt.png", apple: "/logos/fav-icon-vida-mkt.png" },
   title: "Vida Marketing | Tráfego Pago, CRM e Automação para Empresas Brasileiras",
   description:
     "Agência de tráfego pago, CRM com automação, inteligência artificial e e-commerce para lojas de roupa, salões de beleza e proteção veicular no Brasil. Case Prin Modas: de 11K para 130K seguidores. Nota fiscal no Brasil. CNPJ ativo.",
