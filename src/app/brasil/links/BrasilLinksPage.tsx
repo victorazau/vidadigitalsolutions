@@ -1,8 +1,9 @@
 "use client"
 
 import Image from "next/image"
-import { motion } from "framer-motion"
-import { MessageCircle, Globe, Star, Play, TrendingUp } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
+import { MessageCircle, Globe, Star, Play, TrendingUp, X } from "lucide-react"
+import { useState } from "react"
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
@@ -81,8 +82,30 @@ const stars = Array.from({ length: 50 }, (_, i) => {
   }
 })
 
+const PRIN_VIDEO = "https://assets.cdn.filesafe.space/bvXQZ1UUmgHH9wgr73sa/media/69d8cab5982fd67a351356bf.mp4"
+
 export function BrasilLinksPage() {
+  const [showVideo, setShowVideo] = useState(false)
+
   return (
+    <>
+    {showVideo && (
+      <motion.div
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm p-4"
+        onClick={() => setShowVideo(false)}>
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
+          className="relative w-full max-w-lg aspect-video rounded-2xl overflow-hidden bg-black"
+          onClick={(e) => e.stopPropagation()}>
+          <button onClick={() => setShowVideo(false)}
+            className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/70 transition-colors">
+            <X className="w-4 h-4" />
+          </button>
+          <video src={PRIN_VIDEO} className="w-full h-full object-contain" controls autoPlay playsInline />
+        </motion.div>
+      </motion.div>
+    )}
     <div className="relative min-h-screen w-full flex flex-col items-center overflow-hidden bg-[#060D1C]">
       {/* Aurora blobs */}
       <motion.div
@@ -138,12 +161,10 @@ export function BrasilLinksPage() {
         </motion.p>
 
         {/* Prin Modas highlight card */}
-        <motion.a
-          href="https://www.instagram.com/prin.modas/"
-          target="_blank"
-          rel="noopener noreferrer"
+        <motion.button
+          onClick={() => setShowVideo(true)}
           initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.4, delay: 0.15 }}
-          className="w-full rounded-2xl overflow-hidden mb-5 group"
+          className="w-full rounded-2xl overflow-hidden mb-5 group text-left cursor-pointer"
           style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)" }}
         >
           <div className="relative h-32 overflow-hidden">
@@ -155,6 +176,12 @@ export function BrasilLinksPage() {
               unoptimized
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#060D1C] via-transparent to-transparent" />
+            {/* Play icon */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-full bg-[#00C4A0]/80 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Play className="w-5 h-5 text-white ml-0.5" />
+              </div>
+            </div>
             <div className="absolute bottom-3 left-4 flex items-center gap-2">
               <div className="w-8 h-8 rounded-full overflow-hidden border border-white/20">
                 <Image src="/logos/logo-prin-modas.jpg" alt="Prin Modas" width={32} height={32} className="w-full h-full object-cover" unoptimized />
@@ -170,9 +197,9 @@ export function BrasilLinksPage() {
               <p className="text-[11px] text-white/60">Faturamento multiplicado</p>
               <p className="text-[10px] text-[#00C4A0]">De casa para loja referência em BH</p>
             </div>
-            <span className="text-[10px] text-white/30">Ver →</span>
+            <span className="text-[10px] text-white/30 flex items-center gap-1"><Play className="w-3 h-3" /> Assistir</span>
           </div>
-        </motion.a>
+        </motion.button>
 
         {/* Links */}
         <div className="w-full flex flex-col gap-2.5 mb-8">
@@ -230,5 +257,6 @@ export function BrasilLinksPage() {
         </motion.div>
       </div>
     </div>
+    </>
   )
 }
