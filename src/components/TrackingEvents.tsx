@@ -38,9 +38,17 @@ export function TrackingEvents() {
       if (pathname.startsWith("/blog/")) {
         window.fbq("track", "ViewContent", { content_type: "blog_article", content_name: pathname.replace("/blog/", "") });
       }
+
+      if (pathname === "/brasil") {
+        window.fbq("trackCustom", "BrasilPageView", { content_name: "Brasil Page", content_category: "Brasil" });
+        window.fbq("track", "Lead", { content_name: "Brasil Page Visit", content_category: "Brasil" });
+      }
     }
 
     // Server-side events for key pages (CAPI)
+    if (pathname === "/brasil") {
+      sendServerEvent("Lead", { content_name: "Brasil Page Visit", content_category: "Brasil" });
+    }
     if (pathname === "/book") {
       sendServerEvent("Lead", { content_name: "Book a Call", content_category: "Booking" });
       sendServerEvent("Schedule");
@@ -81,4 +89,29 @@ export function trackBookingClick() {
   // Server-side
   sendServerEvent("Schedule", { content_name: "Book a Call CTA" });
   sendServerEvent("Lead", { content_name: "Book a Call CTA", content_category: "Booking" });
+}
+
+// Brasil WhatsApp CTA click
+export function trackBrasilWhatsApp() {
+  if (window.fbq) {
+    window.fbq("track", "Contact", { content_name: "WhatsApp Brasil", content_category: "Brasil" });
+    window.fbq("track", "Lead", { content_name: "WhatsApp Brasil CTA", content_category: "Brasil" });
+    window.fbq("trackCustom", "BrasilWhatsAppClick");
+  }
+  if (window.gtag) {
+    window.gtag("event", "brasil_whatsapp_click", { event_category: "Brasil", event_label: "WhatsApp BR" });
+  }
+  sendServerEvent("Contact", { content_name: "WhatsApp Brasil", content_category: "Brasil" });
+  sendServerEvent("Lead", { content_name: "WhatsApp Brasil CTA", content_category: "Brasil" });
+}
+
+// Brasil video testimonial view
+export function trackBrasilVideoView(clientName: string) {
+  if (window.fbq) {
+    window.fbq("trackCustom", "BrasilVideoView", { content_name: clientName, content_category: "Brasil" });
+  }
+  if (window.gtag) {
+    window.gtag("event", "brasil_video_view", { event_category: "Brasil", event_label: clientName });
+  }
+  sendServerEvent("ViewContent", { content_name: `Video: ${clientName}`, content_category: "Brasil" });
 }

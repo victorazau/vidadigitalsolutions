@@ -9,6 +9,7 @@ import { AutoLocaleProvider } from "@/components/AutoLocaleProvider"
 import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight"
 import { AuroraBackground } from "@/components/ui/aurora-background"
 import { AnimatedCounter } from "@/components/ui/animated-counter"
+import { trackBrasilWhatsApp, trackBrasilVideoView } from "@/components/TrackingEvents"
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -239,6 +240,7 @@ export function BrasilPage() {
                 href="https://wa.me/5531999700039"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={trackBrasilWhatsApp}
                 className="inline-flex items-center gap-2 px-8 py-4 text-base font-extrabold bg-[#00C4A0] hover:bg-[#00C4A0]/90 text-[#060D1C] rounded-lg transition-colors"
               >
                 <MessageCircle className="w-5 h-5" />
@@ -421,7 +423,7 @@ export function BrasilPage() {
                 {/* Video CTA */}
                 <div className="flex items-center justify-center mb-6">
                   <button
-                    onClick={() => setVideoPopup(PRIN_VIDEO)}
+                    onClick={() => { setVideoPopup(PRIN_VIDEO); trackBrasilVideoView("Prin Modas"); }}
                     className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all"
                   >
                     <div className="w-10 h-10 rounded-full bg-[#E91E8C] flex items-center justify-center">
@@ -487,7 +489,7 @@ export function BrasilPage() {
                   {/* Video button */}
                   {c.videoUrl && (
                     <button
-                      onClick={() => setVideoPopup(c.videoUrl)}
+                      onClick={() => { setVideoPopup(c.videoUrl); trackBrasilVideoView(c.name); }}
                       className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all"
                     >
                       <Play className="w-4 h-4 text-[#00C4A0]" />
