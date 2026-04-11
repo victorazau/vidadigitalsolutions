@@ -132,7 +132,7 @@ export const content = {
     },
     footer: {
       tagline: "Built to Scale.",
-      links: ["Services", "Cases", "Process", "Blog", "Quasar CRM", "Contact"],
+      links: ["Services", "Cases", "Process", "Blog", "Quasar CRM", "Vida Marketing (Brasil)"],
       legal: "28 W Flagler St — Miami, FL, USA · Brasil · EIN: 36-5068966 · CNPJ: 42.133.065/0001-55",
       copyright: "© 2025 Vida Digital Solutions LLC. All rights reserved.",
     },
@@ -270,7 +270,7 @@ export const content = {
     },
     footer: {
       tagline: "Built to Scale.",
-      links: ["Serviços", "Cases", "Processo", "Blog", "Quasar CRM", "Contato"],
+      links: ["Serviços", "Cases", "Processo", "Blog", "Quasar CRM", "Vida Marketing (Brasil)"],
       legal: "28 W Flagler St — Miami, FL, USA · Brasil · EIN: 36-5068966 · CNPJ: 42.133.065/0001-55",
       copyright: "© 2025 Vida Digital Solutions LLC. Todos os direitos reservados.",
     },
@@ -408,7 +408,7 @@ export const content = {
     },
     footer: {
       tagline: "Built to Scale.",
-      links: ["Servicios", "Cases", "Proceso", "Blog", "Quasar CRM", "Contacto"],
+      links: ["Servicios", "Cases", "Proceso", "Blog", "Quasar CRM", "Vida Marketing (Brasil)"],
       legal: "28 W Flagler St — Miami, FL, USA · Brasil · EIN: 36-5068966 · CNPJ: 42.133.065/0001-55",
       copyright: "© 2025 Vida Digital Solutions LLC. Todos los derechos reservados.",
     },
