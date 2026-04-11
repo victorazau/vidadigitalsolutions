@@ -29,7 +29,7 @@ const links = [
   {
     label: "Case Prin Modas",
     desc: "De 11K para 130K seguidores",
-    href: "https://www.instagram.com/prin.modas/",
+    href: "https://vidadigitalsolutions.com/brasil#prinmodas",
     icon: TrendingUp,
     style: "bg-white/[0.07] text-white border border-white/[0.12] hover:bg-white/[0.12]",
   },

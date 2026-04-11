@@ -342,7 +342,7 @@ export function BrasilPage() {
 
         {/* Case Prin Modas — Destaque */}
         <AuroraBackground className="py-20 px-6 min-h-0 h-auto" starCount={30}>
-          <div className="max-w-4xl mx-auto">
+          <div id="prinmodas" className="max-w-4xl mx-auto">
             <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }}
               variants={fadeUp} transition={{ duration: 0.5 }}
               className="text-[11px] font-extrabold tracking-[0.14em] uppercase text-[#00C4A0] mb-4 text-center">
@@ -462,7 +462,7 @@ export function BrasilPage() {
           </div>
 
         {/* Outros Cases */}
-        <div className="pt-20 px-6">
+        <div id="cases" className="pt-20 px-6">
           <div className="max-w-6xl mx-auto">
             <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }}
               variants={fadeUp} transition={{ duration: 0.5 }}
