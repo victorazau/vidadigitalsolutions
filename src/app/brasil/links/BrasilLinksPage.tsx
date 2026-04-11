@@ -96,7 +96,7 @@ export function BrasilLinksPage() {
         onClick={() => setShowVideo(false)}>
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
-          className="relative w-full max-w-lg aspect-video rounded-2xl overflow-hidden bg-black"
+          className="relative w-full max-w-sm md:max-w-md aspect-[9/16] rounded-2xl overflow-hidden bg-black"
           onClick={(e) => e.stopPropagation()}>
           <button onClick={() => setShowVideo(false)}
             className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/70 transition-colors">

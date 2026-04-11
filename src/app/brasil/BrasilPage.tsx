@@ -135,7 +135,7 @@ function VideoPopup({ url, onClose }: { url: string; onClose: () => void }) {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.9, opacity: 0 }}
-          className="relative w-full max-w-2xl aspect-video rounded-2xl overflow-hidden bg-black"
+          className="relative w-full max-w-sm md:max-w-md aspect-[9/16] rounded-2xl overflow-hidden bg-black"
           onClick={(e) => e.stopPropagation()}
         >
           <button
@@ -163,7 +163,7 @@ export function BrasilPage() {
 
   return (
     <AutoLocaleProvider>
-      <div className="bg-white">
+      <div className="bg-white overflow-x-hidden">
         {/* Header */}
         <header className="fixed top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-gray-100">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
