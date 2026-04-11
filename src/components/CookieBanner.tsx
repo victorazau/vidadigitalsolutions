@@ -99,6 +99,9 @@ export default function CookieBanner() {
   });
 
   useEffect(() => {
+    // Don't show on bio/links pages
+    if (window.location.pathname === "/links" || window.location.pathname === "/brasil/links") return;
+
     const saved = getCookie(COOKIE_KEY);
     if (!saved) {
       const timer = setTimeout(() => setVisible(true), 1200);
