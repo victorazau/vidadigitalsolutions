@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     title: "Vida Marketing | Tráfego Pago, CRM e Automação no Brasil",
     description: "De 11K para 130K seguidores. Tráfego pago, CRM, automação, IA e e-commerce para empresas brasileiras. Case Prin Modas. Nota fiscal no Brasil.",
     url: "https://vidadigitalsolutions.com/brasil",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "/og-brasil.jpg", width: 1200, height: 630, alt: "Vida Marketing — Tráfego Pago, CRM e Automação no Brasil" }],
     locale: "pt_BR",
     type: "website",
   },
