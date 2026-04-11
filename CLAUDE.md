@@ -140,6 +140,8 @@ Site institucional em Next.js com blog multilíngue (PT/EN/ES) totalmente automa
 | `/terms` | Static | Terms of Service |
 | `/privacy` | Static | Privacy Policy (GDPR/LGPD/CCPA) |
 | `/cookies` | Static | Cookie Policy |
+| `/brasil` | Static | Vida Marketing — braço brasileiro |
+| `/brasil/links` | Static | Bio links Vida Marketing (aurora bg) |
 | `/api/track` | Edge | Meta CAPI events (POST) |
 | `/api/indexnow` | Edge | IndexNow notification (POST) |
 
@@ -205,10 +207,13 @@ author: "Vida Digital Solutions"
 
 ### Eventos trackados
 - **PageView** — todas as páginas (GA4 + Pixel + CAPI)
-- **Lead** — /book, WhatsApp click (Pixel + CAPI + GA4)
+- **Lead** — /book, WhatsApp click, /brasil visit (Pixel + CAPI + GA4)
 - **Schedule** — /book (Pixel + CAPI)
 - **ViewContent** — blog articles (Pixel + CAPI)
 - **Contact** — WhatsApp click (Pixel + CAPI + GA4)
+- **BrasilPageView** — /brasil (Pixel custom + CAPI)
+- **BrasilWhatsAppClick** — WhatsApp BR click (Pixel + GA4 + CAPI)
+- **BrasilVideoView** — testimonial video play com nome do cliente (Pixel + GA4 + CAPI)
 
 ### Cookie Consent (GDPR/LGPD)
 - Cookie: `vds_cookie_consent` (1 ano)
@@ -216,6 +221,7 @@ author: "Vida Digital Solutions"
 - Analytics: GA4 + Clarity (carrega após consent)
 - Marketing: Meta Pixel (carrega após consent)
 - CAPI: server-side, não depende de consent
+- Banner NÃO aparece em `/links` e `/brasil/links` (bio pages)
 
 ---
 
@@ -367,15 +373,32 @@ O prompt inclui:
 - Bio links: [vidadigitalsolutions.com/links](https://vidadigitalsolutions.com/links)
 - Subdomínio `bio.vidadigitalsolutions.com` → redirect 301 para `/links`
 
+### Vida Marketing (Brasil)
+- Instagram: [@vidamkt](https://www.instagram.com/vidamkt/)
+- Facebook: [vidamktoficial](https://www.facebook.com/vidamktoficial/)
+- Google Reviews BR: [share.google/f7axPqGRNuyy8O8hl](https://share.google/f7axPqGRNuyy8O8hl)
+- Bio links: [vidadigitalsolutions.com/brasil/links](https://vidadigitalsolutions.com/brasil/links)
+- `vidamkt.com.br` → redirect 301 para `/brasil`
+- `bio.vidamkt.com.br` → redirect 301 para `/brasil/links`
+- WhatsApp BR: +55 31 99970-0039
+
 ---
 
 ## Clientes (Cases no site)
 
+### Site principal (vidadigitalsolutions.com)
 1. **Azul Viagens** — Brasil · Aviação
 2. **Astride US Inc.** — Miami, FL · Digital Accounting
 3. **Souza Advogados + Marcos Assunção** — Brasil · Advocacia
 4. **Vieira Cleaning Services** — USA · Cleaning
 5. **APLAC Mais** — Brasil · Proteção Veicular
+
+### Página Brasil (/brasil) — com vídeos de depoimento
+1. **Prin Modas** — BH, MG · Moda Feminina · 11K→130K seguidores · 10x faturamento · [vídeo]
+2. **Scarlett Caroline Beauty** — BH, MG · Beleza · Placa de R$2M · [vídeo]
+3. **Viveza Pratas** — MG · Joalheria · [vídeo]
+4. **Gerais Proteção Veicular** — MG · Proteção Veicular · [vídeo]
+5. **Azul Viagens** — Brasil · Aviação
 
 ---
 
@@ -409,3 +432,68 @@ O prompt inclui:
 8. **Logo branca:** usar `logo-h-white.png` em fundos escuros (não usar CSS `brightness-0 invert`)
 9. **Font weights:** apenas 400, 500 e 800 (nunca 600 ou 700)
 10. **Cookie banner:** GA4 e Clarity carregam com analytics consent. Meta Pixel com marketing consent. CAPI sempre.
+11. **Página /brasil:** tem seu próprio header (logo Vida Marketing), footer compartilhado, favicon próprio
+12. **Vídeos de depoimento:** formato 9:16 vertical (aspect-[9/16]) — popup com `<video>` nativo
+
+---
+
+## Vida Marketing — Página /brasil
+
+### Sobre
+A Vida Marketing é o **braço brasileiro** da Vida Digital Solutions. Opera com CNPJ 42.133.065/0001-55.
+Posicionamento: tráfego pago + CRM + automação + IA para empresas brasileiras (moda, beleza, proteção veicular).
+
+### Estrutura da página /brasil
+1. **Header** — Logo Vida Marketing + "Uma divisão da VDS" + Instagram + Facebook + WhatsApp BR
+2. **Hero** — Aurora background + logo branca + "Dos anúncios às automações" + social proof (100+ empresas, 5.0★)
+3. **Serviços** — HeroHighlight (dot pattern teal) + 5 cards + Quasar CRM card escuro
+4. **Case Prin Modas** — Aurora bg + imagem real + logo circular + before/after + contadores animados + vídeo popup
+5. **Outros Cases** — Aurora bg + 4 cards com logos reais + vídeos popup (Scarlett, Viveza, Gerais, Azul)
+6. **Diferenciais** — 4 cards com ícones coloridos + borda esquerda + CTA "Quero saber mais"
+7. **Quote** — "Empresa sem marketing não sobrevive" (Viveza Pratas)
+8. **Google Reviews** — 3 reviews reais (Tifani, Fernando, Brenda) + link Google
+9. **FAQ** — 6 perguntas de quebra de objeção + "Ainda tem dúvida? A gente resolve."
+10. **Como funciona** — 3 passos: WhatsApp → Análise → Começa em 7 dias
+11. **CTA Final** — Aurora + botão pulsante com glow + badge "Vagas limitadas"
+12. **Footer** — Compartilhado com site principal
+
+### Anchors
+- `#prinmodas` — Case Prin Modas em destaque
+- `#cases` — Outros cases com depoimentos em vídeo
+
+### SEO da /brasil
+- 120+ keywords (tráfego pago, CRM, IA, e-commerce, Nuvem Shop, moda feminina, salão, proteção veicular)
+- JSON-LD: MarketingAgency com parentOrganization (VDS)
+- Geo tags: Belo Horizonte (-19.9167, -43.9345)
+- OG image própria: `/og-brasil.jpg`
+- Favicon próprio: `/logos/fav-icon-vida-mkt.png`
+- Canonical: `https://vidadigitalsolutions.com/brasil`
+
+### Bio links (/brasil/links)
+- Aurora background com blobs VDS
+- Card destaque Prin Modas (clica → abre vídeo depoimento)
+- Links: WhatsApp (pulsante), Site, Case Prin Modas, Depoimentos, Google Reviews
+- Socials: Instagram + Facebook
+- Sem cookie banner
+
+### Componentes exclusivos
+- `AnimatedCounter` — contagem animada de 0 ao valor (ease-out cubic)
+- `HeroHighlight` — dot pattern com spotlight teal que segue o cursor
+- `VideoPopup` — popup 9:16 para depoimentos verticais
+
+### Logos no /public/logos/
+- `logo-vida-marketing.png` — colorida (header claro)
+- `logo-vida-marketing-b.png` — branca (hero escuro)
+- `fav-icon-vida-mkt.png` — favicon
+- `prin-modas.jpg` — foto da Thaís com encomendas
+- `logo-prin-modas.jpg` — logo circular Prin Modas
+- `scarllet-caroline-beauty.jpg` — logo Scarlett
+- `viveza-pratas.jpg` — logo Viveza
+- `gerais-protecao-veicular.jpg` — logo Gerais
+- `azul-viagens.jpeg` — logo Azul Viagens
+- `vida-marketing.jpg` — OG image da página Brasil
+
+### Redirects configurados no Cloudflare (vidamkt.com.br)
+- `vidamkt.com.br/*` → 301 → `vidadigitalsolutions.com/brasil`
+- `bio.vidamkt.com.br/*` → 301 → `vidadigitalsolutions.com/brasil/links`
+- DNS: CNAME `@`, `www`, `bio` → `vidadigitalsolutions.pages.dev` (proxy ativado)
