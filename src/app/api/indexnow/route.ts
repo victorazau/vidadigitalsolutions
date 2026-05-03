@@ -206,23 +206,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-
-export async function GET() {
-  const keyJson = process.env.GOOGLE_INDEXING_KEY;
-  if (!keyJson) {
-    return NextResponse.json({ error: "missing GOOGLE_INDEXING_KEY" }, { status: 500 });
-  }
-  try {
-    const sa = JSON.parse(keyJson) as ServiceAccount & { project_id?: string };
-    return NextResponse.json({
-      ok: true,
-      client_email: sa.client_email,
-      project_id: sa.project_id,
-      private_key_length: sa.private_key?.length,
-      private_key_starts: sa.private_key?.slice(0, 40),
-      private_key_ends: sa.private_key?.slice(-40),
-    });
-  } catch (err) {
-    return NextResponse.json({ error: "invalid JSON", detail: String(err) }, { status: 500 });
-  }
-}
