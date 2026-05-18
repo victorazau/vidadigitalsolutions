@@ -1,0 +1,244 @@
+---
+title: "Cómo Configurar Calendar en GoHighLevel en 6 Pasos"
+description: "Aprende a configurar el calendar de GoHighLevel desde cero. Tutorial paso a paso para automatizar citas y eliminar el intercambio de emails innecesario."
+date: "2026-05-18"
+category: "GoHighLevel"
+slug: "how-to-set-up-gohighlevel-calendar-6-steps"
+lang: "es"
+keywords: ["calendar gohighlevel", "agendar citas gohighlevel", "booking calendar ghl", "agendamiento automatico", "configurar calendar crm"]
+readTime: "8 min"
+author: "Vida Digital Solutions"
+---
+
+Configurar el calendar en GoHighLevel es un proceso que involucra seis etapas principales: creación del calendar, definición de disponibilidad, configuración de tipos de citas, personalización de notificaciones, integración con otros sistemas y pruebas finales. Cuando se configura correctamente, el sistema elimina completamente el intercambio innecesario de emails para coordinar reuniones y automatiza todo el proceso de agendamiento.
+
+## Por Qué el Calendar de GoHighLevel Es Esencial Para Tu Negocio
+
+El calendar integrado de GoHighLevel va mucho más allá de una simple agenda. Se conecta directamente con tus pipelines de ventas, workflows de automation y sistemas de comunicación, creando una experiencia fluida tanto para ti como para tus clientes.
+
+Buffetes de abogados que implementan correctamente el calendar de GoHighLevel reportan un aumento del 40% en las consultas agendadas, simplemente porque eliminaron la fricción del proceso de programación de citas. Cuando un lead calificado puede agendar una consulta inmediatamente, sin necesidad de intercambiar emails, la conversión se dispara.
+
+**Vida Digital Solutions** ha observado en sus clientes que el calendar bien configurado se convierte en el corazón de la operación comercial, conectando marketing, ventas y atención al cliente en un flujo continuo.
+
+## 1. Creando Tu Primer Calendar en GoHighLevel
+
+En el dashboard de GoHighLevel, navega hasta **"Calendars"** en el menú lateral izquierdo. Verás una pantalla con todos los calendars existentes (probablemente vacía si es tu primera vez).
+
+Haz clic en el botón **"Add Calendar"** en la esquina superior derecha. Se abrirá una ventana modal con los campos esenciales:
+
+- **Calendar Name**: Usa un nombre descriptivo como "Consultas Legales" o "Reuniones Comerciales"
+- **Calendar Description**: Describe el propósito (ej: "Agendamiento de consultas iniciales - 30 minutos")
+- **Time Zone**: Selecciona tu zona horaria correcta (crucial para clientes en diferentes regiones)
+- **Calendar Color**: Elige un color para identificación visual
+
+Haz clic **"Save"** para crear el calendar base. Ahora tienes la estructura, pero aún necesitamos configurar cuándo y cómo las personas pueden agendar.
+
+## 2. Configurando Tu Disponibilidad y Horarios de Trabajo
+
+Después de crear el calendar, serás dirigido a la pantalla de configuraciones. La pestaña **"Availability"** es donde ocurre la magia.
+
+### Definiendo Horarios de Trabajo
+
+En la sección **"Working Hours"**, configura:
+- **Days**: Selecciona los días de la semana que aceptas citas
+- **Start Time**: Hora de inicio (ej: 9:00 AM)
+- **End Time**: Hora de finalización (ej: 5:00 PM)
+- **Break Times**: Agrega intervalos para almuerzo o pausas
+
+### Configuraciones Avanzadas de Disponibilidad
+
+GoHighLevel permite configurar:
+- **Minimum Notice**: Tiempo mínimo de anticipación (ej: 2 horas)
+- **Maximum Notice**: Cuántos días en el futuro permiten agendamiento (ej: 30 días)
+- **Buffer Time**: Tiempo entre reuniones para preparación (ej: 15 minutos)
+- **Daily Limit**: Máximo de citas por día
+
+Para bufetes de abogados, recomendamos un buffer de al menos 15 minutos entre consultas para revisión de casos y preparación.
+
+## 3. Creando Tipos de Citas Personalizados
+
+En la pestaña **"Appointment Types"**, puedes crear diferentes tipos de reuniones con configuraciones específicas.
+
+Haz clic **"Add Appointment Type"** y configura:
+
+### Tipo 1: Consulta Inicial (30 minutos)
+- **Name**: "Consulta Inicial Gratuita"
+- **Duration**: 30 minutos
+- **Price**: $0 (o valor de la consulta)
+- **Description**: "Evaluación inicial de tu caso legal"
+- **Questions**: Agrega campos personalizados como "Describe brevemente tu situación"
+
+### Tipo 2: Reunión de Seguimiento (45 minutos)
+- **Name**: "Reunión de Seguimiento"
+- **Duration**: 45 minutos
+- **Price**: Valor cobrado
+- **Restrictions**: Solo clientes existentes
+
+### Configuraciones Específicas Por Tipo
+
+Cada tipo puede tener:
+- **Different availability** (ej: consultas gratuitas solo los martes)
+- **Custom forms** con preguntas específicas
+- **Automatic workflows** que se activan después del agendamiento
+- **Payment integration** para cobrar por adelantado
+
+**Vida Digital Solutions** recomienda comenzar con 2-3 tipos básicos y expandir según la necesidad.
+
+## 4. Personalizando Notificaciones y Recordatorios Automáticos
+
+En la pestaña **"Notifications"**, configura las comunicaciones automáticas que mantienen a todos informados.
+
+### Notificaciones para el Cliente
+
+**Confirmación de Cita**:
+- **Trigger**: Inmediatamente después de agendar
+- **Channel**: Email + SMS
+- **Template**: "Tu consulta ha sido agendada para el [Date] a las [Time]. Accede a este enlace para reprogramar si es necesario: [RescheduleLink]"
+
+**Recordatorios**:
+- **24 horas antes**: Email con detalles y enlace de Zoom
+- **2 horas antes**: SMS con recordatorio rápido
+- **15 minutos antes**: SMS final
+
+### Notificaciones para Tu Equipo
+
+- **New Appointment**: Notifica vía email sobre nuevas citas
+- **Cancellations**: Alerta inmediata sobre cancelaciones
+- **No-shows**: Marca automáticamente en el CRM cuando el cliente no se presenta
+
+### Personalizando Templates
+
+Usa variables dinámicas como:
+- `{contact.first_name}` - Nombre del cliente
+- `{appointment.date}` - Fecha de la cita
+- `{appointment.time}` - Horario
+- `{meeting_link}` - Enlace de la reunión online
+- `{reschedule_link}` - Enlace para reprogramar
+
+En nuestra experiencia en **Vida Digital Solutions**, clientes que usan recordatorios en múltiples canales tienen 60% menos no-shows.
+
+## 5. Integrando con Zoom, Google Calendar y Otros Sistemas
+
+### Integración con Zoom
+
+En la sección **"Integrations"**:
+1. Haz clic **"Connect Zoom"**
+2. Autoriza la conexión con tu cuenta Zoom
+3. Configura si quieres generar reuniones automáticamente
+4. Elige el tipo de reunión predeterminado (con video, solo audio, etc.)
+
+Después de conectar, cada cita generará automáticamente una reunión Zoom y enviará el enlace al cliente.
+
+### Sincronización con Google Calendar
+
+1. Ve a **"Calendar Sync"**
+2. Conecta tu cuenta Google
+3. Elige qué calendar de Google sincronizar
+4. Configura la dirección de sincronización:
+   - **Two-way**: Cambios en cualquier lugar se reflejan en ambos
+   - **One-way**: Solo GoHighLevel → Google o viceversa
+
+### Integración con Pipelines de Ventas
+
+En la pestaña **"Workflows"**, conecta las citas con tus [pipelines de ventas](/blog/how-to-create-sales-pipeline-gohighlevel):
+
+- **Nueva cita**: Mueve lead a etapa "Consulta Agendada"
+- **Consulta realizada**: Mueve a "Propuesta"
+- **No-show**: Mueve a "Reprogramación" con workflow de follow-up
+
+Esta integración garantiza que ningún lead se pierda y toda cita se convierta en una oportunidad rastreable.
+
+## 6. Probando y Publicando Tu Calendar
+
+Antes de liberar para clientes, haz pruebas completas:
+
+### Prueba de Agendamiento
+1. Accede al enlace público del calendar
+2. Haz una cita de prueba
+3. Verifica si recibiste todas las notificaciones
+4. Confirma si apareció en Google Calendar
+5. Prueba el enlace de Zoom generado
+
+### Prueba de Reprogramación
+1. Usa el enlace de reprogramación del email
+2. Cambia horario y fecha
+3. Confirma que se enviaron notificaciones
+4. Verifica sincronización con sistemas integrados
+
+### Prueba de Cancelación
+1. Cancela una cita
+2. Verifica si fuiste notificado
+3. Confirma que fue removida del Google Calendar
+4. Prueba si el workflow de cancelación se activó
+
+### Publicando el Calendar
+
+En la pestaña **"Embed & Share"**, encuentras:
+- **Direct Link**: URL directo para agendamiento
+- **Embed Code**: Para incorporar en tu website
+- **QR Code**: Para materiales impresos
+- **Social Share**: Botones para redes sociales
+
+El enlace directo puede usarse en:
+- Firma de email
+- Website (botón "Agendar Consulta")
+- Campañas de email marketing
+- Mensajes automáticos de [WhatsApp automation](/blog/whatsapp-automation-medical-clinics-gohighlevel)
+
+## Tips Avanzados Para Maximizar Resultados
+
+### Configuración de Buffer Dinámico
+
+Para diferentes tipos de citas, usa buffers diferentes:
+- **Consultas complejas**: 30 minutos de buffer
+- **Reuniones rápidas**: 10 minutos de buffer
+- **Sesiones de estrategia**: 45 minutos de buffer
+
+### Workflows Post-Agendamiento
+
+Configura workflows que se activan después de agendar:
+1. **Envío de cuestionario pre-consulta** (24h antes)
+2. **Instrucciones de acceso** (2h antes)
+3. **Follow-up de satisfacción** (24h después)
+
+### Optimización para Mobile
+
+Más del 60% de las citas ocurren en el celular. Siempre prueba:
+- Velocidad de carga
+- Facilidad de llenado
+- Legibilidad en pantalla pequeña
+- Funcionalidad de los botones
+
+### Integraciones Avanzadas
+
+Para bufetes de abogados, considera integrar con:
+- **Sistemas de facturación** para pago anticipado
+- **CRM legal** para sincronización de casos
+- **E-signature tools** para contratos
+- **Time tracking** para facturación
+
+## Preguntas Frecuentes
+
+**Q: ¿Puedo tener diferentes calendars para diferentes abogados?**
+
+**A:** Sí, GoHighLevel permite crear calendars separados para cada miembro del equipo. Cada abogado puede tener su propia disponibilidad, tipos de citas y configuraciones. También puedes crear calendars de "round-robin" que distribuyen citas automáticamente entre el equipo.
+
+**Q: ¿Cómo funciona el agendamiento en zonas horarias diferentes?**
+
+**A:** El sistema detecta automáticamente la zona horaria del cliente y muestra horarios disponibles en su horario local. Las notificaciones incluyen ambas zonas horarias para evitar confusión. Para bufetes que atienden clientes en diferentes estados, esto es esencial.
+
+**Q: ¿Puedo cobrar por la cita directamente en el calendar?**
+
+**A:** Sí, GoHighLevel integra con Stripe y otros procesadores de pago. Puedes configurar cobro obligatorio antes de la confirmación de la cita, cobro opcional ("paga lo que quieras"), o solo recolectar datos de tarjeta para asegurar el compromiso.
+
+**Q: ¿Y si necesito cancelar todas las citas de un día?**
+
+**A:** En la vista de calendar, puedes seleccionar múltiples citas y hacer acciones en lote como cancelar, reprogramar o enviar mensajes personalizados. El sistema enviará notificaciones automáticas a todos los clientes afectados con opciones de reprogramación.
+
+---
+
+Configurar correctamente el calendar de GoHighLevel transforma completamente la experiencia de agendamiento de tu negocio. Los clientes pueden agendar 24/7, eliminas el intercambio innecesario de emails, y todo el proceso queda automatizado y profesional.
+
+Recuerda: un calendar bien configurado no es solo una herramienta de agendamiento, es parte de tu estrategia de conversión. Cada fricción removida del proceso aumenta tus posibilidades de transformar leads en clientes.
+
+¿Quieres implementar esto en tu negocio? [Habla con Vida Digital Solutions por WhatsApp](https://wa.me/14382985740)
