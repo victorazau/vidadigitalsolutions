@@ -726,8 +726,8 @@ function CleaningContent() {
         </div>
       </section>
 
-      {/* Testimonials — vídeos em PT-BR, exibidos apenas no locale pt */}
-      {locale === "pt" && (
+      {/* Testimonials — vídeos em PT-BR, exibidos em pt e es (espanholas entendem); ocultos em en */}
+      {locale !== "en" && (
       <AuroraBackground className="py-20 px-6 min-h-0 h-auto" starCount={30}>
         <div className="max-w-6xl mx-auto">
           <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }}
