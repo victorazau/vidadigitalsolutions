@@ -860,7 +860,7 @@ function CleaningContent() {
                     ))}
                   </ul>
                   <a
-                    href={STRIPE_LINKS[i].url}
+                    href={`${STRIPE_LINKS[i].url}?client_reference_id=${locale}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => trackCleaningCheckout(STRIPE_LINKS[i].plan, STRIPE_LINKS[i].value)}
