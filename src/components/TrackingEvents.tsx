@@ -43,11 +43,19 @@ export function TrackingEvents() {
         window.fbq("trackCustom", "BrasilPageView", { content_name: "Brasil Page", content_category: "Brasil" });
         window.fbq("track", "Lead", { content_name: "Brasil Page Visit", content_category: "Brasil" });
       }
+
+      if (pathname === "/cleaning") {
+        window.fbq("trackCustom", "CleaningPageView", { content_name: "Cleaning Page", content_category: "Cleaning" });
+        window.fbq("track", "Lead", { content_name: "Cleaning Page Visit", content_category: "Cleaning" });
+      }
     }
 
     // Server-side events for key pages (CAPI)
     if (pathname === "/brasil") {
       sendServerEvent("Lead", { content_name: "Brasil Page Visit", content_category: "Brasil" });
+    }
+    if (pathname === "/cleaning") {
+      sendServerEvent("Lead", { content_name: "Cleaning Page Visit", content_category: "Cleaning" });
     }
     if (pathname === "/book") {
       sendServerEvent("Lead", { content_name: "Book a Call", content_category: "Booking" });
@@ -103,6 +111,31 @@ export function trackBrasilWhatsApp() {
   }
   sendServerEvent("Contact", { content_name: "WhatsApp Brasil", content_category: "Brasil" });
   sendServerEvent("Lead", { content_name: "WhatsApp Brasil CTA", content_category: "Brasil" });
+}
+
+// Cleaning WhatsApp CTA click
+export function trackCleaningWhatsApp() {
+  if (window.fbq) {
+    window.fbq("track", "Contact", { content_name: "WhatsApp Cleaning", content_category: "Cleaning" });
+    window.fbq("track", "Lead", { content_name: "WhatsApp Cleaning CTA", content_category: "Cleaning" });
+    window.fbq("trackCustom", "CleaningWhatsAppClick");
+  }
+  if (window.gtag) {
+    window.gtag("event", "cleaning_whatsapp_click", { event_category: "Cleaning", event_label: "WhatsApp Cleaning" });
+  }
+  sendServerEvent("Contact", { content_name: "WhatsApp Cleaning", content_category: "Cleaning" });
+  sendServerEvent("Lead", { content_name: "WhatsApp Cleaning CTA", content_category: "Cleaning" });
+}
+
+// Cleaning video testimonial view
+export function trackCleaningVideoView(clientName: string) {
+  if (window.fbq) {
+    window.fbq("trackCustom", "CleaningVideoView", { content_name: clientName, content_category: "Cleaning" });
+  }
+  if (window.gtag) {
+    window.gtag("event", "cleaning_video_view", { event_category: "Cleaning", event_label: clientName });
+  }
+  sendServerEvent("ViewContent", { content_name: `Video: ${clientName}`, content_category: "Cleaning" });
 }
 
 // Brasil video testimonial view
