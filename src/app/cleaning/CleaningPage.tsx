@@ -40,6 +40,21 @@ const testimonials = [
   { name: "Neatness Cleaning", video: `${VIDEO_CDN}/8abae70c-8a49-4fd7-9928-c511517116ed.mp4` },
 ]
 
+const serviceAreas = [
+  { state: "Massachusetts", cities: "Boston · Framingham · Everett · Somerville · Malden · Worcester · Lowell · Marlborough" },
+  { state: "Florida", cities: "Miami · Orlando · Pompano Beach · Deerfield Beach · Boca Raton · Fort Lauderdale · Kissimmee" },
+  { state: "New Jersey", cities: "Newark · Elizabeth · Harrison · Long Branch" },
+  { state: "Connecticut", cities: "Danbury · Bridgeport · Hartford" },
+  { state: "New York", cities: "New York City · Mount Vernon · Yonkers" },
+  { state: "Georgia", cities: "Atlanta · Marietta" },
+  { state: "Pennsylvania", cities: "Philadelphia" },
+  { state: "Texas", cities: "Houston · Dallas" },
+  { state: "North Carolina", cities: "Charlotte" },
+  { state: "California", cities: "San Francisco · San Jose" },
+  { state: "Utah", cities: "Salt Lake City" },
+  { state: "Washington, DC", cities: "DC · Maryland · Virginia" },
+]
+
 const portfolio = [
   { name: "Monteiros Cleaning Service", img: "/cleaning/site-monteiroscleaning.jpg", url: "https://monteiroscleaningservice.com/" },
   { name: "Ita Cleaning", img: "/cleaning/site-itacleaning.jpg", url: "" },
@@ -92,6 +107,9 @@ type Copy = {
   stepsLabel: string
   stepsTitle: string
   steps: { title: string; desc: string }[]
+  areasLabel: string
+  areasTitle: string
+  areasSub: string
   finalTitle: string
   finalSub: string
   finalBadge: string
@@ -200,6 +218,9 @@ const copy: Record<Locale, Copy> = {
       { title: "We design and build", desc: "Brand, website and Google profile built for your service areas. You approve every piece." },
       { title: "You go live", desc: "In 2-3 weeks your business is on Google, looking professional and ready to win clients." },
     ],
+    areasLabel: "Service areas",
+    areasTitle: "Serving cleaning businesses all over the US.",
+    areasSub: "We work 100% remotely — wherever your cleaning business is, we build your brand, website and Google presence. We're especially at home in the communities where Brazilian and Latina cleaning professionals thrive:",
     finalTitle: "Ready to look as professional as your work?",
     finalSub: "Free consultation · English, Portuguese & Spanish · Weekly payment plans",
     finalBadge: "Limited spots this month",
@@ -306,6 +327,9 @@ const copy: Record<Locale, Copy> = {
       { title: "Nós desenhamos e construímos", desc: "Marca, site e perfil do Google feitos para as áreas que você atende. Você aprova cada peça." },
       { title: "Você entra no ar", desc: "Em 2-3 semanas seu negócio está no Google, com cara profissional e pronto para ganhar clientes." },
     ],
+    areasLabel: "Onde atendemos",
+    areasTitle: "Atendemos empresas de limpeza nos EUA inteiros.",
+    areasSub: "Trabalhamos 100% remoto — onde sua empresa estiver, montamos sua marca, site e presença no Google. E somos de casa nas comunidades onde as brasileiras do cleaning estão:",
     finalTitle: "Pronta para parecer tão profissional quanto seu trabalho?",
     finalSub: "Consulta gratuita · Atendimento em português · Pagamento semanal",
     finalBadge: "Vagas limitadas este mês",
@@ -412,6 +436,9 @@ const copy: Record<Locale, Copy> = {
       { title: "Diseñamos y construimos", desc: "Marca, sitio y perfil de Google hechos para las zonas que atiendes. Tú apruebas cada pieza." },
       { title: "Sales en línea", desc: "En 2-3 semanas tu negocio está en Google, con imagen profesional y listo para ganar clientes." },
     ],
+    areasLabel: "Dónde atendemos",
+    areasTitle: "Atendemos empresas de limpieza en todo EE.UU.",
+    areasSub: "Trabajamos 100% remoto — donde esté tu empresa, creamos tu marca, sitio web y presencia en Google. Y nos sentimos en casa en las comunidades donde están las profesionales latinas de la limpieza:",
     finalTitle: "¿Lista para verte tan profesional como tu trabajo?",
     finalSub: "Consulta gratuita · Atención en español · Pagos semanales",
     finalBadge: "Cupos limitados este mes",
@@ -962,6 +989,41 @@ function CleaningContent() {
                 </div>
                 <h3 className="text-[15px] font-extrabold text-[#0A0A0F] mb-1">{step.title}</h3>
                 <p className="text-[13px] text-[#475569] leading-relaxed">{step.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Service areas — SEO local: comunidades brasileiras/latinas nos EUA */}
+      <section className="bg-[#F5F7FA] py-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }}
+            variants={fadeUp} transition={{ duration: 0.5 }}
+            className="text-[11px] font-medium tracking-[0.14em] uppercase text-[#94A3B8] mb-4 text-center">
+            {t.areasLabel}
+          </motion.p>
+          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }}
+            variants={fadeUp} transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-2xl md:text-3xl font-extrabold tracking-[-0.04em] text-[#0A0A0F] text-center mb-4">
+            {t.areasTitle}
+          </motion.h2>
+          <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }}
+            variants={fadeUp} transition={{ duration: 0.5, delay: 0.15 }}
+            className="text-[15px] text-[#475569] text-center max-w-2xl mx-auto mb-10">
+            {t.areasSub}
+          </motion.p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {serviceAreas.map((area, i) => (
+              <motion.div key={i}
+                initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-20px" }}
+                variants={fadeUp} transition={{ duration: 0.4, delay: i * 0.04 }}
+                className="rounded-xl bg-white border border-[#E2E8F0] px-4 py-3">
+                <p className="text-[13px] font-extrabold text-[#1B2F5E] mb-0.5 flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-[#00C4A0]" />
+                  {area.state}
+                </p>
+                <p className="text-[12px] text-[#475569] leading-relaxed">{area.cities}</p>
               </motion.div>
             ))}
           </div>

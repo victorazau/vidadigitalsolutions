@@ -15,16 +15,34 @@ export const metadata: Metadata = {
     "maid service website", "cleaning service logo design",
     "crm for cleaning business", "booking system for cleaning company",
     "get found on google cleaning business", "ai seo for small business",
-    // EN — cities
+    // EN — cities (comunidades brasileiras)
     "cleaning business marketing Miami", "cleaning business website Boston",
     "cleaning company branding Philadelphia", "house cleaning marketing Orlando",
     "cleaning business website New Jersey", "maid service marketing Massachusetts",
+    "cleaning business website Framingham", "cleaning company marketing Everett MA",
+    "house cleaning website Somerville", "cleaning business Malden MA",
+    "cleaning company website Worcester", "maid service website Newark NJ",
+    "cleaning business marketing Danbury CT", "house cleaning website Bridgeport",
+    "cleaning company website Pompano Beach", "cleaning business Deerfield Beach",
+    "house cleaning marketing Boca Raton", "cleaning business website Fort Lauderdale",
+    "maid service marketing Atlanta", "cleaning company website Houston",
+    "cleaning business website Charlotte NC", "house cleaning marketing San Francisco",
+    "cleaning business marketing Salt Lake City", "maid service website Long Branch NJ",
     // PT — brasileiras nos EUA
     "site para housecleaning", "site para empresa de limpeza nos EUA",
     "logo para housecleaning", "identidade visual para limpeza",
     "como conseguir clientes de limpeza nos EUA", "marketing para housecleaning",
     "google meu negócio para limpeza", "divulgar empresa de limpeza nos Estados Unidos",
     "site para faxineira americana", "empresa de limpeza brasileira nos EUA",
+    "housecleaning em Boston", "housecleaning em Framingham",
+    "empresa de limpeza brasileira em Massachusetts", "cleaning em Everett",
+    "housecleaning na Flórida", "empresa de limpeza em Miami",
+    "housecleaning em Orlando", "cleaning em Pompano Beach",
+    "empresa de limpeza em New Jersey", "housecleaning em Newark",
+    "brasileiras em Danbury Connecticut", "cleaning em Atlanta",
+    "como abrir empresa de limpeza nos EUA", "como divulgar cleaning nos EUA",
+    "cartão de visita para housecleaning", "imã de carro para cleaning",
+    "site para schedule de limpeza", "quanto custa um site para cleaning",
     // ES — hispanas
     "página web para empresa de limpieza", "logo para empresa de limpieza",
     "como conseguir clientes de limpieza en USA", "marketing para limpieza de casas",
@@ -93,13 +111,40 @@ const jsonLdCleaning = {
   },
   areaServed: [
     { "@type": "Country", name: "United States" },
+    // Massachusetts — maior comunidade brasileira dos EUA
+    { "@type": "City", name: "Boston" },
+    { "@type": "City", name: "Framingham" },
+    { "@type": "City", name: "Everett" },
+    { "@type": "City", name: "Somerville" },
+    { "@type": "City", name: "Malden" },
+    { "@type": "City", name: "Worcester" },
+    { "@type": "City", name: "Lowell" },
+    { "@type": "City", name: "Marlborough" },
+    // Florida
     { "@type": "City", name: "Miami" },
     { "@type": "City", name: "Orlando" },
-    { "@type": "City", name: "Boston" },
-    { "@type": "City", name: "Philadelphia" },
+    { "@type": "City", name: "Pompano Beach" },
+    { "@type": "City", name: "Deerfield Beach" },
+    { "@type": "City", name: "Boca Raton" },
+    { "@type": "City", name: "Fort Lauderdale" },
+    { "@type": "City", name: "Kissimmee" },
+    // New Jersey
     { "@type": "City", name: "Newark" },
-    { "@type": "City", name: "Atlanta" },
+    { "@type": "City", name: "Elizabeth" },
+    { "@type": "City", name: "Harrison" },
+    { "@type": "City", name: "Long Branch" },
+    // Connecticut
+    { "@type": "City", name: "Danbury" },
+    { "@type": "City", name: "Bridgeport" },
+    // Outras
     { "@type": "City", name: "New York" },
+    { "@type": "City", name: "Mount Vernon" },
+    { "@type": "City", name: "Atlanta" },
+    { "@type": "City", name: "Philadelphia" },
+    { "@type": "City", name: "Houston" },
+    { "@type": "City", name: "Charlotte" },
+    { "@type": "City", name: "San Francisco" },
+    { "@type": "City", name: "Salt Lake City" },
   ],
   knowsLanguage: ["en", "pt", "es"],
   hasOfferCatalog: {
@@ -138,12 +183,48 @@ const jsonLdCleaning = {
   },
 }
 
+const jsonLdFaq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "I don't speak English well. Can I still get a website for my cleaning business?",
+      acceptedAnswer: { "@type": "Answer", text: "Yes. Vida Digital Solutions serves you in Portuguese, Spanish or English. Your website and brand are written in perfect English (the language of your clients), and everything is explained to you in your language." },
+    },
+    {
+      "@type": "Question",
+      name: "How does a house cleaning business get found on Google?",
+      acceptedAnswer: { "@type": "Answer", text: "Three pieces working together: an optimized Google Business Profile so you appear on Google Maps in your service area, a professional website with the right structure and keywords, and a steady flow of Google reviews. Vida Digital Solutions sets up all three for cleaning businesses in the US." },
+    },
+    {
+      "@type": "Question",
+      name: "What does it mean for a cleaning business to be recommended by AI?",
+      acceptedAnswer: { "@type": "Answer", text: "Homeowners increasingly ask ChatGPT and other AI assistants for 'the best house cleaner near me'. AI pulls answers from websites with the right structure and content. A site built for AI readability can be cited and recommended — most cleaning companies don't have this yet." },
+    },
+    {
+      "@type": "Question",
+      name: "How much does a complete launch package for a cleaning business cost?",
+      acceptedAnswer: { "@type": "Answer", text: "Brand Essentials (visual identity + Google Business Profile) is $997. Complete Launch (identity + website optimized for Google and AI + quote form) is $1,997. Launch + Automation adds Quasar CRM for $147/month. All packages can be split into 4 interest-free payments at checkout." },
+    },
+    {
+      "@type": "Question",
+      name: "How long does it take to launch a cleaning business brand and website?",
+      acceptedAnswer: { "@type": "Answer", text: "Visual identity is ready in about 7 days. The complete package — brand, website and Google Business Profile — takes 2 to 3 weeks from the first conversation to going live." },
+    },
+  ],
+}
+
 export default function Cleaning() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdCleaning) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
       />
       <CleaningPage />
     </>
