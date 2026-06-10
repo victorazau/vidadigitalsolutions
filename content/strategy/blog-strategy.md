@@ -16,7 +16,9 @@
 5. **Tom:** Profissional mas acessível — para donas de empresas de limpeza e advogados, não para técnicos
 6. **Sempre otimizado para IA** (ChatGPT, Perplexity, Gemini) além de SEO tradicional
 7. **Públicos-alvo principais:** (a) Empresas de house cleaning nos EUA — donas brasileiras, hispanas e americanas; (b) Escritórios de advocacia nos EUA
-8. **Em artigos sobre limpeza:** sempre incluir 1 link interno para [a página de pacotes para empresas de limpeza](/cleaning)
+8. **Em artigos sobre limpeza:** além do CTA de WhatsApp, terminar SEMPRE com este bloco de CTA (traduzido para o idioma do artigo):
+   > **É dona de empresa de limpeza nos EUA?** Montamos sua marca, site otimizado para Google e IA, e seu Google Business Profile — pacote completo com parcelamento em até 4x sem juros. [Conheça os pacotes para empresas de limpeza →](/cleaning)
+   E incluir 1 link interno para /cleaning também no meio do artigo, em contexto natural.
 
 ## 💡 Diferenciais da VDS a Destacar
 
