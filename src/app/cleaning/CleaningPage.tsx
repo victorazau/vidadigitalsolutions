@@ -6,16 +6,24 @@ import {
   MessageCircle, Palette, Globe, MapPin, CalendarCheck, Bot,
   ChevronDown, Play, X, Check, Sparkles,
 } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Footer } from "@/components/sections/footer"
 import { AutoLocaleProvider } from "@/components/AutoLocaleProvider"
 import { useLocale } from "@/lib/locale-context"
 import type { Locale } from "@/lib/i18n"
 import { HeroHighlight } from "@/components/ui/hero-highlight"
 import { AuroraBackground } from "@/components/ui/aurora-background"
-import { trackCleaningWhatsApp, trackCleaningVideoView } from "@/components/TrackingEvents"
+import { trackCleaningWhatsApp, trackCleaningVideoView, trackCleaningCheckout, trackCleaningPurchase } from "@/components/TrackingEvents"
 
 const WHATSAPP_URL = "https://wa.me/14382985740"
+
+const STRIPE_LINKS = [
+  { url: "https://buy.stripe.com/28E7sM2y09oUbxV5kU7AI0s", plan: "essentials", value: 997 },
+  { url: "https://buy.stripe.com/7sY5kE6OgdFagSfcNm7AI0t", plan: "launch", value: 1997 },
+  { url: "https://buy.stripe.com/3cI4gAc8A9oU45t6oY7AI0u", plan: "automation", value: 2144 },
+]
+
+const PLAN_VALUES: Record<string, number> = { essentials: 997, launch: 1997, automation: 2144 }
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -33,9 +41,10 @@ const testimonials = [
 ]
 
 const portfolio = [
-  { name: "Ita Cleaning", img: "/cleaning/site-itacleaning.jpg" },
-  { name: "Ribeiro Cleaning", img: "/cleaning/site-ribeirocleaning.jpg" },
-  { name: "Vieira Cleaning", img: "/cleaning/site-vieiracleaning.jpg" },
+  { name: "Monteiros Cleaning Service", img: "/cleaning/site-monteiroscleaning.jpg", url: "https://monteiroscleaningservice.com/" },
+  { name: "Ita Cleaning", img: "/cleaning/site-itacleaning.jpg", url: "" },
+  { name: "Ribeiro Cleaning", img: "/cleaning/site-ribeirocleaning.jpg", url: "" },
+  { name: "Vieira Cleaning", img: "/cleaning/site-vieiracleaning.jpg", url: "" },
 ]
 
 type Copy = {
@@ -75,6 +84,7 @@ type Copy = {
   oneTime: string
   perMonth: string
   plans: { name: string; price: string; monthly?: string; weekly: string; features: string[]; cta: string }[]
+  orWhats: string
   pricingNote: string
   faqLabel: string
   faqTitle: string
@@ -112,7 +122,7 @@ const copy: Record<Locale, Copy> = {
     crmDesc: "Our all-in-one platform: automatic review requests, missed-call text-back, follow-up sequences and online scheduling. Your business runs even while you're cleaning.",
     brandLabel: "Real delivery",
     brandTitle: "This is what your brand can look like.",
-    brandCaption: "Complete identity delivered for Leandra Cleaning Services (Philadelphia, PA): logo, business cards, t-shirts, car magnet and door hanger.",
+    brandCaption: "Complete identity delivered for Monteiros Cleaning Service (New Jersey): logo, business cards, t-shirts, car magnet and door hanger — plus the website, live at monteiroscleaningservice.com.",
     sitesLabel: "Websites",
     sitesTitle: "Websites that turn searches into quote requests.",
     sitesSub: "Real websites we built for cleaning businesses in the US.",
@@ -125,8 +135,8 @@ const copy: Record<Locale, Copy> = {
     nextCardDesc: "Your cleaning business deserves the same structure. Let's talk — in English, Portuguese or Spanish.",
     nextCardCta: "Start now",
     pricingLabel: "Packages",
-    pricingTitle: "Clear pricing. Weekly payment plans.",
-    pricingSub: "Designed for a cleaner's cash flow: start now, pay as you work.",
+    pricingTitle: "Clear pricing. Up to 4 interest-free payments.",
+    pricingSub: "Pay online in one go, or split into 4 interest-free payments at checkout (Klarna / Afterpay) — you choose.",
     popular: "Most popular",
     oneTime: "one-time",
     perMonth: "/month",
@@ -134,7 +144,7 @@ const copy: Record<Locale, Copy> = {
       {
         name: "Brand Essentials",
         price: "$997",
-        weekly: "or 10 weekly payments of $109",
+        weekly: "or 4 interest-free payments at checkout",
         features: [
           "Logo + complete visual identity",
           "Business card, t-shirt, car magnet & door hanger designs",
@@ -146,7 +156,7 @@ const copy: Record<Locale, Copy> = {
       {
         name: "Complete Launch",
         price: "$1,997",
-        weekly: "or 12 weekly payments of $179",
+        weekly: "or 4 interest-free payments at checkout",
         features: [
           "Everything in Brand Essentials",
           "Professional website optimized for Google & AI",
@@ -160,7 +170,7 @@ const copy: Record<Locale, Copy> = {
         name: "Launch + Automation",
         price: "$1,997",
         monthly: "+ $147",
-        weekly: "setup with weekly plan available",
+        weekly: "setup in up to 4 payments + monthly subscription",
         features: [
           "Everything in Complete Launch",
           "Quasar CRM: scheduling + client base",
@@ -171,7 +181,8 @@ const copy: Record<Locale, Copy> = {
         cta: "Automate everything",
       },
     ],
-    pricingNote: "Weekly payment plans available on every package — start this week, pay as you get paid.",
+    orWhats: "Questions first? Chat on WhatsApp →",
+    pricingNote: "Secure checkout by Stripe · Split into 4 interest-free payments with Klarna or Afterpay · Prefer to talk first? Message us on WhatsApp.",
     faqLabel: "Common questions",
     faqTitle: "Still deciding? We get it.",
     faqs: [
@@ -179,7 +190,7 @@ const copy: Record<Locale, Copy> = {
       { q: "I get all my clients from referrals. Why do I need this?", a: "Referrals are great — but they have a ceiling. And here's the thing: when someone receives your name, the first thing they do is Google you. If nothing shows up, trust drops and they move on. A professional presence turns every referral into a closed deal, and brings new clients you'd never reach otherwise." },
       { q: "What does 'recommended by AI' mean?", a: "More and more homeowners ask ChatGPT and other AI assistants things like 'best house cleaner near me'. AI pulls answers from websites with the right structure and content. We build your site so AI can read it, cite it and recommend your business — most cleaning companies have no idea this exists yet." },
       { q: "How long does it take?", a: "Visual identity is ready in about 7 days. The complete package — brand, website and Google Business Profile — takes 2 to 3 weeks from our first conversation to going live." },
-      { q: "Can I really pay weekly?", a: "Yes. We've worked with cleaning professionals since 2021 and we know how cash flow works in this business. Every package has a weekly payment option so you can start now without a big upfront hit." },
+      { q: "Can I split the payment?", a: "Yes — up to 4 interest-free payments. At checkout you can choose Klarna or Afterpay and split any package into 4 payments on your card, with no interest. You can also pay in full with any card. Checkout is secure, by Stripe." },
       { q: "What exactly is Quasar CRM?", a: "It's our all-in-one platform: online scheduling, client database, automatic review requests after each job, missed-call text-back and follow-up messages. It's optional — you can add it at any time after launch." },
     ],
     stepsLabel: "How it works",
@@ -217,7 +228,7 @@ const copy: Record<Locale, Copy> = {
     crmDesc: "Nossa plataforma all-in-one: pedido automático de review, mensagem automática quando você perde ligação, follow-up e agendamento online. Seu negócio trabalha enquanto você limpa.",
     brandLabel: "Entrega real",
     brandTitle: "É assim que a sua marca pode ficar.",
-    brandCaption: "Identidade completa entregue para a Leandra Cleaning Services (Philadelphia, PA): logo, cartões, camisetas, imã de carro e door hanger.",
+    brandCaption: "Identidade completa entregue para a Monteiros Cleaning Service (New Jersey): logo, cartões, camisetas, imã de carro e door hanger — mais o site, no ar em monteiroscleaningservice.com.",
     sitesLabel: "Sites",
     sitesTitle: "Sites que transformam pesquisa em pedido de orçamento.",
     sitesSub: "Sites reais que construímos para empresas de limpeza nos EUA.",
@@ -230,8 +241,8 @@ const copy: Record<Locale, Copy> = {
     nextCardDesc: "Sua empresa de limpeza merece a mesma estrutura. Vamos conversar — em português mesmo.",
     nextCardCta: "Começar agora",
     pricingLabel: "Pacotes",
-    pricingTitle: "Preço claro. Pagamento semanal.",
-    pricingSub: "Feito para o fluxo de caixa de quem limpa: comece agora, pague enquanto trabalha.",
+    pricingTitle: "Preço claro. Em até 4x sem juros.",
+    pricingSub: "Pague online de uma vez ou divida em 4x sem juros no checkout (Klarna / Afterpay) — você escolhe.",
     popular: "Mais escolhido",
     oneTime: "único",
     perMonth: "/mês",
@@ -239,7 +250,7 @@ const copy: Record<Locale, Copy> = {
       {
         name: "Brand Essentials",
         price: "$997",
-        weekly: "ou 10 pagamentos semanais de $109",
+        weekly: "ou em até 4x sem juros no checkout",
         features: [
           "Logo + identidade visual completa",
           "Cartão, camiseta, imã de carro e door hanger",
@@ -251,7 +262,7 @@ const copy: Record<Locale, Copy> = {
       {
         name: "Complete Launch",
         price: "$1,997",
-        weekly: "ou 12 pagamentos semanais de $179",
+        weekly: "ou em até 4x sem juros no checkout",
         features: [
           "Tudo do Brand Essentials",
           "Site profissional otimizado para Google e IA",
@@ -265,7 +276,7 @@ const copy: Record<Locale, Copy> = {
         name: "Launch + Automation",
         price: "$1,997",
         monthly: "+ $147",
-        weekly: "entrada com plano semanal disponível",
+        weekly: "setup em até 4x + assinatura mensal",
         features: [
           "Tudo do Complete Launch",
           "Quasar CRM: agendamento + base de clientes",
@@ -276,7 +287,8 @@ const copy: Record<Locale, Copy> = {
         cta: "Automatizar tudo",
       },
     ],
-    pricingNote: "Plano de pagamento semanal em todos os pacotes — comece essa semana, pague conforme recebe.",
+    orWhats: "Dúvidas antes? Chama no WhatsApp →",
+    pricingNote: "Checkout seguro pela Stripe · Divida em 4x sem juros com Klarna ou Afterpay · Prefere conversar antes? Chama no WhatsApp.",
     faqLabel: "Dúvidas frequentes",
     faqTitle: "Ainda decidindo? A gente entende.",
     faqs: [
@@ -284,7 +296,7 @@ const copy: Record<Locale, Copy> = {
       { q: "Consigo todos os meus clientes por indicação. Por que preciso disso?", a: "Indicação é ótimo — mas tem teto. E tem um detalhe: quando alguém recebe seu nome, a primeira coisa que faz é jogar no Google. Se não aparece nada, a confiança cai e a pessoa segue em frente. Presença profissional transforma cada indicação em contrato fechado e traz clientes novas que você nunca alcançaria." },
       { q: "O que significa 'recomendada pela IA'?", a: "Cada vez mais americanos perguntam ao ChatGPT e outros assistentes coisas como 'best house cleaner near me'. A IA busca respostas em sites com a estrutura certa. Nós construímos seu site para a IA conseguir ler, citar e recomendar o seu negócio — a maioria das empresas de limpeza nem sabe que isso existe." },
       { q: "Quanto tempo demora?", a: "A identidade visual fica pronta em cerca de 7 dias. O pacote completo — marca, site e Google Business Profile — leva de 2 a 3 semanas da primeira conversa até estar no ar." },
-      { q: "Posso pagar semanal mesmo?", a: "Sim. Trabalhamos com profissionais de limpeza desde 2021 e sabemos como funciona o fluxo de caixa do negócio. Todos os pacotes têm opção de pagamento semanal para você começar agora sem pesar." },
+      { q: "Posso parcelar?", a: "Sim — em até 4x sem juros. No checkout você escolhe Klarna ou Afterpay e divide qualquer pacote em 4 pagamentos no cartão, sem juros. Também dá pra pagar de uma vez com qualquer cartão. O checkout é seguro, pela Stripe." },
       { q: "O que é exatamente o Quasar CRM?", a: "É nossa plataforma all-in-one: agendamento online, base de clientes, pedido automático de review após cada serviço, mensagem automática em ligação perdida e follow-up. É opcional — você pode adicionar a qualquer momento depois do lançamento." },
     ],
     stepsLabel: "Como funciona",
@@ -322,7 +334,7 @@ const copy: Record<Locale, Copy> = {
     crmDesc: "Nuestra plataforma todo-en-uno: solicitud automática de reseñas, mensaje automático cuando pierdes una llamada, seguimiento y agenda online. Tu negocio trabaja mientras tú limpias.",
     brandLabel: "Entrega real",
     brandTitle: "Así puede verse tu marca.",
-    brandCaption: "Identidad completa entregada para Leandra Cleaning Services (Philadelphia, PA): logo, tarjetas, camisetas, imán para el carro y door hanger.",
+    brandCaption: "Identidad completa entregada para Monteiros Cleaning Service (New Jersey): logo, tarjetas, camisetas, imán para el carro y door hanger — más el sitio web, en línea en monteiroscleaningservice.com.",
     sitesLabel: "Sitios web",
     sitesTitle: "Sitios que convierten búsquedas en cotizaciones.",
     sitesSub: "Sitios reales que construimos para empresas de limpieza en EE.UU.",
@@ -335,8 +347,8 @@ const copy: Record<Locale, Copy> = {
     nextCardDesc: "Tu empresa de limpieza merece la misma estructura. Hablemos — en español.",
     nextCardCta: "Empezar ahora",
     pricingLabel: "Paquetes",
-    pricingTitle: "Precio claro. Pagos semanales.",
-    pricingSub: "Diseñado para el flujo de caja de quien limpia: empieza ahora, paga mientras trabajas.",
+    pricingTitle: "Precio claro. Hasta 4 pagos sin intereses.",
+    pricingSub: "Paga online de una vez o divide en 4 pagos sin intereses al pagar (Klarna / Afterpay) — tú eliges.",
     popular: "Más elegido",
     oneTime: "pago único",
     perMonth: "/mes",
@@ -344,7 +356,7 @@ const copy: Record<Locale, Copy> = {
       {
         name: "Brand Essentials",
         price: "$997",
-        weekly: "o 10 pagos semanales de $109",
+        weekly: "o hasta 4 pagos sin intereses al pagar",
         features: [
           "Logo + identidad visual completa",
           "Tarjeta, camiseta, imán para carro y door hanger",
@@ -356,7 +368,7 @@ const copy: Record<Locale, Copy> = {
       {
         name: "Complete Launch",
         price: "$1,997",
-        weekly: "o 12 pagos semanales de $179",
+        weekly: "o hasta 4 pagos sin intereses al pagar",
         features: [
           "Todo lo de Brand Essentials",
           "Sitio web profesional optimizado para Google e IA",
@@ -370,7 +382,7 @@ const copy: Record<Locale, Copy> = {
         name: "Launch + Automation",
         price: "$1,997",
         monthly: "+ $147",
-        weekly: "inicial con plan semanal disponible",
+        weekly: "inicial en hasta 4 pagos + suscripción mensual",
         features: [
           "Todo lo de Complete Launch",
           "Quasar CRM: agenda + base de clientes",
@@ -381,7 +393,8 @@ const copy: Record<Locale, Copy> = {
         cta: "Automatizar todo",
       },
     ],
-    pricingNote: "Planes de pago semanal en todos los paquetes — empieza esta semana, paga a medida que cobras.",
+    orWhats: "¿Dudas antes? Escríbenos por WhatsApp →",
+    pricingNote: "Pago seguro con Stripe · Divide en 4 pagos sin intereses con Klarna o Afterpay · ¿Prefieres hablar primero? Escríbenos por WhatsApp.",
     faqLabel: "Preguntas frecuentes",
     faqTitle: "¿Aún lo estás pensando? Te entendemos.",
     faqs: [
@@ -389,7 +402,7 @@ const copy: Record<Locale, Copy> = {
       { q: "Consigo todos mis clientes por recomendación. ¿Para qué necesito esto?", a: "Las recomendaciones son geniales — pero tienen techo. Y hay un detalle: cuando alguien recibe tu nombre, lo primero que hace es buscarte en Google. Si no aparece nada, la confianza baja y sigue de largo. Una presencia profesional convierte cada recomendación en contrato y trae clientes nuevos que nunca alcanzarías." },
       { q: "¿Qué significa 'recomendada por la IA'?", a: "Cada vez más personas le preguntan a ChatGPT y otros asistentes cosas como 'best house cleaner near me'. La IA saca respuestas de sitios con la estructura correcta. Construimos tu sitio para que la IA pueda leerlo, citarlo y recomendar tu negocio — la mayoría de las empresas de limpieza ni saben que esto existe." },
       { q: "¿Cuánto tiempo toma?", a: "La identidad visual está lista en unos 7 días. El paquete completo — marca, sitio y Google Business Profile — toma de 2 a 3 semanas desde la primera conversación hasta estar en línea." },
-      { q: "¿De verdad puedo pagar semanal?", a: "Sí. Trabajamos con profesionales de la limpieza desde 2021 y sabemos cómo funciona el flujo de caja del negocio. Todos los paquetes tienen opción de pago semanal para empezar ahora sin un golpe fuerte." },
+      { q: "¿Puedo pagar en cuotas?", a: "Sí — hasta 4 pagos sin intereses. Al pagar puedes elegir Klarna o Afterpay y dividir cualquier paquete en 4 pagos con tu tarjeta, sin intereses. También puedes pagar de una vez con cualquier tarjeta. El pago es seguro, con Stripe." },
       { q: "¿Qué es exactamente Quasar CRM?", a: "Es nuestra plataforma todo-en-uno: agenda online, base de clientes, solicitud automática de reseñas tras cada servicio, mensaje automático en llamadas perdidas y seguimiento. Es opcional — puedes agregarlo en cualquier momento después del lanzamiento." },
     ],
     stepsLabel: "Cómo funciona",
@@ -463,6 +476,15 @@ function CleaningContent() {
   const t = copy[locale]
   const [openFaq, setOpenFaq] = useState(0)
   const [videoPopup, setVideoPopup] = useState<string | null>(null)
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get("checkout") === "success") {
+      const plan = params.get("plan") ?? "unknown"
+      trackCleaningPurchase(plan, PLAN_VALUES[plan] ?? 0)
+      window.history.replaceState({}, "", "/cleaning")
+    }
+  }, [])
 
   return (
     <div className="bg-white overflow-x-hidden">
@@ -627,10 +649,10 @@ function CleaningContent() {
             className="rounded-2xl overflow-hidden bg-white border border-[#E2E8F0] shadow-xl"
           >
             <Image
-              src="/cleaning/branding-cleaning.jpg"
-              alt="Complete visual identity for Leandra Cleaning Services: logo, business cards, t-shirts, car magnet and door hanger"
-              width={1600}
-              height={830}
+              src="/cleaning/branding-monteiros.jpg"
+              alt="Complete visual identity for Monteiros Cleaning Service: logo, business cards, t-shirts, car magnet and door hanger"
+              width={1920}
+              height={987}
               className="w-full h-auto"
               unoptimized
             />
@@ -662,13 +684,9 @@ function CleaningContent() {
             {t.sitesSub}
           </motion.p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {portfolio.map((site, i) => (
-              <motion.div key={i}
-                initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-40px" }}
-                variants={fadeUp} transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group rounded-2xl border border-[#E2E8F0] overflow-hidden bg-[#F8FAFC] hover:shadow-xl transition-all"
-              >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {portfolio.map((site, i) => {
+              const card = (
                 <div className="relative h-72 overflow-hidden">
                   <Image
                     src={site.img}
@@ -679,18 +697,37 @@ function CleaningContent() {
                     unoptimized
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0D1B3E]/60 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute bottom-3 left-4">
-                    <p className="text-white font-extrabold text-[15px]">{site.name}</p>
-                    <p className="text-[11px] text-white/60">{t.videoTag}</p>
+                  <div className="absolute bottom-3 left-4 right-4 flex items-end justify-between">
+                    <div>
+                      <p className="text-white font-extrabold text-[15px]">{site.name}</p>
+                      <p className="text-[11px] text-white/60">{t.videoTag}</p>
+                    </div>
+                    {site.url && (
+                      <span className="text-[11px] font-extrabold text-[#00C4A0] bg-[#060D1C]/60 rounded-full px-3 py-1">
+                        {site.url.replace("https://", "").replace(/\/$/, "")} →
+                      </span>
+                    )}
                   </div>
                 </div>
-              </motion.div>
-            ))}
+              )
+              return (
+                <motion.div key={i}
+                  initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-40px" }}
+                  variants={fadeUp} transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="group rounded-2xl border border-[#E2E8F0] overflow-hidden bg-[#F8FAFC] hover:shadow-xl transition-all"
+                >
+                  {site.url ? (
+                    <a href={site.url} target="_blank" rel="noopener noreferrer">{card}</a>
+                  ) : card}
+                </motion.div>
+              )
+            })}
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Testimonials — vídeos em PT-BR, exibidos apenas no locale pt */}
+      {locale === "pt" && (
       <AuroraBackground className="py-20 px-6 min-h-0 h-auto" starCount={30}>
         <div className="max-w-6xl mx-auto">
           <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }}
@@ -756,6 +793,7 @@ function CleaningContent() {
           </div>
         </div>
       </AuroraBackground>
+      )}
 
       {/* Pricing */}
       <section id="pricing" className="py-20 px-6 bg-white">
@@ -822,18 +860,29 @@ function CleaningContent() {
                     ))}
                   </ul>
                   <a
+                    href={STRIPE_LINKS[i].url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackCleaningCheckout(STRIPE_LINKS[i].plan, STRIPE_LINKS[i].value)}
+                    className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[14px] font-extrabold rounded-lg transition-colors ${
+                      isPopular
+                        ? "bg-[#00C4A0] hover:bg-[#00C4A0]/90 text-[#060D1C]"
+                        : "bg-[#1B2F5E] text-white hover:bg-[#1B2F5E]/90"
+                    }`}
+                  >
+                    <Check className="w-4 h-4" />
+                    {plan.cta}
+                  </a>
+                  <a
                     href={WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={trackCleaningWhatsApp}
-                    className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[14px] font-extrabold rounded-lg transition-colors ${
-                      isPopular
-                        ? "bg-[#00C4A0] hover:bg-[#00C4A0]/90 text-[#060D1C]"
-                        : "border-2 border-[#1B2F5E] text-[#1B2F5E] hover:bg-[#1B2F5E] hover:text-white"
+                    className={`block text-center mt-3 text-[12px] font-medium transition-colors ${
+                      isPopular ? "text-white/60 hover:text-white" : "text-[#475569] hover:text-[#1B2F5E]"
                     }`}
                   >
-                    <MessageCircle className="w-4 h-4" />
-                    {plan.cta}
+                    {t.orWhats}
                   </a>
                 </motion.div>
               )

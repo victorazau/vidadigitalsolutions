@@ -138,6 +138,28 @@ export function trackCleaningVideoView(clientName: string) {
   sendServerEvent("ViewContent", { content_name: `Video: ${clientName}`, content_category: "Cleaning" });
 }
 
+// Cleaning Stripe checkout click
+export function trackCleaningCheckout(plan: string, value: number) {
+  if (window.fbq) {
+    window.fbq("track", "InitiateCheckout", { content_name: plan, content_category: "Cleaning", value, currency: "USD" });
+  }
+  if (window.gtag) {
+    window.gtag("event", "begin_checkout", { event_category: "Cleaning", event_label: plan, value, currency: "USD" });
+  }
+  sendServerEvent("InitiateCheckout", { content_name: plan, content_category: "Cleaning", value, currency: "USD" });
+}
+
+// Cleaning Stripe purchase (after checkout redirect back)
+export function trackCleaningPurchase(plan: string, value: number) {
+  if (window.fbq) {
+    window.fbq("track", "Purchase", { content_name: plan, content_category: "Cleaning", value, currency: "USD" });
+  }
+  if (window.gtag) {
+    window.gtag("event", "purchase", { event_category: "Cleaning", event_label: plan, value, currency: "USD" });
+  }
+  sendServerEvent("Purchase", { content_name: plan, content_category: "Cleaning", value, currency: "USD" });
+}
+
 // Brasil video testimonial view
 export function trackBrasilVideoView(clientName: string) {
   if (window.fbq) {

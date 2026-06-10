@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     description:
       "Visual identity + website + Google Business Profile for house cleaning companies in the US. 30+ businesses launched. English, Portuguese and Spanish.",
     url: "https://vidadigitalsolutions.com/cleaning",
-    images: [{ url: "/cleaning/branding-cleaning.jpg", width: 1600, height: 830, alt: "Complete visual identity delivered for a house cleaning company" }],
+    images: [{ url: "/cleaning/branding-monteiros.jpg", width: 1920, height: 987, alt: "Complete visual identity delivered for a house cleaning company" }],
     locale: "en_US",
     type: "website",
   },
