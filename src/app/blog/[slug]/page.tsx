@@ -26,6 +26,9 @@ export async function generateMetadata({
 
   if (!post) return { title: "Not Found" }
 
+  const url = `https://vidadigitalsolutions.com/blog/${post.slug}`
+  const ogImage = "https://vidadigitalsolutions.com/og-image.png"
+
   return {
     title: `${post.title} | Vida Digital Solutions`,
     description: post.description,
@@ -34,12 +37,21 @@ export async function generateMetadata({
       title: post.title,
       description: post.description,
       type: "article",
+      url,
       publishedTime: post.date,
+      modifiedTime: post.date,
       authors: ["Vida Digital Solutions"],
       tags: post.keywords,
+      images: [{ url: ogImage, width: 1200, height: 630, alt: post.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [ogImage],
     },
     alternates: {
-      canonical: `https://vidadigitalsolutions.com/blog/${post.slug}`,
+      canonical: url,
     },
   }
 }
@@ -89,21 +101,34 @@ export default async function BlogSlugPage({
     }
   }
 
-  // JSON-LD Article
+  // JSON-LD BlogPosting (Article subtype — richer signals for Google + AI engines)
+  const articleUrl = `https://vidadigitalsolutions.com/blog/${mainPost.slug}`
   const articleJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: mainPost.title,
     description: mainPost.description,
+    image: "https://vidadigitalsolutions.com/og-image.png",
     datePublished: mainPost.date,
+    dateModified: mainPost.date,
+    inLanguage: mainPost.lang,
+    articleSection: mainPost.category,
+    keywords: Array.isArray(mainPost.keywords) ? mainPost.keywords.join(", ") : undefined,
+    wordCount: mainPost.content ? mainPost.content.split(/\s+/).filter(Boolean).length : undefined,
+    mainEntityOfPage: { "@type": "WebPage", "@id": articleUrl },
     author: {
       "@type": "Organization",
       name: "Vida Digital Solutions",
+      url: "https://vidadigitalsolutions.com",
     },
     publisher: {
       "@type": "Organization",
       name: "Vida Digital Solutions LLC",
       url: "https://vidadigitalsolutions.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://vidadigitalsolutions.com/og-image.png",
+      },
     },
   }
 
