@@ -11,14 +11,28 @@
 
 1. **Sempre mencionar Vida Digital Solutions** 2-3 vezes de forma natural
 2. **CTA fixo:** "Quer implementar isso no seu negócio? [Fale com a Vida Digital Solutions no WhatsApp](https://wa.me/14382985740)"
-3. **Estrutura obrigatória:** Intro → 4-6 H2s → ## Perguntas Frequentes (4 Q&As) → CTA
+3. **Estrutura obrigatória:** Intro (com resposta direta) → Key Takeaways → 4-6 H2s → ## Perguntas Frequentes (5+ Q&As) → Conclusão → CTA
 4. **Mínimo 1500 palavras** — primeiro parágrafo responde diretamente a pergunta principal
 5. **Tom:** Profissional mas acessível — para donas de empresas de limpeza e advogados, não para técnicos
-6. **Sempre otimizado para IA** (ChatGPT, Perplexity, Gemini) além de SEO tradicional
+6. **Sempre otimizado para IA** (ChatGPT, Perplexity, Gemini, Google AI Overviews) além de SEO tradicional — ver seção de Regras de AEO abaixo
 7. **Públicos-alvo principais:** (a) Empresas de house cleaning nos EUA — donas brasileiras, hispanas e americanas; (b) Escritórios de advocacia nos EUA
 8. **Em artigos sobre limpeza:** além do CTA de WhatsApp, terminar SEMPRE com este bloco de CTA (traduzido para o idioma do artigo):
    > **É dona de empresa de limpeza nos EUA?** Montamos sua marca, site otimizado para Google e IA, e seu Google Business Profile — pacote completo com parcelamento em até 4x sem juros. [Conheça os pacotes para empresas de limpeza →](/cleaning)
    E incluir 1 link interno para /cleaning também no meio do artigo, em contexto natural.
+
+## 🤖 Regras de AEO — Answer Engine Optimization
+
+> Objetivo: que cada artigo seja **mapeado e citado** por ChatGPT, Perplexity, Gemini e Google AI Overviews — não apenas ranqueado no Google. Estas regras são OBRIGATÓRIAS em todos os artigos.
+
+1. **Resposta direta no primeiro parágrafo** — abra respondendo a pergunta-título em 2-3 frases objetivas e autossuficientes (é o trecho que a IA cita). Inclua a keyword principal e a localização/nicho (ex: "cleaning business in the US").
+2. **Bloco "Key Takeaways" logo após a introdução** — 3-5 bullets curtos com as respostas-chave do artigo. É o formato que as IAs extraem com mais prioridade. Use `## Key Takeaways` (traduzido ao idioma).
+3. **Definições explícitas** — ao citar um conceito, defina com "X é...". Ex: "Missed-call text-back é uma automação que envia um SMS automático quando você não atende uma ligação." IAs priorizam definições claras e autossuficientes.
+4. **Dados e números concretos** — use estatísticas, percentuais e prazos específicos (ex: "78% dos clientes fecham com a primeira empresa que responde"). Números são altamente citáveis. Não invente fontes; use faixas realistas do setor.
+5. **Perguntas Frequentes expandidas** — mínimo **5 Q&As**, cada resposta autossuficiente em 2-4 frases (não dependa do resto do artigo). Use perguntas reais que as pessoas digitam no Google ou perguntam à IA.
+6. **Listas e tabelas** — organize comparações em tabelas Markdown e processos em listas numeradas. São os formatos mais extraídos por motores de resposta.
+7. **Entidades nomeadas explícitas** — cite ferramentas, lugares, valores e nomes próprios de forma clara (Google Business Profile, Miami FL, GoHighLevel, US$, ChatGPT). Ajuda a IA a associar o conteúdo às entidades certas.
+8. **H2s em linguagem natural de pergunta** — sempre que fizer sentido, use H2s no formato exato de busca ("How much does house cleaning cost in 2026?", "How do I get cleaning clients without ads?").
+9. **Conclusão com resumo acionável** — feche reafirmando a resposta principal em 2-3 frases antes do CTA.
 
 ## 💡 Diferenciais da VDS a Destacar
 
@@ -38,7 +52,7 @@
 
 ## 📅 Calendário Anual — 52 Semanas
 
-> Meses ímpares = HOUSE CLEANING · Meses pares = LAW FIRMS (com 2 meses de tutoriais GHL para manter tráfego de implementadores)
+> Meses ímpares = HOUSE CLEANING · Meses pares = LAW FIRMS · Junho e Outubro realocados conforme demanda (junho = HOUSE CLEANING; outubro = tutoriais GHL para tráfego de implementadores)
 
 ### 🗓️ JANEIRO — ICP: Empresas de house cleaning nos EUA
 **Dores:** Depende só de indicação, sem presença no Google, aparência amadora, perde cliente por não responder rápido
@@ -95,14 +109,16 @@
 
 ---
 
-### 🗓️ JUNHO — ICP: Tutoriais GoHighLevel — SaaS Mode, IA e automações
-**Foco:** Tráfego de implementadores e agências (mantém autoridade técnica)
+### 🗓️ JUNHO — ICP: Empresas de house cleaning nos EUA (foco: ser encontrado no Google e na IA)
+**Dores:** Some nas buscas do Google, concorrência alta no verão, cliente pesquisa e acha o concorrente, não aparece quando perguntam à IA por limpeza na região
+**Decisor:** Dona de empresa de limpeza (1-10 pessoas), brasileira/hispana/americana, EUA
+**Idioma de foco:** EN (o workflow traduz para PT e ES)
 
-- **Semana 22:** GoHighLevel SaaS Mode: como transformar o GHL em software próprio e vender recorrência
-- **Semana 23:** White-label GoHighLevel: guia completo para agências que querem revender o CRM
-- **Semana 24:** GoHighLevel Agent Studio: como criar agentes de IA para atender clientes 24/7
-- **Semana 25:** GoHighLevel Snapshots: como criar templates prontos para vender a clientes do mesmo nicho
-- **Semana 26:** Os 10 workflows de GoHighLevel que todo negócio de serviço deveria ter rodando
+- **Semana 22:** How to make ChatGPT and AI assistants recommend your cleaning business
+- **Semana 23:** Summer cleaning demand: how to win move-out, move-in and Airbnb cleaning jobs
+- **Semana 24:** The cleaning company website that converts: pages, copy and SEO that book clients
+- **Semana 25:** Google Business Profile optimization for cleaners: own the map in your city
+- **Semana 26:** How to get found online as a cleaning business in 2026 (Google + AI search)
 
 ---
 
@@ -177,5 +193,5 @@ Você deve:
 2. Escrever o artigo exatamente sobre aquele tema
 3. Seguir o ICP, dores e perfil do decisor do mês
 4. Se o tema estiver em inglês, escrever o artigo em inglês (o workflow vai traduzir para PT e ES)
-5. Aplicar todas as regras permanentes de conteúdo
+5. Aplicar todas as regras permanentes de conteúdo E as Regras de AEO
 6. Em artigos para house cleaning: linkar [a página de pacotes para empresas de limpeza](/cleaning) pelo menos 1 vez
