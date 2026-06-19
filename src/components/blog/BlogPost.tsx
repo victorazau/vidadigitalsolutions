@@ -2,6 +2,8 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import ReactMarkdown, { type Components } from "react-markdown"
+import remarkGfm from "remark-gfm"
 import { useLocale } from "@/lib/locale-context"
 import type { Post, PostMeta } from "@/lib/posts"
 import { motion, AnimatePresence } from "framer-motion"
@@ -27,175 +29,102 @@ function VidaLogoSmall() {
   )
 }
 
-// Simple MDX-like renderer for our content
-function RenderContent({ content }: { content: string }) {
-  const lines = content.split("\n")
-  const elements: React.ReactNode[] = []
-  let i = 0
-
-  while (i < lines.length) {
-    const line = lines[i]
-
-    if (line.startsWith("## ")) {
-      elements.push(
-        <h2 key={i} className="text-[22px] font-extrabold text-[#1B2F5E] tracking-[-0.02em] mt-10 mb-4">
-          {line.replace("## ", "")}
-        </h2>
-      )
-    } else if (line.startsWith("### ")) {
-      elements.push(
-        <h3 key={i} className="text-[18px] font-medium text-[#0A0A0F] mt-6 mb-3">
-          {line.replace("### ", "")}
-        </h3>
-      )
-    } else if (line.startsWith("> ")) {
-      elements.push(
-        <blockquote key={i} className="border-l-[3px] border-[#00C4A0] bg-[#F0FDF9] p-4 my-4 text-[15px] text-[#475569] italic rounded-r-lg">
-          {line.replace("> ", "")}
-        </blockquote>
-      )
-    } else if (line.startsWith("- ")) {
-      const listItems: string[] = []
-      while (i < lines.length && lines[i].startsWith("- ")) {
-        listItems.push(lines[i].replace("- ", ""))
-        i++
-      }
-      elements.push(
-        <ul key={`ul-${i}`} className="my-4 space-y-2 pl-5">
-          {listItems.map((item, j) => (
-            <li key={j} className="text-[16px] text-[#374151] leading-[1.8] list-disc marker:text-[#00C4A0]">
-              {renderInline(item)}
-            </li>
-          ))}
-        </ul>
-      )
-      continue
-    } else if (line.startsWith("1. ") || line.startsWith("2. ") || line.startsWith("3. ")) {
-      const listItems: string[] = []
-      while (i < lines.length && /^\d+\. /.test(lines[i])) {
-        listItems.push(lines[i].replace(/^\d+\. /, ""))
-        i++
-      }
-      elements.push(
-        <ol key={`ol-${i}`} className="my-4 space-y-2 pl-5">
-          {listItems.map((item, j) => (
-            <li key={j} className="text-[16px] text-[#374151] leading-[1.8] list-decimal marker:text-[#1B2F5E]">
-              {renderInline(item)}
-            </li>
-          ))}
-        </ol>
-      )
-      continue
-    } else if (line.trim().startsWith("|")) {
-      // Markdown table: collect consecutive pipe-delimited rows
-      const tableLines: string[] = []
-      while (i < lines.length && lines[i].trim().startsWith("|")) {
-        tableLines.push(lines[i].trim())
-        i++
-      }
-
-      const parseRow = (row: string) =>
-        row.replace(/^\|/, "").replace(/\|$/, "").split("|").map((c) => c.trim())
-      const isSeparator = (row: string) =>
-        /^[\s|:-]+$/.test(row) && row.includes("-")
-
-      const header = parseRow(tableLines[0])
-      const bodyStart = tableLines.length > 1 && isSeparator(tableLines[1]) ? 2 : 1
-      const bodyRows = tableLines.slice(bodyStart).map(parseRow)
-
-      elements.push(
-        <div key={`table-${i}`} className="my-6 overflow-x-auto rounded-xl border border-[#E2E8F0]">
-          <table className="w-full border-collapse text-[14px]">
-            <thead>
-              <tr className="bg-[#1B2F5E]">
-                {header.map((cell, h) => (
-                  <th key={h} className="px-3 py-2.5 text-left font-extrabold text-white">
-                    {renderInline(cell)}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {bodyRows.map((cells, r) => (
-                <tr key={r} className={r % 2 === 0 ? "bg-white" : "bg-[#F5F7FA]"}>
-                  {cells.map((cell, c) => (
-                    <td key={c} className="border-t border-[#E2E8F0] px-3 py-2.5 text-[#374151] align-top">
-                      {renderInline(cell)}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )
-      continue
-    } else if (line.trim() === "") {
-      // skip empty lines
-    } else {
-      elements.push(
-        <p key={i} className="text-[16px] text-[#374151] leading-[1.8] my-3">
-          {renderInline(line)}
-        </p>
+// Markdown renderer (react-markdown + GFM) with VDS styling preserved 1:1.
+// Replaces the old hand-rolled parser so every standard construct renders:
+// tables, nested lists, horizontal rules, headings, code, etc.
+const markdownComponents: Components = {
+  h1: ({ children }) => (
+    <h2 className="text-[26px] font-extrabold text-[#1B2F5E] tracking-[-0.02em] mt-10 mb-4">{children}</h2>
+  ),
+  h2: ({ children }) => (
+    <h2 className="text-[22px] font-extrabold text-[#1B2F5E] tracking-[-0.02em] mt-10 mb-4">{children}</h2>
+  ),
+  h3: ({ children }) => (
+    <h3 className="text-[18px] font-medium text-[#0A0A0F] mt-6 mb-3">{children}</h3>
+  ),
+  h4: ({ children }) => (
+    <h4 className="text-[16px] font-bold text-[#0A0A0F] mt-5 mb-2">{children}</h4>
+  ),
+  p: ({ children }) => (
+    <p className="text-[16px] text-[#374151] leading-[1.8] my-3">{children}</p>
+  ),
+  a: ({ href, children }) => {
+    const url = href || "#"
+    if (/^https?:\/\//.test(url)) {
+      return (
+        <a href={url} target="_blank" rel="noopener noreferrer" className="text-[#4B6CB7] hover:text-[#1B2F5E] underline underline-offset-2">
+          {children}
+        </a>
       )
     }
-    i++
-  }
-
-  return <>{elements}</>
+    return (
+      <Link href={url} className="text-[#4B6CB7] hover:text-[#1B2F5E] underline underline-offset-2">
+        {children}
+      </Link>
+    )
+  },
+  strong: ({ children }) => (
+    <strong className="text-[#1B2F5E] font-extrabold">{children}</strong>
+  ),
+  em: ({ children }) => <em className="italic">{children}</em>,
+  ul: ({ children }) => (
+    <ul className="my-4 space-y-2 pl-5 list-disc marker:text-[#00C4A0]">{children}</ul>
+  ),
+  ol: ({ children }) => (
+    <ol className="my-4 space-y-2 pl-5 list-decimal marker:text-[#1B2F5E]">{children}</ol>
+  ),
+  li: ({ children }) => (
+    <li className="text-[16px] text-[#374151] leading-[1.8]">{children}</li>
+  ),
+  blockquote: ({ children }) => (
+    <blockquote className="border-l-[3px] border-[#00C4A0] bg-[#F0FDF9] p-4 my-4 text-[15px] text-[#475569] italic rounded-r-lg">
+      {children}
+    </blockquote>
+  ),
+  hr: () => <hr className="my-8 border-t border-[#E2E8F0]" />,
+  code: ({ className, children }) => {
+    const isBlock = /language-/.test(className || "")
+    if (isBlock) {
+      return <code className={`${className} font-mono text-[13px]`}>{children}</code>
+    }
+    return (
+      <code className="bg-[#F1F5F9] font-mono text-[14px] px-1.5 py-0.5 rounded">{children}</code>
+    )
+  },
+  pre: ({ children }) => (
+    <pre className="my-4 overflow-x-auto rounded-lg bg-[#0D1B3E] p-4 text-[#E2E8F0]">{children}</pre>
+  ),
+  table: ({ children }) => (
+    <div className="my-6 overflow-x-auto rounded-xl border border-[#E2E8F0]">
+      <table className="w-full border-collapse text-[14px] [&_tbody_tr:nth-child(even)]:bg-[#F5F7FA]">
+        {children}
+      </table>
+    </div>
+  ),
+  th: ({ children }) => (
+    <th className="bg-[#1B2F5E] px-3 py-2.5 text-left font-extrabold text-white">{children}</th>
+  ),
+  td: ({ children }) => (
+    <td className="border-t border-[#E2E8F0] px-3 py-2.5 text-[#374151] align-top">{children}</td>
+  ),
+  img: ({ src, alt }) => (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={typeof src === "string" ? src : ""} alt={alt || ""} className="my-6 rounded-xl w-full" />
+  ),
 }
 
-function renderInline(text: string): React.ReactNode {
-  // Handle **bold**, [links](url), `code`
-  const parts: React.ReactNode[] = []
-  let remaining = text
-  let key = 0
+// The body of some posts repeats the title as a leading H1 (the page already
+// renders the frontmatter title as the visible <h1>). Strip it to avoid a dupe.
+function stripLeadingH1(content: string): string {
+  return content.replace(/^\s*#\s+.*(\r?\n)+/, "")
+}
 
-  while (remaining.length > 0) {
-    // Bold
-    const boldMatch = remaining.match(/\*\*(.+?)\*\*/)
-    // Link
-    const linkMatch = remaining.match(/\[(.+?)\]\((.+?)\)/)
-    // Code
-    const codeMatch = remaining.match(/`(.+?)`/)
-
-    const matches = [
-      boldMatch ? { type: "bold", index: boldMatch.index!, match: boldMatch } : null,
-      linkMatch ? { type: "link", index: linkMatch.index!, match: linkMatch } : null,
-      codeMatch ? { type: "code", index: codeMatch.index!, match: codeMatch } : null,
-    ].filter(Boolean).sort((a, b) => a!.index - b!.index)
-
-    if (matches.length === 0) {
-      parts.push(remaining)
-      break
-    }
-
-    const first = matches[0]!
-    if (first.index > 0) {
-      parts.push(remaining.slice(0, first.index))
-    }
-
-    if (first.type === "bold") {
-      parts.push(<strong key={key++} className="text-[#1B2F5E] font-extrabold">{first.match[1]}</strong>)
-      remaining = remaining.slice(first.index + first.match[0].length)
-    } else if (first.type === "link") {
-      parts.push(
-        <Link key={key++} href={first.match[2]} className="text-[#4B6CB7] hover:text-[#1B2F5E] underline underline-offset-2">
-          {first.match[1]}
-        </Link>
-      )
-      remaining = remaining.slice(first.index + first.match[0].length)
-    } else if (first.type === "code") {
-      parts.push(
-        <code key={key++} className="bg-[#F1F5F9] font-mono text-[14px] px-1.5 py-0.5 rounded">
-          {first.match[1]}
-        </code>
-      )
-      remaining = remaining.slice(first.index + first.match[0].length)
-    }
-  }
-
-  return parts.length === 1 && typeof parts[0] === "string" ? parts[0] : <>{parts}</>
+function RenderContent({ content }: { content: string }) {
+  return (
+    <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+      {stripLeadingH1(content)}
+    </ReactMarkdown>
+  )
 }
 
 interface BlogPostProps {
