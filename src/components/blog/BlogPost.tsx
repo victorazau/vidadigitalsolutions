@@ -70,8 +70,9 @@ const markdownComponents: Components = {
   a: ({ href, children }) => {
     const url = href || "#"
     if (/^https?:\/\//.test(url)) {
+      const rel = /fp_ref=/.test(url) ? "sponsored noopener noreferrer" : "noopener noreferrer"
       return (
-        <a href={url} target="_blank" rel="noopener noreferrer" className="text-[#4B6CB7] hover:text-[#1B2F5E] underline underline-offset-2">
+        <a href={url} target="_blank" rel={rel} className="text-[#4B6CB7] hover:text-[#1B2F5E] underline underline-offset-2">
           {children}
         </a>
       )
@@ -138,11 +139,84 @@ function stripLeadingH1(content: string): string {
   return content.replace(/^\s*#\s+.*(\r?\n)+/, "")
 }
 
-function RenderContent({ content }: { content: string }) {
+// Link the first plain-text "GoHighLevel" mention to the affiliate offer — a
+// contextual CTA that catches readers who scan. Skips headings, tables, quotes
+// and any line where GoHighLevel is already inside a markdown link.
+function linkFirstGHLMention(md: string, url: string): string {
+  const lines = md.split("\n")
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i]
+    if (line.startsWith("#") || line.trim().startsWith("|") || line.trim().startsWith(">")) continue
+    if (/\]\(/.test(line) && /\[[^\]]*GoHighLevel/i.test(line)) continue
+    const idx = line.indexOf("GoHighLevel")
+    if (idx === -1) continue
+    lines[i] = line.slice(0, idx) + `[GoHighLevel](${url})` + line.slice(idx + "GoHighLevel".length)
+    return lines.join("\n")
+  }
+  return md
+}
+
+// Split the article at an H2 near the middle (but not in the last two sections,
+// usually FAQ + Conclusion) so we can drop an inline CTA between sections.
+// Returns ["", ""]-style [full, ""] when the article is too short to split well.
+function splitAtMidH2(md: string): [string, string] {
+  const lines = md.split("\n")
+  const h2 = lines.map((l, i) => (l.startsWith("## ") ? i : -1)).filter((i) => i >= 0)
+  if (h2.length < 5) return [md, ""]
+  const pick = Math.min(Math.max(Math.floor(h2.length / 2), 2), h2.length - 2)
+  const at = h2[pick]
+  return [lines.slice(0, at).join("\n"), lines.slice(at).join("\n")]
+}
+
+function Markdown({ children }: { children: string }) {
   return (
     <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
-      {stripLeadingH1(content)}
+      {children}
     </ReactMarkdown>
+  )
+}
+
+function InlineAffiliateCTA({ locale }: { locale: string }) {
+  return (
+    <div className="my-8 rounded-xl border border-[#00C4A0]/40 bg-[#F0FDF9] p-5 flex flex-col sm:flex-row sm:items-center gap-4 sm:justify-between">
+      <p className="text-[15px] text-[#0A0A0F] font-medium leading-snug">
+        {locale === "pt"
+          ? "Vai usar o GoHighLevel pra isso? Comece com 30 dias grátis no plano SaaS Pro."
+          : locale === "es"
+            ? "¿Vas a usar GoHighLevel para esto? Empieza con 30 días gratis en el plan SaaS Pro."
+            : "Going to use GoHighLevel for this? Start with a 30-day free trial on the SaaS Pro plan."}
+      </p>
+      <a
+        href={AFFILIATE_URL}
+        target="_blank"
+        rel="sponsored noopener noreferrer"
+        className="shrink-0 inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#00C4A0] hover:bg-[#00C4A0]/90 text-[#060D1C] font-extrabold rounded-lg text-[14px] transition-colors"
+      >
+        {locale === "pt" ? "Testar grátis →" : locale === "es" ? "Probar gratis →" : "Start free trial →"}
+      </a>
+    </div>
+  )
+}
+
+// Renders the article body. On affiliate posts it links the first GoHighLevel
+// mention and drops an inline CTA mid-article. Service posts render plain (they
+// already carry an inline /cleaning CTA from the content itself).
+function RenderContent({ content, ctaType, locale }: { content: string; ctaType?: "service" | "affiliate"; locale?: string }) {
+  const base = stripLeadingH1(content)
+  if (ctaType !== "affiliate") {
+    return <Markdown>{base}</Markdown>
+  }
+  const linked = linkFirstGHLMention(base, AFFILIATE_URL)
+  const [part1, part2] = splitAtMidH2(linked)
+  if (!part2) {
+    return <Markdown>{part1}</Markdown>
+  }
+  return (
+    <>
+      <Markdown>{part1}</Markdown>
+      <InlineAffiliateCTA locale={locale || "en"} />
+      <Markdown>{part2}</Markdown>
+    </>
   )
 }
 
@@ -157,6 +231,7 @@ interface BlogPostProps {
 export function BlogPostView({ post, relatedPosts, categoryCounts, prevPost, nextPost }: BlogPostProps) {
   const { locale } = useLocale()
   const colorClass = categoryColors[post.category] || "bg-[#1B2F5E]"
+  const ctaType = getCtaType(post)
 
   const labels = {
     en: { home: "Home", blog: "Blog", about: "About Vida Digital Solutions", aboutDesc: "We implement GoHighLevel, automate business processes and integrate any system via API.", whatsapp: "Talk on WhatsApp", related: "Related articles", categories: "Categories", prev: "Previous", next: "Next" },
@@ -218,11 +293,11 @@ export function BlogPostView({ post, relatedPosts, categoryCounts, prevPost, nex
 
             {/* Content */}
             <div className="prose-vida">
-              <RenderContent content={post.content} />
+              <RenderContent content={post.content} ctaType={ctaType} locale={locale} />
             </div>
 
             {/* CTA box — segmented: affiliate for GHL-topic posts, WhatsApp for service posts */}
-            {getCtaType(post) === "affiliate" ? (
+            {ctaType === "affiliate" ? (
               <div className="mt-12 rounded-2xl bg-[#0D1B3E] border border-[#1B2F5E] p-8 text-center">
                 <p className="text-white text-[18px] font-extrabold tracking-[-0.02em] mb-1">
                   {locale === "pt" ? "Pronto para testar o GoHighLevel?" : locale === "es" ? "¿Listo para probar GoHighLevel?" : "Ready to try GoHighLevel?"}
