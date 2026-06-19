@@ -19,6 +19,25 @@ const categoryColors: Record<string, string> = {
   RevOps: "bg-[#FF6A00]",
 }
 
+// Conversion CTAs. Affiliate link lives here only — GHL changes these paths over
+// time, so keep it in one place. `pro-trial` is the canonical path (`protrial` 301s to it).
+const AFFILIATE_URL = "https://www.gohighlevel.com/pro-trial?fp_ref=vida-digital-solutions68"
+const WHATSAPP_URL = "https://wa.me/14382985740"
+
+// Posts about GHL itself (tutorials, comparisons, SaaS-mode, AI, workflows) target
+// implementers/agencies → affiliate CTA. Service posts (cleaning, law firms, case
+// studies) target potential VDS clients → WhatsApp CTA.
+function getCtaType(post: { slug: string; category: string }): "service" | "affiliate" {
+  const slug = post.slug.toLowerCase()
+  const cat = post.category.toLowerCase()
+  // Service verticals (small-biz owners who want it done for them) → WhatsApp.
+  // GHL-as-a-tool content (features, tutorials, comparisons, agency/SaaS-mode) → affiliate.
+  const isService =
+    /clean|limp|law|legal|immigration|attorney|lawyer|advoca|abogad|medical|clinic|clinica|dental|dentist|accounting|contab|contad|real-estate|realtor|imobil|inmobil/.test(slug) ||
+    cat.includes("case")
+  return isService ? "service" : "affiliate"
+}
+
 function VidaLogoSmall() {
   return (
     <svg width="24" height="24" viewBox="0 0 44 44" fill="none" className="shrink-0">
@@ -202,21 +221,55 @@ export function BlogPostView({ post, relatedPosts, categoryCounts, prevPost, nex
               <RenderContent content={post.content} />
             </div>
 
-            {/* CTA box */}
-            <div className="mt-12 rounded-2xl bg-[#0D1B3E] border border-[#1B2F5E] p-8 text-center">
-              <p className="text-white text-[18px] font-extrabold tracking-[-0.02em] mb-4">
-                {locale === "pt" ? "Quer implementar isso no seu negócio?" : locale === "es" ? "¿Quieres implementar esto en tu negocio?" : "Want to implement this in your business?"}
-              </p>
-              <a
-                href="https://wa.me/14382985740"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#00C4A0] hover:bg-[#00C4A0]/90 text-[#060D1C] font-extrabold rounded-lg transition-colors"
-              >
-                <MessageCircle className="w-4 h-4" />
-                {l.whatsapp}
-              </a>
-            </div>
+            {/* CTA box — segmented: affiliate for GHL-topic posts, WhatsApp for service posts */}
+            {getCtaType(post) === "affiliate" ? (
+              <div className="mt-12 rounded-2xl bg-[#0D1B3E] border border-[#1B2F5E] p-8 text-center">
+                <p className="text-white text-[18px] font-extrabold tracking-[-0.02em] mb-1">
+                  {locale === "pt" ? "Pronto para testar o GoHighLevel?" : locale === "es" ? "¿Listo para probar GoHighLevel?" : "Ready to try GoHighLevel?"}
+                </p>
+                <p className="text-[#94A3B8] text-[14px] mb-5">
+                  {locale === "pt" ? "Comece com 30 dias grátis no plano SaaS Pro." : locale === "es" ? "Empieza con 30 días gratis en el plan SaaS Pro." : "Start with a 30-day free trial on the SaaS Pro plan."}
+                </p>
+                <a
+                  href={AFFILIATE_URL}
+                  target="_blank"
+                  rel="sponsored noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#00C4A0] hover:bg-[#00C4A0]/90 text-[#060D1C] font-extrabold rounded-lg transition-colors"
+                >
+                  {locale === "pt" ? "Começar teste grátis" : locale === "es" ? "Empezar prueba gratis" : "Start free trial"}
+                </a>
+                <p className="mt-5 text-[13px] text-[#94A3B8]">
+                  {locale === "pt" ? "Prefere feito por nós? " : locale === "es" ? "¿Prefieres que lo hagamos por ti? " : "Prefer it done for you? "}
+                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-[#00C4A0] hover:underline font-medium">
+                    {locale === "pt" ? "Fale com a Vida Digital no WhatsApp →" : locale === "es" ? "Habla con Vida Digital por WhatsApp →" : "Talk to Vida Digital on WhatsApp →"}
+                  </a>
+                </p>
+                <p className="mt-2 text-[11px] text-[#475569]">
+                  {locale === "pt" ? "Link de afiliado" : locale === "es" ? "Enlace de afiliado" : "Affiliate link"}
+                </p>
+              </div>
+            ) : (
+              <div className="mt-12 rounded-2xl bg-[#0D1B3E] border border-[#1B2F5E] p-8 text-center">
+                <p className="text-white text-[18px] font-extrabold tracking-[-0.02em] mb-4">
+                  {locale === "pt" ? "Quer implementar isso no seu negócio?" : locale === "es" ? "¿Quieres implementar esto en tu negocio?" : "Want to implement this in your business?"}
+                </p>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#00C4A0] hover:bg-[#00C4A0]/90 text-[#060D1C] font-extrabold rounded-lg transition-colors"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  {l.whatsapp}
+                </a>
+                <p className="mt-5 text-[13px] text-[#94A3B8]">
+                  {locale === "pt" ? "Prefere fazer você mesmo? " : locale === "es" ? "¿Prefieres hacerlo tú mismo? " : "Prefer the DIY route? "}
+                  <a href={AFFILIATE_URL} target="_blank" rel="sponsored noopener noreferrer" className="text-[#00C4A0] hover:underline font-medium">
+                    {locale === "pt" ? "Teste o GoHighLevel →" : locale === "es" ? "Prueba GoHighLevel →" : "Try GoHighLevel →"}
+                  </a>
+                </p>
+              </div>
+            )}
 
             {/* Prev/Next nav */}
             <div className="flex items-center justify-between mt-12 pt-8 border-t border-[#E2E8F0]">
