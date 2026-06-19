@@ -86,6 +86,50 @@ function RenderContent({ content }: { content: string }) {
         </ol>
       )
       continue
+    } else if (line.trim().startsWith("|")) {
+      // Markdown table: collect consecutive pipe-delimited rows
+      const tableLines: string[] = []
+      while (i < lines.length && lines[i].trim().startsWith("|")) {
+        tableLines.push(lines[i].trim())
+        i++
+      }
+
+      const parseRow = (row: string) =>
+        row.replace(/^\|/, "").replace(/\|$/, "").split("|").map((c) => c.trim())
+      const isSeparator = (row: string) =>
+        /^[\s|:-]+$/.test(row) && row.includes("-")
+
+      const header = parseRow(tableLines[0])
+      const bodyStart = tableLines.length > 1 && isSeparator(tableLines[1]) ? 2 : 1
+      const bodyRows = tableLines.slice(bodyStart).map(parseRow)
+
+      elements.push(
+        <div key={`table-${i}`} className="my-6 overflow-x-auto rounded-xl border border-[#E2E8F0]">
+          <table className="w-full border-collapse text-[14px]">
+            <thead>
+              <tr className="bg-[#1B2F5E]">
+                {header.map((cell, h) => (
+                  <th key={h} className="px-3 py-2.5 text-left font-extrabold text-white">
+                    {renderInline(cell)}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {bodyRows.map((cells, r) => (
+                <tr key={r} className={r % 2 === 0 ? "bg-white" : "bg-[#F5F7FA]"}>
+                  {cells.map((cell, c) => (
+                    <td key={c} className="border-t border-[#E2E8F0] px-3 py-2.5 text-[#374151] align-top">
+                      {renderInline(cell)}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )
+      continue
     } else if (line.trim() === "") {
       // skip empty lines
     } else {
