@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Clock, User, ChevronDown, ChevronLeft, ChevronRight, MessageCircle } from "lucide-react"
 import { ReadingProgress } from "./ReadingProgress"
 import { ShareButtons } from "./ShareButtons"
+import { trackBlogCtaClick } from "@/components/TrackingEvents"
 
 const categoryColors: Record<string, string> = {
   GoHighLevel: "bg-[#1B2F5E]",
@@ -70,9 +71,16 @@ const markdownComponents: Components = {
   a: ({ href, children }) => {
     const url = href || "#"
     if (/^https?:\/\//.test(url)) {
-      const rel = /fp_ref=/.test(url) ? "sponsored noopener noreferrer" : "noopener noreferrer"
+      const isAffiliate = /fp_ref=/.test(url)
+      const isWhatsApp = /wa\.me|api\.whatsapp/i.test(url)
+      const rel = isAffiliate ? "sponsored noopener noreferrer" : "noopener noreferrer"
+      const onClick = isAffiliate
+        ? () => trackBlogCtaClick({ ctaType: "affiliate", placement: "inline" })
+        : isWhatsApp
+          ? () => trackBlogCtaClick({ ctaType: "whatsapp", placement: "inline" })
+          : undefined
       return (
-        <a href={url} target="_blank" rel={rel} className="text-[#4B6CB7] hover:text-[#1B2F5E] underline underline-offset-2">
+        <a href={url} target="_blank" rel={rel} onClick={onClick} className="text-[#4B6CB7] hover:text-[#1B2F5E] underline underline-offset-2">
           {children}
         </a>
       )
@@ -190,6 +198,7 @@ function InlineAffiliateCTA({ locale }: { locale: string }) {
         href={AFFILIATE_URL}
         target="_blank"
         rel="sponsored noopener noreferrer"
+        onClick={() => trackBlogCtaClick({ ctaType: "affiliate", placement: "mid" })}
         className="shrink-0 inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#00C4A0] hover:bg-[#00C4A0]/90 text-[#060D1C] font-extrabold rounded-lg text-[14px] transition-colors"
       >
         {locale === "pt" ? "Testar grátis →" : locale === "es" ? "Probar gratis →" : "Start free trial →"}
@@ -309,13 +318,14 @@ export function BlogPostView({ post, relatedPosts, categoryCounts, prevPost, nex
                   href={AFFILIATE_URL}
                   target="_blank"
                   rel="sponsored noopener noreferrer"
+                  onClick={() => trackBlogCtaClick({ ctaType: "affiliate", placement: "footer" })}
                   className="inline-flex items-center gap-2 px-6 py-3 bg-[#00C4A0] hover:bg-[#00C4A0]/90 text-[#060D1C] font-extrabold rounded-lg transition-colors"
                 >
                   {locale === "pt" ? "Começar teste grátis" : locale === "es" ? "Empezar prueba gratis" : "Start free trial"}
                 </a>
                 <p className="mt-5 text-[13px] text-[#94A3B8]">
                   {locale === "pt" ? "Prefere feito por nós? " : locale === "es" ? "¿Prefieres que lo hagamos por ti? " : "Prefer it done for you? "}
-                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-[#00C4A0] hover:underline font-medium">
+                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" onClick={() => trackBlogCtaClick({ ctaType: "whatsapp", placement: "footer" })} className="text-[#00C4A0] hover:underline font-medium">
                     {locale === "pt" ? "Fale com a Vida Digital no WhatsApp →" : locale === "es" ? "Habla con Vida Digital por WhatsApp →" : "Talk to Vida Digital on WhatsApp →"}
                   </a>
                 </p>
@@ -332,6 +342,7 @@ export function BlogPostView({ post, relatedPosts, categoryCounts, prevPost, nex
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackBlogCtaClick({ ctaType: "whatsapp", placement: "footer" })}
                   className="inline-flex items-center gap-2 px-6 py-3 bg-[#00C4A0] hover:bg-[#00C4A0]/90 text-[#060D1C] font-extrabold rounded-lg transition-colors"
                 >
                   <MessageCircle className="w-4 h-4" />
@@ -339,7 +350,7 @@ export function BlogPostView({ post, relatedPosts, categoryCounts, prevPost, nex
                 </a>
                 <p className="mt-5 text-[13px] text-[#94A3B8]">
                   {locale === "pt" ? "Prefere fazer você mesmo? " : locale === "es" ? "¿Prefieres hacerlo tú mismo? " : "Prefer the DIY route? "}
-                  <a href={AFFILIATE_URL} target="_blank" rel="sponsored noopener noreferrer" className="text-[#00C4A0] hover:underline font-medium">
+                  <a href={AFFILIATE_URL} target="_blank" rel="sponsored noopener noreferrer" onClick={() => trackBlogCtaClick({ ctaType: "affiliate", placement: "footer" })} className="text-[#00C4A0] hover:underline font-medium">
                     {locale === "pt" ? "Teste o GoHighLevel →" : locale === "es" ? "Prueba GoHighLevel →" : "Try GoHighLevel →"}
                   </a>
                 </p>

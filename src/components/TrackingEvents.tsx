@@ -84,6 +84,34 @@ export function trackWhatsAppClick() {
   sendServerEvent("Lead", { content_name: "WhatsApp CTA", content_category: "Contact" });
 }
 
+// Blog CTA click — measures which placement converts (inline auto-link, mid-article
+// box, footer box) for affiliate vs WhatsApp. The article is captured automatically
+// by GA4 via page_path, so it isn't passed here.
+export function trackBlogCtaClick(params: { ctaType: "affiliate" | "whatsapp"; placement: "inline" | "mid" | "footer" }) {
+  const { ctaType, placement } = params;
+  if (window.gtag) {
+    window.gtag("event", "cta_click", {
+      event_category: "Blog CTA",
+      event_label: `${ctaType}:${placement}`,
+      cta_type: ctaType,
+      placement,
+    });
+  }
+  if (ctaType === "whatsapp") {
+    if (window.fbq) {
+      window.fbq("track", "Contact", { content_name: `Blog WhatsApp (${placement})` });
+      window.fbq("track", "Lead", { content_name: "Blog WhatsApp CTA", content_category: "Blog" });
+    }
+    sendServerEvent("Contact", { content_name: `Blog WhatsApp (${placement})` });
+    sendServerEvent("Lead", { content_name: "Blog WhatsApp CTA", content_category: "Blog" });
+  } else {
+    // Affiliate is outbound to GoHighLevel — track as a marketing signal, no VDS lead.
+    if (window.fbq) {
+      window.fbq("trackCustom", "BlogAffiliateClick", { content_name: `GHL Affiliate (${placement})`, content_category: "Blog" });
+    }
+  }
+}
+
 // Book a Call CTA click
 export function trackBookingClick() {
   // Client-side
