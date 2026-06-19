@@ -12,6 +12,7 @@
 1. **Sempre mencionar Vida Digital Solutions** 2-3 vezes de forma natural
 2. **CTA fixo:** "Quer implementar isso no seu negócio? [Fale com a Vida Digital Solutions no WhatsApp](https://wa.me/14382985740)"
 3. **Estrutura obrigatória:** Intro (com resposta direta) → Key Takeaways → 4-6 H2s → ## Perguntas Frequentes (5+ Q&As) → Conclusão → CTA
+   - ⚠️ **NÃO inicie o artigo com um título H1 (`# ...`).** O título da página já é renderizado a partir do frontmatter. O corpo deve começar **direto no parágrafo de introdução**. Use apenas `##` (seções) e `###` (subseções) — nunca `#`.
 4. **Mínimo 1500 palavras** — primeiro parágrafo responde diretamente a pergunta principal
 5. **Tom:** Profissional mas acessível — para donas de empresas de limpeza e advogados, não para técnicos
 6. **Sempre otimizado para IA** (ChatGPT, Perplexity, Gemini, Google AI Overviews) além de SEO tradicional — ver seção de Regras de AEO abaixo
@@ -195,3 +196,4 @@ Você deve:
 4. Se o tema estiver em inglês, escrever o artigo em inglês (o workflow vai traduzir para PT e ES)
 5. Aplicar todas as regras permanentes de conteúdo E as Regras de AEO
 6. Em artigos para house cleaning: linkar [a página de pacotes para empresas de limpeza](/cleaning) pelo menos 1 vez
+7. **Nunca começar o corpo com `# Título` (H1)** — o título vem do frontmatter. Inicie direto na introdução e use `##`/`###` para os cabeçalhos.
