@@ -1,0 +1,57 @@
+name: Deploy Worker
+
+# O blog automatico (n8n) commita 3x/semana. Sem este workflow o commit entra
+# no GitHub e nada vai pro ar — foi exatamente o que aconteceu entre 08 e
+# 20/jul/2026, quando 6 artigos ficaram 12 dias invisiveis.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-worker
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      # build:worker = next build --webpack && opennextjs-cloudflare build --skipNextBuild
+      # O --webpack e obrigatorio: Next 16 usa Turbopack por padrao e o bundle
+      # resultante quebra o OpenNext com ChunkLoadError (500 em todas as rotas).
+      - name: Build
+        run: npm run build:worker
+
+      # deploy nao builda: roda populateCache (sem ele os 54 posts dao 404) e sobe.
+      - name: Deploy
+        run: npm run deploy:worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      # Falha o job se o site nao estiver realmente servindo o conteudo novo.
+      # "Deploy passou" nao e a mesma coisa que "o artigo abre".
+      - name: Verificar que o site responde
+        run: |
+          sleep 20
+          falhas=0
+          for p in / /blog /cleaning /sitemap.xml; do
+            c=$(curl -s -o /dev/null -w '%{http_code}' -A 'Mozilla/5.0' "https://vidadigitalsolutions.com$p")
+            echo "$c  $p"
+            [ "$c" = "200" ] || falhas=$((falhas+1))
+          done
+          n=$(curl -s -A 'Mozilla/5.0' https://vidadigitalsolutions.com/sitemap.xml | grep -cE "<loc>[^<]*/blog/")
+          echo "posts no sitemap: $n"
+          [ "$n" -ge 50 ] || { echo "::error::sitemap com apenas $n posts"; falhas=$((falhas+1)); }
+          [ "$falhas" -eq 0 ] || { echo "::error::$falhas verificacoes falharam"; exit 1; }
