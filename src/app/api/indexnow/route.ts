@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export const runtime = "edge";
 
 const INDEXNOW_KEY = "b4d7e2f1a3c5968e0d2b4f7a1c3e5d8f";
 const HOST = "vidadigitalsolutions.com";
