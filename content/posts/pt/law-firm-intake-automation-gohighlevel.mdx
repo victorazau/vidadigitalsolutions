@@ -1,0 +1,227 @@
+---
+title: "Automação de Intake para Escritórios de Advocacia"
+description: "Aprenda a automatizar o intake de clientes no seu escritório de advocacia com GoHighLevel em 6 passos práticos e converta mais leads pagos."
+date: "2026-08-03"
+category: "GoHighLevel"
+slug: "law-firm-intake-automation-gohighlevel"
+lang: "pt"
+keywords: ["automação intake advocacia", "GoHighLevel escritório advocacia", "CRM para advogados", "intake automático jurídico", "GoHighLevel law firm"]
+readTime: "11 min"
+author: "Vida Digital Solutions"
+---
+
+Automatizar o intake de clientes no seu escritório de advocacia com GoHighLevel significa capturar o lead no anúncio, qualificá-lo automaticamente e agendar a consulta — tudo sem intervenção manual. A maioria dos escritórios paga caro por leads no Google Ads e perde entre 40% e 60% deles simplesmente por demorar a responder. Este tutorial mostra como resolver isso do zero, passo a passo.
+
+## Key Takeaways
+
+- **Velocidade de resposta é decisiva:** escritórios que respondem em até 5 minutos têm até 9x mais chances de fechar o cliente do que os que demoram 30 minutos ou mais.
+- **GoHighLevel centraliza tudo:** formulário de entrada, qualificação automática, agendamento e follow-up em uma única plataforma.
+- **Intake automatizado não substitui o advogado** — ele elimina o trabalho administrativo repetitivo para que o advogado se concentre nas consultas.
+- **O funil completo pode ser implementado em menos de uma semana** com a configuração certa.
+- **Seguindo este tutorial,** você vai de "lead entra e some" para "lead entra, é qualificado, agenda e recebe confirmação automaticamente".
+
+---
+
+## Por Que Escritórios de Advocacia Perdem Leads Pagos
+
+Imagine o cenário: você investe US$ 2.000 em Google Ads este mês. O telefone toca enquanto você está em audiência. O lead não deixa recado. Você liga de volta duas horas depois. Ele já fechou com outro escritório.
+
+Isso não é exceção — é rotina. Estudos do setor jurídico americano indicam que mais de 50% dos leads de advocacia nunca recebem uma resposta em tempo hábil. A causa não é descuido: é falta de sistema.
+
+**Intake é o processo de receber, qualificar e converter um potencial cliente em consulta marcada.** No GoHighLevel, é possível automatizar cada etapa desse processo — desde o momento em que o lead clica no anúncio até o momento em que ele aparece na agenda do advogado.
+
+A Vida Digital Solutions já implementou esse fluxo para escritórios de advocacia nos EUA e o resultado consistente é o mesmo: mais consultas marcadas com o mesmo investimento em tráfego. Se você quer entender como o GoHighLevel se encaixa na operação completa de um escritório, veja também nosso artigo sobre [CRM para Escritórios de Advocacia](/blog/law-firm-crm-gohighlevel-case-management).
+
+---
+
+## Passo 1 — Crie o Formulário de Qualificação (Intake Form)
+
+O primeiro ponto de contato do lead com o seu escritório precisa capturar as informações certas — não apenas nome e email.
+
+**Como fazer no GoHighLevel:**
+
+1. No menu lateral esquerdo, clique em **Sites** → **Forms**.
+2. Clique em **+ New Form**.
+3. Dê um nome claro ao formulário: `Intake - Consulta Inicial`.
+4. Adicione os campos essenciais:
+   - Nome completo
+   - Telefone (obrigatório — será usado para o SMS automático)
+   - Email
+   - Tipo de caso (dropdown: Imigração / Família / Trabalhista / Criminal / Outro)
+   - Descreva brevemente sua situação (textarea — campo aberto)
+   - Como nos encontrou? (Google / Indicação / Redes Sociais)
+5. Na aba **Styles**, personalize cores para combinar com a identidade do escritório.
+6. Clique em **Save** e depois em **Embed/Share** para copiar o código de incorporação.
+
+**O que você verá na tela:** um editor visual drag-and-drop com campos à esquerda e preview do formulário à direita. Cada campo pode ser marcado como obrigatório com um toggle.
+
+> 💡 **Dica prática:** Não peça mais de 6 campos no formulário principal. Cada campo extra reduz a taxa de conversão. Informações adicionais você coleta depois, no fluxo automatizado.
+
+---
+
+## Passo 2 — Configure o Pipeline de Intake no CRM
+
+Um pipeline é a representação visual das etapas que um lead percorre até se tornar cliente. No contexto de intake jurídico, as etapas típicas são:
+
+| Etapa | Significado |
+|---|---|
+| Novo Lead | Formulário preenchido, sem contato ainda |
+| Contato Feito | Lead respondeu SMS ou email |
+| Qualificado | Caso está dentro da área de atuação |
+| Consulta Agendada | Horário confirmado na agenda |
+| Consulta Realizada | Reunião concluída |
+| Proposta Enviada | Contrato em análise |
+| Cliente Fechado | Contrato assinado |
+
+**Como criar o pipeline:**
+
+1. No menu lateral, clique em **CRM** → **Pipelines**.
+2. Clique em **+ Add Pipeline** e nomeie como `Intake Jurídico`.
+3. Clique em **+ Add Stage** para criar cada etapa da tabela acima.
+4. Salve e volte à tela principal do CRM.
+
+**O que você verá na tela:** um quadro estilo Kanban com colunas para cada etapa. Leads aparecem como cartões que você (ou a automação) move de coluna em coluna.
+
+---
+
+## Passo 3 — Monte o Workflow de Resposta Imediata
+
+Este é o coração do sistema. Quando um lead preenche o formulário, o GoHighLevel dispara automaticamente uma sequência de mensagens — sem que ninguém precise fazer nada.
+
+**Como criar o workflow:**
+
+1. No menu lateral, clique em **Automation** → **Workflows**.
+2. Clique em **+ Create Workflow** → **Start from Scratch**.
+3. Nomeie: `Intake Jurídico — Resposta Imediata`.
+4. No primeiro bloco (trigger), selecione **Form Submitted** e escolha o formulário criado no Passo 1.
+5. Adicione as seguintes ações em sequência:
+
+**Ação 1 — Adicionar ao Pipeline**
+- Tipo: **Add to Pipeline**
+- Pipeline: Intake Jurídico
+- Etapa: Novo Lead
+
+**Ação 2 — Enviar SMS Imediato (0 minutos)**
+- Tipo: **Send SMS**
+- Mensagem sugerida:
+  > *"Olá, {{contact.first_name}}! Recebemos sua solicitação no [Nome do Escritório]. Em breve um de nossos advogados entrará em contato. Para agilizar, você pode agendar sua consulta aqui: {{appointment.booking_link}}"*
+
+**Ação 3 — Enviar Email de Confirmação**
+- Tipo: **Send Email**
+- Assunto: `Recebemos seu contato — [Nome do Escritório]`
+- Corpo: email profissional confirmando o recebimento e com link de agendamento.
+
+**Ação 4 — Notificar o Time Interno**
+- Tipo: **Internal Notification**
+- Canal: Email ou SMS para o paralegal responsável pelo intake.
+- Mensagem: `Novo lead: {{contact.full_name}} — Tipo de caso: {{contact.tipo_de_caso}}`
+
+**Ação 5 — Aguardar 30 minutos, verificar se agendou**
+- Tipo: **Wait** → 30 minutos
+- Em seguida: **If/Else** → Condição: *Appointment exists = false*
+- Se SIM (não agendou): enviar segundo SMS com outra abordagem.
+
+6. Clique em **Save** e ative o workflow com o toggle no canto superior direito.
+
+**O que você verá na tela:** um fluxograma visual com blocos conectados por linhas. Cada bloco tem ícone e cor diferentes por tipo de ação. O status "Active" aparece em verde no topo.
+
+Para entender mais a fundo como o Workflow Builder funciona, consulte nosso [guia completo do GoHighLevel Workflow Builder](/blog/gohighlevel-workflow-builder-complete-guide-2026).
+
+---
+
+## Passo 4 — Integre o Calendário para Agendamento Automático
+
+O link de agendamento enviado no SMS do Passo 3 precisa estar configurado corretamente para que o lead consiga marcar a consulta sem precisar falar com ninguém.
+
+**Como configurar:**
+
+1. No menu lateral, clique em **Calendars** → **+ Create Calendar**.
+2. Escolha o tipo **Round Robin** (se houver mais de um advogado) ou **Personal** (para um único profissional).
+3. Configure:
+   - **Nome:** Consulta Inicial — [Nome do Escritório]
+   - **Duração:** 30 minutos
+   - **Horários disponíveis:** defina os dias e horários de atendimento
+   - **Buffer entre consultas:** 10 minutos (recomendado)
+   - **Confirmação automática:** ativada
+4. Na aba **Notifications**, configure:
+   - Email de confirmação para o cliente
+   - Lembrete por SMS 24h antes
+   - Lembrete por SMS 1h antes
+5. Copie o link do calendário e use-o como `{{appointment.booking_link}}` nos templates do Passo 3.
+
+**O que você verá na tela:** um seletor de dias da semana com toggles, campos de horário inicial/final por dia e uma prévia de como o calendário aparece para o cliente.
+
+> 💡 **Dica prática:** Ative a opção **"Require phone number to book"** — isso garante que você sempre tenha o número para o follow-up por SMS.
+
+---
+
+## Passo 5 — Configure o Follow-up para Leads que Não Agendaram
+
+Nem todo lead agenda na primeira mensagem. Uma sequência de nurturing bem configurada pode recuperar 20% a 30% dos leads que "esfriaram" nos primeiros dias.
+
+**Sequência recomendada para advocacia:**
+
+| Dia | Canal | Mensagem |
+|---|---|---|
+| Dia 0 | SMS | Confirmação imediata + link de agendamento |
+| Dia 1 | Email | Apresentação do escritório + casos similares resolvidos |
+| Dia 2 | SMS | "Ainda posso ajudar — minha agenda está aberta esta semana" |
+| Dia 4 | Email | Conteúdo educativo sobre o tipo de caso do lead |
+| Dia 7 | SMS | Última tentativa de contato |
+
+**Como adicionar ao workflow existente:**
+
+1. Após o bloco de espera de 30 minutos no workflow do Passo 3, adicione os blocos **Wait** e **Send SMS/Email** conforme a tabela acima.
+2. Em cada etapa, adicione uma condição **If/Else** verificando se o agendamento já foi feito.
+3. Se o lead agendou: mova para a próxima etapa do pipeline e encerre a sequência.
+4. Se não agendou: continue com a próxima mensagem.
+
+Essa lógica garante que o lead que já agendou não receba mais mensagens de follow-up — evitando spam e mantendo o profissionalismo do escritório.
+
+---
+
+## Passo 6 — Ative o Missed-Call Text-Back
+
+**Missed-call text-back é uma automação que envia um SMS automático quando o lead liga para o escritório e a ligação não é atendida.** É um dos recursos mais simples e mais impactantes do GoHighLevel para escritórios de advocacia.
+
+**Como ativar:**
+
+1. No menu lateral, clique em **Settings** → **Business Profile**.
+2. Role até a seção **Missed Call Text Back**.
+3. Ative o toggle **Enable Missed Call Text Back**.
+4. Configure a mensagem:
+   > *"Olá! Vimos que você tentou nos ligar. Estamos em atendimento agora, mas não queremos te deixar esperando. Agende sua consulta aqui: [link] ou responda esta mensagem."*
+5. Salve.
+
+Isso leva menos de 5 minutos para configurar e garante que nenhum lead seja perdido por falta de atendimento imediato.
+
+A Vida Digital Solutions implementa esse fluxo completo — do formulário ao follow-up — como parte da configuração padrão do [GoHighLevel para escritórios jurídicos](/blog/law-firm-crm-gohighlevel-case-management). Se quiser ver como a automação de vendas se encaixa no contexto maior, confira também nosso [guia de automação de vendas no GoHighLevel](/blog/gohighlevel-sales-automation-complete-guide).
+
+---
+
+## Perguntas Frequentes
+
+**Q: Quanto tempo leva para implementar esse sistema de intake no GoHighLevel?**
+**A:** Um escritório com todos os dados organizados (horários de atendimento, mensagens aprovadas pelos advogados, identidade visual) consegue implementar o fluxo completo em 3 a 5 dias úteis. A configuração técnica no GoHighLevel em si leva menos de 4 horas — o tempo maior é gasto na definição das mensagens e na aprovação interna.
+
+**Q: O GoHighLevel substitui o software de gestão de casos como Clio ou MyCase?**
+**A:** Não diretamente. O GoHighLevel é excelente para a etapa de captação e intake — desde o primeiro contato até a assinatura do contrato. Para gestão de casos em andamento (documentos, prazos processuais, faturamento por hora), ferramentas especializadas como Clio continuam sendo mais completas. Muitos escritórios usam os dois em paralelo, integrados via Zapier ou API.
+
+**Q: Escritórios bilíngues (inglês e português) conseguem configurar o sistema nos dois idiomas?**
+**A:** Sim. O GoHighLevel permite criar formulários, workflows e mensagens em qualquer idioma. É possível criar um formulário em inglês e outro em português, cada um disparando workflows com mensagens no idioma correspondente. A Vida Digital Solutions, baseada em Miami (FL), implementa sistemas bilíngues com frequência para escritórios que atendem clientes brasileiros e latinos nos EUA.
+
+**Q: É possível integrar o GoHighLevel com o Google Ads para rastrear quais anúncios geram mais consultas fechadas?**
+**A:** Sim. O GoHighLevel tem integração nativa com o Google Ads via conversão de formulário e também suporta a configuração de UTM parameters nas URLs de destino. Dessa forma, cada lead no CRM carrega a informação de qual campanha, grupo de anúncio e keyword o originou — permitindo otimizar o investimento com base em consultas fechadas, não apenas em cliques.
+
+**Q: Preciso de um número de telefone separado no GoHighLevel para o SMS automático funcionar?**
+**A:** Sim. O GoHighLevel utiliza um número de telefone dedicado (LC Phone, baseado em Twilio) para envio de SMS e chamadas. O número é provisionado dentro da plataforma e o custo é por uso (em torno de US$ 0,0075 por SMS). É diferente do número principal do escritório, mas pode ser configurado para encaminhar chamadas recebidas para o ramal desejado.
+
+---
+
+## Conclusão
+
+Automatizar o intake jurídico com GoHighLevel é, na prática, construir um sistema que responde ao lead em segundos, agenda a consulta sem trabalho manual e faz follow-up até ele converter — tudo enquanto o advogado está em audiência. Os seis passos deste tutorial cobrem desde o formulário de qualificação até o missed-call text-back, e podem ser implementados em menos de uma semana.
+
+O resultado direto é simples: você converte mais dos leads que já paga para atrair, sem aumentar o investimento em tráfego.
+
+Quer implementar isso no seu negócio? [Fale com a Vida Digital Solutions no WhatsApp](https://wa.me/14382985740)
