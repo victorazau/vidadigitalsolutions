@@ -1,0 +1,181 @@
+---
+title: "GoHighLevel Reviews: Automatize Pedidos em 5 Passos"
+description: "Aprenda a automatizar pedidos de review no GoHighLevel em 5 passos e domine o Google Maps. Tutorial completo para escritórios de advocacia nos EUA."
+date: "2026-08-24"
+category: "GoHighLevel"
+slug: "gohighlevel-reputation-management-automate-reviews-law-firms"
+lang: "pt"
+keywords: ["GoHighLevel reputation management", "automatizar reviews GoHighLevel", "pedidos de avaliação automáticos", "GoHighLevel escritório advocacia", "gestão de reputação GoHighLevel"]
+readTime: "9 min"
+author: "Vida Digital Solutions"
+---
+
+Automatizar pedidos de review no GoHighLevel é mais simples do que parece: em menos de uma hora você pode ter um fluxo que solicita avaliações no Google automaticamente após cada consulta ou serviço concluído — sem precisar lembrar manualmente de pedir para cada cliente. Para escritórios de advocacia nos EUA, onde a reputação online decide quem recebe a ligação, essa automação é a diferença entre encher a agenda e depender só de indicação.
+
+## Key Takeaways
+
+- **Reputation Management do GoHighLevel** é o módulo que centraliza pedidos de review, monitoramento de avaliações e respostas — tudo em um painel.
+- Você pode disparar pedidos de review automaticamente por SMS e e-mail após marcos específicos (consulta realizada, caso encerrado, onboarding concluído).
+- Escritórios que automatizam o pedido de review recebem, em média, **4x mais avaliações** do que os que pedem manualmente, segundo dados de uso da plataforma.
+- O processo completo leva menos de 60 minutos para configurar e não exige conhecimento técnico avançado.
+- A Vida Digital Solutions já implementou essa automação em dezenas de escritórios e negócios de serviço nos EUA.
+
+---
+
+## 1. Entenda o que é o Reputation Management no GoHighLevel
+
+O **Reputation Management** é um módulo nativo do GoHighLevel que permite gerenciar a reputação online do seu negócio em um único lugar. Ele é composto por três funcionalidades principais:
+
+- **Pedidos de review automáticos:** envio de SMS e/ou e-mail solicitando avaliação no Google (ou em outras plataformas).
+- **Monitoramento de avaliações:** você vê todas as reviews recebidas diretamente no painel, sem precisar abrir o Google.
+- **Resposta a reviews:** responda avaliações positivas e negativas direto do GoHighLevel, inclusive com respostas sugeridas por IA.
+
+Para acessar o módulo, faça login na sua conta GoHighLevel, selecione o sub-account do seu escritório e clique em **"Reputation"** no menu lateral esquerdo. Você verá uma tela com abas: *Overview*, *Reviews* e *Requests*.
+
+> **O que você verá na tela:** Um painel com sua nota média atual no Google, o número total de reviews, e dois botões principais — "Send Request" (manual) e "Automations" (automático). É a segunda opção que vamos configurar.
+
+---
+
+## 2. Configure seu Perfil de Reputação e Conecte o Google Business Profile
+
+Antes de criar qualquer automação, você precisa conectar o Google Business Profile do seu escritório ao GoHighLevel. Sem essa conexão, a plataforma não consegue puxar as reviews existentes nem direcionar os clientes para o lugar certo.
+
+**Como fazer:**
+
+1. No menu lateral, vá em **Settings → Integrations**.
+2. Role até encontrar a opção **Google My Business** e clique em **Connect**.
+3. Faça login com a conta Google que gerencia o seu Google Business Profile.
+4. Selecione o perfil do seu escritório na lista e clique em **Connect Location**.
+
+> **O que você verá na tela:** Após a conexão, um ícone do Google ficará verde com o nome do seu escritório ao lado. Se aparecer erro, verifique se você é administrador do perfil no Google Business Profile Manager.
+
+**Dica prática:** Se o seu escritório atende clientes brasileiros e latinos nos EUA, certifique-se de que o nome do perfil no Google está exatamente igual ao que seus clientes conhecem — isso aumenta a taxa de reconhecimento quando o pedido de review chega.
+
+Depois da conexão, volte ao módulo **Reputation** e acesse **Settings**. Aqui você define:
+
+- **Link de review:** o GoHighLevel já preenche automaticamente com o link direto para avaliação no Google.
+- **Plataformas adicionais:** você pode adicionar links para Facebook ou outros diretórios relevantes para escritórios de advocacia.
+- **Threshold de envio:** defina se quer pedir review apenas uma vez por contato (recomendado).
+
+---
+
+## 3. Crie o Workflow de Pedido Automático de Review
+
+Esta é a etapa central do tutorial. Vamos criar um **Workflow** no GoHighLevel que dispara o pedido de review automaticamente após um evento específico — por exemplo, quando uma consulta é marcada como concluída.
+
+Se você ainda não tem familiaridade com a ferramenta de automação da plataforma, vale a leitura do [guia completo do GoHighLevel Workflow Builder](/blog/gohighlevel-workflow-builder-complete-guide-2026) antes de continuar.
+
+**Passo a passo:**
+
+1. No menu lateral, acesse **Automation → Workflows** e clique em **+ Create Workflow**.
+2. Escolha **Start from Scratch** e dê um nome claro: *"Pedido de Review — Pós Consulta"*.
+3. Clique em **Add New Trigger** e selecione o gatilho adequado. Para escritórios de advocacia, as opções mais comuns são:
+   - **Appointment Status Changed** → Status: *Showed* (cliente compareceu à consulta)
+   - **Pipeline Stage Changed** → Stage: *Caso Encerrado* (se você usa pipeline de casos)
+   - **Tag Added** → Tag: *consulta-realizada* (se você tagueia manualmente após o atendimento)
+4. Clique em **Save Trigger**.
+
+> **O que você verá na tela:** O gatilho aparece como um bloco azul no topo do fluxo. Abaixo dele, um botão **"+"** permite adicionar as próximas ações.
+
+**Adicionando o delay (atraso):**
+
+Não envie o pedido de review imediatamente — espere de 1 a 2 horas para que o cliente já tenha saído da consulta e esteja em um momento mais tranquilo.
+
+5. Clique em **"+"** e selecione **Wait** → **Wait for a specific time** → defina **1 hora**.
+
+**Adicionando a ação de Review Request:**
+
+6. Clique em **"+"** novamente e procure por **Send Review Request** na lista de ações.
+7. Selecione o canal de envio: **SMS**, **E-mail** ou **ambos**. Para escritórios, a combinação SMS + e-mail tem a maior taxa de conversão em reviews.
+8. O GoHighLevel já tem um template padrão. Você pode personalizá-lo com o nome do cliente usando a variável `{{contact.first_name}}`.
+
+**Exemplo de mensagem SMS:**
+> *"Olá, {{contact.first_name}}! Foi um prazer te atender hoje. Se tiver 1 minuto, sua avaliação no Google ajuda muito nosso escritório a ajudar mais pessoas como você: {{review_link}}"*
+
+9. Clique em **Save Action** e depois em **Publish** no canto superior direito para ativar o workflow.
+
+---
+
+## 4. Personalize os Templates de SMS e E-mail
+
+A taxa de conversão dos pedidos de review depende diretamente da qualidade da mensagem enviada. Uma mensagem genérica como "Por favor, avalie nosso serviço" tem desempenho muito inferior a uma mensagem personalizada e contextualizada.
+
+**Boas práticas para escritórios de advocacia:**
+
+| Elemento | O que fazer | O que evitar |
+|---|---|---|
+| Tom | Caloroso e pessoal | Corporativo e frio |
+| Comprimento | SMS: até 160 caracteres | Mensagens longas |
+| Link | Direto para o formulário do Google | Link genérico do site |
+| Horário de envio | Entre 10h e 18h (horário local) | Após 20h ou antes das 9h |
+| Idioma | No idioma do cliente (EN, PT ou ES) | Idioma errado para o perfil |
+
+Para escritórios bilíngues que atendem brasileiros e latinos nos EUA, a Vida Digital Solutions recomenda criar **dois workflows separados** — um em inglês e um em português/espanhol — ativados por tags de idioma no contato. Isso aumenta significativamente a taxa de resposta.
+
+Para configurar o e-mail de pedido de review, acesse **Reputation → Settings → Review Request Email** e edite o template com o editor visual. Inclua o logo do escritório, uma linha de assunto personalizada (ex: *"{{contact.first_name}}, sua opinião vale muito para nós"*) e o botão de CTA direto para o Google.
+
+Se quiser aprofundar na configuração de e-mails automáticos no GoHighLevel, confira o guia de [automação de email marketing](/blog/gohighlevel-email-marketing-automation).
+
+---
+
+## 5. Monitore Resultados e Configure Alertas de Reviews Negativas
+
+Configurar o pedido automático é apenas metade do trabalho. A outra metade é monitorar as avaliações que chegam e responder rapidamente — especialmente as negativas.
+
+**Como monitorar no GoHighLevel:**
+
+1. Acesse **Reputation → Reviews**. Você verá todas as avaliações recebidas em ordem cronológica, com filtro por estrelas.
+2. Para configurar alertas por e-mail quando uma nova review chega, vá em **Reputation → Settings → Notifications** e ative **Email Notifications for New Reviews**.
+3. Para reviews de 1 ou 2 estrelas, o GoHighLevel pode notificar um responsável específico — defina o e-mail de quem deve ser avisado imediatamente.
+
+**Respondendo reviews com IA:**
+
+Na aba *Reviews*, clique em qualquer avaliação e selecione **Generate AI Response**. O GoHighLevel usa inteligência artificial para sugerir uma resposta adequada ao tom da review. Você revisa, edita se necessário, e publica — tudo sem sair da plataforma.
+
+> **Dica para escritórios de advocacia:** Nunca revele informações do caso ou confirme que a pessoa é cliente nas respostas públicas — isso pode violar obrigações de confidencialidade. Mantenha as respostas genéricas e convide para contato privado.
+
+**Acompanhe as métricas semanalmente:**
+
+- **Taxa de envio:** quantos pedidos foram disparados
+- **Taxa de conversão:** quantos viraram reviews (benchmark saudável: 15-25%)
+- **Nota média:** deve subir progressivamente com o volume de novas reviews
+- **Tempo de resposta:** idealmente menos de 24h para qualquer review
+
+Esses dados ficam disponíveis no **Dashboard de Reputação** do GoHighLevel, acessível pelo menu principal do sub-account.
+
+---
+
+## Bônus: Automatize o Pedido de Review para Casos Específicos com Pipeline
+
+Se o seu escritório já usa o [pipeline de vendas do GoHighLevel](/blog/how-to-create-sales-pipeline-gohighlevel) para gerenciar casos, você pode criar triggers ainda mais precisos.
+
+Por exemplo: quando um caso é movido para a etapa *"Resolvido com Sucesso"*, o workflow dispara automaticamente um pedido de review — no momento em que o cliente está mais satisfeito e propenso a avaliar positivamente.
+
+Essa lógica é especialmente poderosa para escritórios de imigração, família ou trabalhista, onde o desfecho positivo do caso é um momento emocional significativo para o cliente.
+
+---
+
+## Perguntas Frequentes
+
+**Q: O GoHighLevel envia pedidos de review automaticamente para o Google?**
+**A:** Sim. O módulo Reputation Management do GoHighLevel envia SMS e e-mail com um link direto para a página de avaliação do seu Google Business Profile. O cliente clica, escreve a review e ela aparece no Google normalmente. A plataforma não posta reviews em nome do cliente — apenas facilita o caminho.
+
+**Q: Quantas reviews eu posso solicitar por mês com o GoHighLevel?**
+**A:** Não há limite específico para pedidos de review dentro da plataforma, mas o volume de SMS está sujeito aos créditos de mensagens do seu plano. O recomendado é solicitar apenas uma vez por contato (o GoHighLevel tem configuração para isso) para evitar spam e possível violação das diretrizes do Google.
+
+**Q: O GoHighLevel funciona para escritórios bilíngues que atendem clientes em português e espanhol?**
+**A:** Sim. Você pode criar templates de mensagem em qualquer idioma e acionar workflows diferentes com base em tags ou campos customizados no contato (ex: campo "idioma: português"). A Vida Digital Solutions configura esse fluxo bilíngue para escritórios que atendem brasileiros e latinos nos EUA.
+
+**Q: O que fazer quando recebo uma review negativa?**
+**A:** Configure alertas imediatos no GoHighLevel para reviews de 1-3 estrelas. Responda dentro de 24h de forma cordial, sem revelar detalhes do caso, e convide o cliente para resolver a situação em privado. Uma resposta bem redigida a uma review negativa pode mostrar profissionalismo e até reverter a percepção de novos visitantes.
+
+**Q: Preciso ser técnico para configurar o Reputation Management no GoHighLevel?**
+**A:** Não. O processo descrito neste tutorial não exige programação ou conhecimento técnico avançado. Se você consegue usar um smartphone, consegue configurar essa automação. Para escritórios que preferem ter tudo pronto sem aprender a ferramenta, a Vida Digital Solutions oferece implementação completa com configuração e treinamento incluídos.
+
+---
+
+## Conclusão
+
+Automatizar pedidos de review no GoHighLevel é um dos investimentos de menor esforço e maior retorno que um escritório de advocacia pode fazer. Em menos de uma hora de configuração, você ativa um sistema que trabalha 24 horas por dia construindo sua reputação online — sem depender de lembrar de pedir para cada cliente manualmente. O resultado é uma presença no Google Maps mais forte, mais consultas agendadas e um ciclo virtuoso de crescimento baseado em prova social real.
+
+Quer implementar isso no seu negócio? [Fale com a Vida Digital Solutions no WhatsApp](https://wa.me/14382985740)
