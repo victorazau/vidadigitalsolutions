@@ -1,0 +1,175 @@
+---
+title: "How to Set Up Missed-Call Text-Back in GoHighLevel"
+description: "Learn how to set up missed-call text-back in GoHighLevel in 6 steps and never lose a customer to a missed call again. Complete 2026 tutorial."
+date: "2026-09-28"
+category: "GoHighLevel"
+slug: "how-to-set-up-missed-call-text-back-gohighlevel"
+lang: "en"
+keywords: ["missed-call text-back GoHighLevel", "GoHighLevel SMS automation", "GoHighLevel tutorial 2026", "automatic missed call response", "GoHighLevel service business"]
+readTime: "9 min"
+author: "Vida Digital Solutions"
+---
+
+Setting up missed-call text-back in GoHighLevel means activating an automation that sends an automatic SMS to anyone who called and didn't get an answer — within less than 2 minutes of the missed call. The setup takes about 15 minutes from scratch and, once active, works 24/7 without any manual intervention.
+
+If you run a service-based business — whether it's a cleaning company, a law firm, or any other trade — you know exactly what happens when the phone rings and you can't pick up: the customer calls your competitor. Industry studies show that over 78% of customers go with the first business that responds to their inquiry. Missed-call text-back solves exactly that problem.
+
+## Key Takeaways
+
+- **Missed-call text-back** is a GoHighLevel automation that sends an automatic SMS whenever you miss an incoming call.
+- The setup is done inside **Automations > Workflows** and takes less than 20 minutes.
+- The correct trigger is **"Missed Call"**, available natively in the platform.
+- You can customize the message, include a booking link, and even start a two-way SMS conversation.
+- Small businesses that activate this automation report recovering between 20% and 35% of leads that were previously slipping away silently.
+
+## Why Missed-Call Text-Back Is Essential in 2026
+
+Missed-call text-back is an automation that sends an automatic text message to any number that tried to reach you whenever a call goes unanswered. The concept has been around for a few years, but in 2026 it has become the baseline standard for any competitive service business in the US.
+
+Think about the daily reality of a cleaning business owner: she's coordinating crews, picking up supplies, giving on-site estimates. The phone rings — she can't answer. Without automation, that lead is gone. With missed-call text-back active in GoHighLevel, within less than 2 minutes the caller receives a message like:
+
+> *"Hey! I saw you tried to reach us. This is Clean Pro — we'd love to help. What can we do for you? Or click here to schedule a time: [link]"*
+
+The customer feels taken care of immediately. The conversation starts. And you close the job even without ever picking up the phone.
+
+If you want to understand how other GoHighLevel automations fit into this strategy, also check out the [complete GoHighLevel Workflow Builder guide](/blog/gohighlevel-workflow-builder-complete-guide-2026).
+
+## Step 1 — Access the Automations Section in GoHighLevel
+
+Log in to your GoHighLevel account. In the left-side menu, click on **"Automations"**. You'll see a screen with all your existing workflows.
+
+**What you'll see on screen:** A list of workflows, a blue **"+ New Workflow"** button in the upper right corner, and filter options by status (active/inactive).
+
+Click **"+ New Workflow"** and, in the window that appears, select **"Start from Scratch"**. Give the workflow a clear name — we suggest something like *"Missed Call — Automatic SMS Response"*. Click **"Create Workflow"**.
+
+## Step 2 — Set Up the "Missed Call" Trigger
+
+Inside the workflow editor, the first thing you'll see is a gray block labeled **"Add New Trigger"**. Click on it.
+
+**What you'll see on screen:** A side panel opens on the right with a search bar and a list of available triggers. Type *"missed"* in the search bar.
+
+Select the **"Missed Call"** trigger. It will appear as the first block in your workflow. You don't need to configure advanced filters at this point — the default trigger already captures all missed calls on the number connected to your account.
+
+> **Important tip:** For this trigger to work, your phone number must be configured in GoHighLevel under **Settings > Phone Numbers**. If you haven't done that yet, take care of it before moving on.
+
+## Step 3 — Add the SMS Send Action
+
+With the trigger created, click the **"+"** button below the trigger block to add an action.
+
+**What you'll see on screen:** The same side panel, now showing action categories: Communication, CRM, Sales, etc.
+
+Under the **"Communication"** category, click **"Send SMS"**. An SMS block will appear connected to the trigger. Click on it to open its settings.
+
+In the **"Message"** field, write your automatic response message. Use dynamic variables to personalize it — GoHighLevel offers:
+
+- `{{contact.first_name}}` — the contact's first name (if already in the CRM)
+- `{{location.name}}` — your business name
+- `{{missed_call.from}}` — the number that called
+
+**Example of a high-converting message:**
+
+> *"Hey {{contact.first_name}}! I saw you tried to reach us and I'm sorry we missed your call. What can we help you with? We're standing by! 😊"*
+
+If you have a booking link (via GoHighLevel Calendar), add it to the message so the customer can schedule a time without needing to call back.
+
+## Step 4 — Add a Delay and a Second Message (Optional but Recommended)
+
+An effective missed-call text-back workflow doesn't stop at one message. The ideal setup is a simple 2-touch sequence:
+
+1. **Immediate message** (done in Step 3): acknowledges the missed call and opens the conversation.
+2. **Second message after 1 hour** (if no response): offers an alternative or reinforces the offer.
+
+To do this, click the **"+"** below the SMS block and add the **"Wait"** action. Set it to **1 hour**.
+
+After the delay, add an **"If/Else"** condition: check whether the contact replied to the SMS. If they **did not reply**, add a second SMS message. If they **did reply**, end the workflow (or hand off to a customer service flow).
+
+**Suggested second message:**
+
+> *"Hi there! Just wanted to make sure you got our last message — we'd really love to help you out. Click here to book a time: [link], or just reply to this text with your question. 🙂"*
+
+This two-touch structure increases the average response rate by about 40% compared to a single automated message.
+
+To see how to integrate this with other sales automations, check out the [GoHighLevel sales automation guide](/blog/gohighlevel-sales-automation-complete-guide).
+
+## Step 5 — Set Up the CRM Tag and Pipeline
+
+A lot of people set up the SMS and stop there. But the real power of GoHighLevel is in automatically logging everything in the CRM.
+
+After the SMS block (and before the delay), add the following actions:
+
+### 5a. Add a Tag to the Contact
+
+Click **"+"**, search for **"Add Tag"**, and create a tag like *"Missed Call"* or *"Active Lead"*. This lets you later filter all the leads that came through this flow.
+
+### 5b. Move to a Pipeline
+
+Click **"+"**, search for **"Add to Pipeline"**. Select your sales pipeline and the appropriate stage — for example, *"New Lead"* or *"First Contact"*.
+
+**What you'll see on screen:** A window with a dropdown of available pipelines in your account. Select the pipeline and stage. If you don't have a pipeline set up yet, learn how to create one at [How to Create a Sales Pipeline in GoHighLevel](/blog/how-to-create-sales-pipeline-gohighlevel).
+
+With this step, every missed call automatically becomes a tracked opportunity in your CRM — with the date, phone number, message history, and funnel stage all recorded.
+
+## Step 6 — Activate the Workflow and Test It
+
+With everything configured, click the **"Save"** button in the upper right corner. Then, at the top of the page, toggle the **"Published"** switch (or **"Active"**, depending on your version).
+
+**What you'll see on screen:** The toggle switches from gray to green. This means the workflow is live and ready to fire.
+
+**How to test it:**
+
+1. Use a different cell phone and call the phone number connected to your GoHighLevel account.
+2. Let it ring without answering (or reject the call).
+3. Wait up to 2 minutes.
+4. Check whether the phone you called from received the automatic SMS.
+5. In GoHighLevel, go to **Conversations** and confirm that the conversation appeared.
+
+If the SMS didn't arrive, check: (a) whether the number is active under Settings > Phone Numbers, (b) whether the workflow is published, and (c) whether any trigger filters are blocking it from firing.
+
+> **Pro tip from Vida Digital Solutions:** Always test with a real phone number before considering the setup complete. SMS delivery issues are more common than they seem and are usually resolved by checking your A2P 10DLC registration settings (required for commercial SMS sending in the US).
+
+## How Long Before You See Results?
+
+Most Vida Digital Solutions clients who implement missed-call text-back report their first recovered conversations within the first 24 hours of going live — simply because the missed calls were already happening, they just had no automatic response.
+
+In terms of measurable impact:
+
+| Metric | Before Missed-Call Text-Back | After |
+|---|---|---|
+| Response rate to missed calls | 0% (manual, inconsistent) | 95%+ (automatic, every time) |
+| Average response time | Hours or never | Under 2 minutes |
+| Leads recovered per month | Unpredictable | 20–35% of missed calls |
+| CRM opportunities created | Created manually | Created automatically |
+
+For service businesses in particular — where the owner is frequently out in the field — the Vida Digital Solutions team considers this automation to have the highest immediate return of any possible GoHighLevel implementation.
+
+If you run a cleaning business and want to see how this fits into a complete CRM and automation system, check out [how a cleaning company closed clients automatically with CRM](/blog/how-cleaning-company-closed-clients-automatically-crm).
+
+## Frequently Asked Questions
+
+**Q: Does missed-call text-back work on any GoHighLevel plan?**
+
+**A:** Yes, the "Missed Call" trigger is available on all GoHighLevel plans that include an active phone number on the platform. Sending SMS messages consumes message credits, which vary based on your plan and volume. For accounts with high missed-call volume, check your credit balance monthly.
+
+**Q: What if the caller is already in my CRM? Will they receive the message again?**
+
+**A:** Yes, by default the workflow fires for any missed call, regardless of whether the contact is already in the CRM. If you want to avoid sending the message to existing active clients, add a condition filter at the beginning of the workflow that checks whether the contact has an "Active Client" tag. In that case, you can create a branch with a different, more personalized message.
+
+**Q: Can I use missed-call text-back in Spanish or another language to serve non-English-speaking customers?**
+
+**A:** Absolutely. The message text is completely open — you can write it in any language you choose. Many bilingual businesses in the US use one message in English and another in Spanish (or another language), setting up two separate workflows based on the area code of the incoming number, or simply sending a bilingual message in the same SMS.
+
+**Q: Do I need to know how to code to set this up in GoHighLevel?**
+
+**A:** No. GoHighLevel uses a visual drag-and-drop interface. Everything described in this tutorial is done by clicking, selecting options, and typing text. No coding required. If you'd still prefer to have someone set it up for you, Vida Digital Solutions offers full implementation — reach out to us on WhatsApp.
+
+**Q: What happens if the customer replies to the SMS? Is the conversation logged?**
+
+**A:** Yes. Every reply to the automatic SMS appears in GoHighLevel's **Conversations** inbox in real time. You can continue the conversation manually from there, or configure an AI bot to respond automatically. The complete message history is linked to the contact in the CRM for future reference.
+
+## Conclusion
+
+Setting up missed-call text-back in GoHighLevel is one of the simplest, highest-impact automations any service business can implement today. In less than 20 minutes, you ensure that no missed call ever becomes a wasted opportunity — the system responds automatically, logs the lead in the CRM, and keeps the conversation alive until you're available to step in personally.
+
+Whether you run a cleaning company, a law office, or any other service-based business in the US, this automation should be the very first one you activate — before anything else.
+
+Ready to get this set up in your business? [Talk to Vida Digital Solutions on WhatsApp](https://wa.me/14382985740)
