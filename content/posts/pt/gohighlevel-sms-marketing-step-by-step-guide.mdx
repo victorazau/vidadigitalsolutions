@@ -1,0 +1,204 @@
+---
+title: "GoHighLevel SMS Marketing: Guia Passo a Passo"
+description: "Aprenda como configurar SMS Marketing no GoHighLevel em 2026: automações, templates e estratégias para converter leads em clientes com mensagens de texto."
+date: "2026-10-12"
+category: "GoHighLevel"
+slug: "gohighlevel-sms-marketing-step-by-step-guide"
+lang: "pt"
+keywords: ["GoHighLevel SMS Marketing", "SMS automação GoHighLevel", "mensagens de texto GoHighLevel", "GoHighLevel SMS configuração", "automação SMS negócios"]
+readTime: "9 min"
+author: "Vida Digital Solutions"
+---
+
+O SMS Marketing no GoHighLevel permite enviar mensagens de texto automatizadas para leads e clientes diretamente da plataforma, com taxas de abertura que chegam a 98% — muito acima de qualquer canal de email. Se você está pesquisando como configurar, usar e automatizar SMS no GoHighLevel, este guia cobre tudo, do zero ao avançado, com cada tela descrita em detalhe.
+
+## Key Takeaways
+
+- **SMS tem taxa de abertura de até 98%** — é o canal de maior impacto para follow-up rápido
+- **GoHighLevel permite envio manual, em massa e por automação** — tudo centralizado em um lugar
+- **A configuração começa pela ativação do número de telefone via LC Phone ou Twilio**
+- **Templates salvos economizam tempo e garantem consistência nas mensagens**
+- **Automações de SMS disparam com base em gatilhos**: formulário preenchido, tag adicionada, agendamento confirmado e muito mais
+
+## Por Que SMS É o Canal Mais Poderoso no GoHighLevel
+
+Antes de entrar nos passos técnicos, vale entender por que o SMS deve ser parte central da sua estratégia no GoHighLevel.
+
+SMS é uma automação que envia mensagens de texto para contatos com base em ações específicas — como preencher um formulário, não atender uma ligação ou confirmar um agendamento. Diferente do email, o SMS é lido em média **em menos de 3 minutos** após o envio. Para empresas de serviço, escritórios de advocacia ou qualquer negócio que dependa de resposta rápida do lead, isso muda completamente a equação.
+
+Estudos do setor mostram que **78% dos clientes fecham com a primeira empresa que responde**. Se o seu concorrente responde por email em 4 horas e você responde por SMS em 30 segundos, quem você acha que fecha o cliente?
+
+O GoHighLevel centraliza envio de SMS, automações e histórico de conversa em uma única plataforma — o que elimina a necessidade de ferramentas separadas. Na Vida Digital Solutions, usamos o SMS como parte obrigatória de qualquer implementação de automação para clientes.
+
+## Passo 1 — Configure o Número de Telefone no GoHighLevel
+
+Sem um número ativo, nenhuma mensagem sai. Esta é a fundação de tudo.
+
+**O que você verá na tela:** Acesse o menu lateral esquerdo e clique em **Settings** (ícone de engrenagem). No submenu, selecione **Phone Numbers**.
+
+### Opção A: LC Phone (recomendado para quem está começando)
+
+1. Clique no botão **Add Number** no canto superior direito
+2. Selecione **LC Phone System** (sistema nativo do GoHighLevel — mais barato e sem necessidade de conta Twilio separada)
+3. Escolha o tipo: **Local Number** (número com DDD da sua cidade) ou **Toll-Free** (0800 americano — melhor para campanhas em massa)
+4. Pesquise pelo código de área desejado (ex: 305 para Miami, 646 para New York)
+5. Selecione um número disponível na lista e clique em **Buy Number**
+6. Custo aproximado: **US$ 1,15/mês** por número local
+
+### Opção B: Twilio (para quem já tem conta)
+
+Se você já tem conta Twilio, vá em **Settings → Integrations → Twilio** e insira o Account SID e Auth Token. O GoHighLevel importa seus números automaticamente.
+
+**⚠️ Atenção:** Após comprar o número, você precisa registrar o A2P 10DLC (obrigatório nos EUA para envio de SMS em massa). Vá em **Settings → Phone Numbers → A2P Registration** e siga o processo de cadastro da sua marca e campanha. Sem isso, as operadoras podem bloquear suas mensagens.
+
+## Passo 2 — Crie Templates de SMS
+
+Templates são mensagens pré-escritas que você pode reutilizar em automações e envios manuais. Criar uma biblioteca de templates bem escrita economiza tempo e garante consistência.
+
+**O que você verá na tela:** No menu lateral, clique em **Marketing → SMS Templates** (ou em algumas versões: **Conversations → Templates**).
+
+1. Clique em **+ New Template**
+2. Dê um nome interno (ex: "Follow-up 1h após formulário")
+3. Escreva a mensagem no campo de texto
+4. Use variáveis dinâmicas clicando no botão **{ }**:
+   - `{{contact.first_name}}` → insere o primeiro nome do lead
+   - `{{contact.phone}}` → número do contato
+   - `{{appointment.date}}` → data do agendamento
+   - `{{location.name}}` → nome do seu negócio
+5. Clique em **Save Template**
+
+### Exemplos de templates prontos para usar:
+
+**Follow-up imediato após formulário:**
+> Oi {{contact.first_name}}! Recebemos sua solicitação 😊 Sou da [Nome da Empresa] e quero te ajudar. Posso te ligar agora? Se preferir responder por aqui, fico à disposição!
+
+**Confirmação de agendamento:**
+> {{contact.first_name}}, seu agendamento está confirmado para {{appointment.date}} às {{appointment.time}}. Qualquer dúvida, é só responder esta mensagem!
+
+**Reativação de lead frio:**
+> Oi {{contact.first_name}}, tudo bem? Passamos por aqui para verificar se você ainda precisa de ajuda com [serviço]. Ainda temos disponibilidade esta semana — posso te ajudar?
+
+**Dica prática:** Mantenha SMS com **menos de 160 caracteres** para evitar cobranças de múltiplos segmentos. Links encurtados (use o encurtador nativo do GHL) economizam muito espaço.
+
+## Passo 3 — Envie SMS Manual ou em Massa
+
+Antes de automatizar, entenda como funciona o envio direto. Isso é útil para follow-ups pontuais ou campanhas específicas.
+
+### Envio individual (pelo Conversations)
+
+**O que você verá na tela:** Clique em **Conversations** no menu lateral. Selecione um contato existente ou use a barra de busca para encontrá-lo. A conversa abre em formato de chat (igual ao WhatsApp).
+
+1. No campo de mensagem, selecione a aba **SMS** (ao lado de Email e WhatsApp)
+2. Digite a mensagem ou clique em **Templates** para usar um salvo
+3. Clique em **Send**
+4. A resposta do contato aparecerá na mesma thread em tempo real
+
+### Envio em massa (Broadcast)
+
+**O que você verá na tela:** Vá em **Marketing → Campaigns** e clique em **+ New Campaign**.
+
+1. Selecione o tipo **SMS**
+2. Dê um nome à campanha (ex: "Promoção Outubro 2026")
+3. Em **Audience**, escolha um Smart List ou filtre contatos por tag, status ou localização
+4. Escreva a mensagem ou selecione um template
+5. Em **Schedule**, escolha:
+   - **Send Now** — disparo imediato
+   - **Schedule for later** — agende data e horário
+   - **Drip** — envie em lotes ao longo do tempo (ideal para listas grandes)
+6. Revise o preview e clique em **Send Campaign**
+
+**Dica importante:** Nunca envie SMS em massa fora do horário comercial. Configure o horário de envio entre **8h e 20h** no fuso do destinatário. O GoHighLevel respeita configurações de "Quiet Hours" — ative-as em **Settings → Business Info → Quiet Hours**.
+
+## Passo 4 — Automatize SMS com Workflows
+
+Este é o passo onde o SMS deixa de ser manual e passa a trabalhar por você 24 horas por dia. O Workflow Builder do GoHighLevel é o motor de todas as automações.
+
+Se você ainda não conhece bem o Workflow Builder, recomendo ler o [guia completo do GoHighLevel Workflow Builder](/blog/gohighlevel-workflow-builder-complete-guide-2026) antes de continuar.
+
+**O que você verá na tela:** Vá em **Automation → Workflows** e clique em **+ New Workflow**.
+
+### Automação 1: SMS imediato após formulário
+
+1. Clique em **Add Trigger** → selecione **Form Submitted**
+2. Escolha o formulário específico (ou deixe em branco para qualquer formulário)
+3. Clique em **+** para adicionar uma ação → selecione **Send SMS**
+4. Escolha o número de saída (o que você configurou no Passo 1)
+5. Selecione o template de follow-up imediato criado no Passo 2
+6. Clique em **Save Action**
+7. Ative o workflow com o toggle no canto superior direito → **Published**
+
+**Resultado:** toda vez que alguém preencher o formulário, o SMS sai automaticamente em segundos — sem você precisar fazer nada.
+
+### Automação 2: Sequência de follow-up (3 mensagens)
+
+1. Trigger: **Form Submitted** (ou **Tag Added**: "novo-lead")
+2. Ação 1: **Send SMS** — mensagem de boas-vindas (imediata)
+3. Ação 2: **Wait** — 1 hora
+4. Ação 3: **Send SMS** — pergunta se tem dúvidas
+5. Ação 4: **Wait** — 24 horas
+6. Ação 5: **If/Else** — verificar se o lead respondeu
+   - **Se respondeu:** encerrar o workflow (ou mover para próxima etapa)
+   - **Se não respondeu:** **Send SMS** — última tentativa de reengajamento
+7. Salve e publique
+
+Esta lógica é semelhante à que usamos para automação de vendas — veja mais exemplos em [Automação de Vendas GoHighLevel](/blog/gohighlevel-sales-automation-complete-guide).
+
+### Automação 3: Lembrete de agendamento
+
+1. Trigger: **Appointment Created**
+2. Ação 1: **Send SMS** — confirmação imediata (com data e horário via variáveis)
+3. Ação 2: **Wait until** — 24 horas antes do agendamento
+4. Ação 3: **Send SMS** — lembrete do dia anterior
+5. Ação 4: **Wait until** — 2 horas antes do agendamento
+6. Ação 5: **Send SMS** — lembrete de última hora
+
+**Taxa de no-show cai em até 40%** com esta automação — dado consistente reportado por usuários de GHL em nichos de serviço.
+
+## Passo 5 — Monitore Resultados e Otimize
+
+Configurar SMS sem acompanhar os resultados é como dirigir vendado. O GoHighLevel oferece relatórios nativos para SMS.
+
+**O que você verá na tela:** Vá em **Marketing → Reporting** e selecione a aba **SMS**.
+
+### Métricas que você deve acompanhar:
+
+| Métrica | O que indica | Meta recomendada |
+|---|---|---|
+| **Delivery Rate** | % de mensagens entregues | > 95% |
+| **Response Rate** | % de contatos que responderam | > 15% |
+| **Opt-out Rate** | % que pediu para parar | < 2% |
+| **Conversion Rate** | % que virou cliente | Depende do nicho |
+
+**Sinais de problema:**
+- Delivery Rate abaixo de 90% → problema com registro A2P ou número bloqueado
+- Opt-out Rate acima de 3% → mensagens muito frequentes ou irrelevantes
+- Response Rate próximo a zero → texto de mensagem fraco ou horário errado
+
+**Dica de otimização:** Teste diferentes versões da mesma mensagem para grupos separados (A/B test). O GoHighLevel não tem A/B test nativo para SMS, mas você pode criar dois workflows paralelos com Smart Lists divididas 50/50 e comparar os resultados manualmente após 7 dias.
+
+A Vida Digital Solutions inclui revisão mensal de métricas de SMS como parte do suporte em nossas implementações de GoHighLevel — porque configurar sem otimizar desperdiça potencial.
+
+## Perguntas Frequentes
+
+**Q: Preciso de conta Twilio para usar SMS no GoHighLevel?**
+**A:** Não. O GoHighLevel oferece o LC Phone System, que é o provedor nativo da plataforma. Ele é mais simples de configurar, geralmente mais barato e não exige conta separada. Twilio só é necessário se você já tem números ativos lá ou prefere controle avançado de provedor.
+
+**Q: O que é registro A2P 10DLC e por que é obrigatório?**
+**A:** A2P 10DLC (Application-to-Person 10-Digit Long Code) é o sistema de registro obrigatório nos EUA para empresas que enviam SMS em massa. As operadoras americanas exigem que toda marca se registre para evitar spam. Sem registro, suas mensagens podem ser bloqueadas ou marcadas como suspeitas. O processo leva de 1 a 5 dias úteis e é feito direto no GoHighLevel em Settings → Phone Numbers.
+
+**Q: Quantas mensagens SMS posso enviar por mês no GoHighLevel?**
+**A:** Não existe limite fixo por plano — o SMS é cobrado por uso (pay-as-you-go). No LC Phone, mensagens locais custam aproximadamente US$ 0,0079 cada (envio) e US$ 0,0079 (recebimento). Uma campanha para 1.000 contatos custa menos de US$ 8 em créditos de SMS. Acesse seus créditos disponíveis em Settings → Wallet.
+
+**Q: Posso usar SMS no GoHighLevel para clientes no Brasil?**
+**A:** O GoHighLevel foi desenvolvido para o mercado norte-americano e o SMS funciona melhor com números dos EUA e Canadá. Para atendimento de clientes no Brasil, a integração recomendada é o WhatsApp — que tem penetração muito maior no mercado brasileiro. Veja como funciona a [automação de WhatsApp para negócios](/blog/whatsapp-automation-medical-clinics-gohighlevel).
+
+**Q: Como evitar que meus SMS caiam como spam?**
+**A:** Quatro regras principais: (1) mantenha o A2P 10DLC atualizado e aprovado; (2) sempre inclua opção de opt-out na primeira mensagem ("Responda STOP para parar"); (3) envie apenas para contatos que optaram por receber SMS; (4) evite palavras de alto risco como "GRÁTIS", "GANHE", "URGENTE" em maiúsculas. O GoHighLevel tem filtros automáticos de compliance — ative-os em Settings → Compliance.
+
+## Conclusão
+
+SMS Marketing no GoHighLevel é uma das ferramentas mais poderosas disponíveis para pequenos negócios que precisam de resposta rápida e alta taxa de contato. Com número configurado, templates prontos, automações ativas e métricas monitoradas, sua empresa responde leads em segundos — automaticamente, sem depender de nenhuma pessoa na linha.
+
+O processo completo — da configuração do número à primeira automação rodando — pode ser feito em menos de uma tarde. O retorno começa no mesmo dia.
+
+Quer implementar isso no seu negócio? [Fale com a Vida Digital Solutions no WhatsApp](https://wa.me/14382985740)
