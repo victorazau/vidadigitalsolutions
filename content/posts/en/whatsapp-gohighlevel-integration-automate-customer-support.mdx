@@ -1,0 +1,170 @@
+---
+title: "WhatsApp in GoHighLevel: Step-by-Step Integration Guide"
+description: "Learn how to set up WhatsApp in GoHighLevel in 2026: official integration, automations, and full inbox management. Step-by-step tutorial by Vida Digital Solutions."
+date: "2026-10-19"
+category: "GoHighLevel"
+slug: "whatsapp-gohighlevel-integration-automate-customer-support"
+lang: "en"
+keywords: ["whatsapp gohighlevel", "integrate whatsapp gohighlevel", "whatsapp gohighlevel automation", "gohighlevel whatsapp business", "set up whatsapp gohighlevel 2026"]
+readTime: "11 min"
+author: "Vida Digital Solutions"
+---
+
+Setting up WhatsApp in GoHighLevel is simpler than it sounds — and it can completely transform the way you communicate with and convert clients. Here's the short version: you need a Meta Business Suite account, a dedicated phone number, and access to the **Settings > Integrations** tab inside your GoHighLevel sub-account. In under 30 minutes, you can have the channel live, sending automated messages, and capturing replies directly inside your CRM.
+
+Whether you run a law firm, a home services company, or any service-based business, having WhatsApp integrated with GoHighLevel means no message ever slips through the cracks — every conversation is logged in the contact's history, and automations can respond instantly while you're busy serving clients.
+
+## Key Takeaways
+
+- **WhatsApp in GoHighLevel uses the official WhatsApp Business API** (via Meta) — not a personal number — which ensures scalability and compliance.
+- **You can automate replies, follow-up sequences, and notifications** directly through GoHighLevel Workflows, with zero coding required.
+- **Your WhatsApp number is tied to the sub-account**, and every contact who replies is automatically updated in the CRM.
+- **Required prerequisite:** A verified Meta Business Suite account with access to the WhatsApp Business Platform.
+- **Cost:** In addition to your GoHighLevel plan, Meta charges per business-initiated conversation (rates vary by country — for US numbers, the rate is low or free in many cases as of 2026).
+
+## Step 1 — Set Up Your Meta Business Suite Account
+
+Before touching any settings inside GoHighLevel, you need the right foundation on the Meta side.
+
+**What you'll see on screen:** Go to [business.facebook.com](https://business.facebook.com) and log in with your Facebook Business account. In the left sidebar, click **Business Settings** (the gear icon).
+
+**Checklist for this step:**
+
+1. Confirm your business is **verified** (blue badge or "Verified" status in the *Business Verification* section).
+2. Navigate to **Accounts > WhatsApp Business Accounts** in the left sidebar.
+3. Click **Add** to create a new WABA (WhatsApp Business Account) — or use an existing one if you already have it.
+4. Follow the Meta setup wizard: enter your business name, time zone, and currency.
+5. Add a dedicated phone number. **Important:** this number cannot be actively registered in any other WhatsApp app (personal WhatsApp or the WhatsApp Business app). Use a new number or properly migrate an existing one.
+6. Verify the number via SMS or voice call — Meta will send a 6-digit code.
+
+> **Pro tip:** If you don't have a dedicated number yet, services like Google Voice, Twilio, or a secondary SIM work well. Vida Digital Solutions typically recommends a Twilio number for clients who want full control over the registration process.
+
+## Step 2 — Connect WhatsApp to GoHighLevel
+
+With your WABA created and number verified, it's time to bridge the connection with GoHighLevel.
+
+**What you'll see on screen:** Inside your **sub-account** (not the agency master account), go to **Settings** (gear icon in the bottom-left corner) → **Integrations** → scroll down to find the **WhatsApp** section.
+
+**Step-by-step:**
+
+1. Click the **Connect** button next to the WhatsApp icon.
+2. A Facebook pop-up window will open — log in with the same account you used in Meta Business Suite.
+3. Select the **WhatsApp Business Account (WABA)** you created in Step 1.
+4. Select the **phone number** you verified.
+5. Click **Finish** — GoHighLevel will request read and send message permissions.
+6. Wait a few seconds. When the connection is successful, you'll see the number listed with a **"Connected"** status and a green indicator.
+
+> **What you'll see confirmed:** In the Integrations tab, the WhatsApp block will show the connected number, the WABA name, and a disconnect option. If you see a red error, the most common cause is that the number is still associated with another app — unlink it from the WhatsApp app before trying again.
+
+## Step 3 — Set Up Message Templates (Required for Outbound Messaging)
+
+The WhatsApp API has an important rule: you can only initiate a conversation with a new contact using a **Meta-approved template**. Replies within a 24-hour window can be free-form text — but the initial outreach requires a template.
+
+**What you'll see on screen:** Inside GoHighLevel, go to **Settings → WhatsApp → Message Templates**. This is where you create and submit templates for Meta's approval.
+
+**How to create a basic follow-up template:**
+
+1. Click **Create New Template**.
+2. Choose the **category**: for lead follow-up, use *Marketing*. For appointment confirmations, use *Utility*.
+3. Set the **template name** (no spaces — use underscores, e.g., `initial_lead_followup`).
+4. Choose the language: **English (US)** or whichever matches your audience.
+5. Write the message body. Use double-curly-brace variables to personalize it: `Hi {{1}}! I saw you were interested in our services. How can I help you?`
+6. (Optional) Add quick-reply buttons: "Yes, tell me more" / "Not right now".
+7. Click **Submit for Review**.
+
+Meta typically approves straightforward templates within **2 to 24 hours**. Templates with aggressive promotional language or suspicious links are rejected — keep your copy clear and direct.
+
+> **Pro tip:** Create at least 3 templates before activating any automation: a welcome message, a lead follow-up, and an appointment confirmation. These three cover 80% of use cases.
+
+## Step 4 — Build WhatsApp Automations in the Workflow Builder
+
+This is the step that turns the integration into a full client engagement engine. With WhatsApp connected, the **Send WhatsApp Message** action becomes available in all your Workflows.
+
+**What you'll see on screen:** Go to **Automation → Workflows → + Create Workflow**. Select **Start from Scratch** or choose one of GoHighLevel's pre-built templates.
+
+**Practical example — Welcome automation for a new lead:**
+
+1. **Trigger:** *Contact Tag Added* → tag: `new-lead`
+2. **Action 1:** *Wait* — 1 minute (so it doesn't feel robotic)
+3. **Action 2:** *Send WhatsApp Message* → select your approved welcome template → map `{{1}}` to the contact's *First Name* field
+4. **Action 3:** *Wait* — 2 days
+5. **Action 4 (conditional):** *If/Else* → checks whether the contact replied (field *Last Message Direction = inbound*)
+   - **If they replied:** add tag `engaged-lead` and notify the sales rep
+   - **If they didn't reply:** send the second follow-up template
+6. **Action 5:** *Wait* — 3 days → send third template (final touchpoint)
+
+This flow alone prevents leads from going cold due to lack of follow-up. If you want a more advanced example with pipeline stages, check out our guide on [GoHighLevel Workflow Builder](/blog/gohighlevel-workflow-builder-complete-guide-2026).
+
+> **Advanced tip:** Use the *AI Reply* action (available on GoHighLevel's AI-enabled plans) to automatically respond to simple messages outside business hours — like "what are your hours?" or "how much does it cost?" This dramatically cuts response time without needing a human agent around the clock.
+
+## Step 5 — Manage Conversations in the Unified Inbox
+
+One of the biggest wins of integrating WhatsApp with GoHighLevel is having all your conversations — WhatsApp, SMS, email, and chat — in one single place.
+
+**What you'll see on screen:** Go to **Conversations** (the chat bubble icon in the left sidebar). All incoming messages appear in the left column with colored icons indicating the channel (green = WhatsApp, blue = SMS, orange = email).
+
+**Recommended settings for this section:**
+
+- **Auto-assign:** Go to *Settings → Conversations → Auto-assign* and designate a team member responsible for WhatsApp conversations so nothing goes unattended.
+- **Conversation tags:** Create tags like `urgent`, `quote-requested`, and `appointment-pending` for quick filtering.
+- **Notifications:** Enable push notifications in the GoHighLevel mobile app (available for iOS and Android) so you never miss a message when you're away from your desk.
+- **Internal notes:** You can leave notes visible only to your team inside each conversation — great for adding context without the client seeing it.
+
+The **Vida Digital Solutions** team sets up this inbox for all clients during the initial implementation, ensuring the transition to centralized support is smooth with no history lost.
+
+## Step 6 — Test, Monitor, and Optimize
+
+Before activating automations for your entire contact base, always run an end-to-end test.
+
+**Testing checklist:**
+
+- [ ] Send a WhatsApp message to the connected number from your personal phone
+- [ ] Confirm the message appears in *Conversations* inside GoHighLevel
+- [ ] Reply through the GoHighLevel interface and verify the reply arrives on your phone
+- [ ] Trigger a test Workflow with a dummy contact to confirm templates are sent correctly
+- [ ] Check error logs under *Automation → Workflows → History*
+
+**Metrics to review weekly:**
+
+| Metric | What It Indicates | Suggested Target |
+|---|---|---|
+| Message open rate | Channel engagement | > 70% |
+| Reply rate | Template quality | > 30% |
+| Average response time | Support efficiency | < 5 minutes |
+| Leads converted via WhatsApp | Integration ROI | Varies by industry |
+
+WhatsApp delivers open rates as high as 95% — far above the 20–25% typical of email marketing. If your metrics are underperforming, revisit your template copy and the timing of your automations. For complementary automation strategies, also check out our guide on [GoHighLevel sales automation](/blog/gohighlevel-sales-automation-complete-guide).
+
+---
+
+## Frequently Asked Questions
+
+**Q: Do I need a new number to use WhatsApp in GoHighLevel, or can I use my current business number?**
+
+**A:** You can use your current business number, as long as it's not actively in use on the WhatsApp or WhatsApp Business app. If it is, you'll need to migrate it: inside the app, go to *Settings → Account → Migrate Account* and follow the steps to unlink the number from the app before registering it with the API. After migration, you'll lose your existing chat history from the app, but you'll gain the full scalability of the API.
+
+**Q: How much does it cost to use WhatsApp via API in GoHighLevel in 2026?**
+
+**A:** The cost has two parts: your GoHighLevel plan (starting at $97/month on the Starter plan) and Meta's per-conversation fees. Meta charges per "24-hour conversation session" — not per individual message. For US businesses messaging contacts within the US, marketing conversation rates are approximately $0.05 to $0.08 per session. Conversations initiated by the customer (when they message you first) are free for the first 1,000 per month.
+
+**Q: Can I use the same WhatsApp number across multiple GoHighLevel sub-accounts?**
+
+**A:** No. Each WhatsApp Business number can only be connected to one sub-account at a time. If you manage multiple businesses, each one will need its own dedicated number. Agencies using GoHighLevel for multiple clients typically set up a separate number for each client account.
+
+**Q: What happens if I send messages without using approved templates?**
+
+**A:** Within a 24-hour window after the customer's last message, you can send any free-form text. Outside that window, Meta automatically blocks the send and you'll see an error in the conversation. Additionally, bulk messaging without templates or with spammy language can result in your number being suspended — which is why it's critical to use approved templates for any campaigns or first-contact automations.
+
+**Q: Does GoHighLevel support sending media (images, PDFs, videos) via WhatsApp?**
+
+**A:** Yes. In the *Send WhatsApp Message* action inside Workflows, you can attach images, PDF documents, and short videos. For templates that include media (such as a header image), the file must be submitted alongside the template at the time of creation and Meta approval. Files up to 16 MB are supported for documents and up to 64 MB for videos.
+
+---
+
+## Conclusion
+
+Integrating WhatsApp with GoHighLevel is one of the fastest-ROI automation investments any service-based business can make. In six steps — setting up your Meta account, connecting the number, creating templates, building automations, centralizing your inbox, and monitoring your metrics — you go from reactive, scattered communication to a system that responds, nurtures, and converts leads automatically, 24 hours a day.
+
+If you'd rather implement all of this without spending hours troubleshooting configuration errors, **Vida Digital Solutions** handles it for you — from scratch, with support in English, Spanish, and Portuguese, based in Miami, FL.
+
+Ready to implement this in your business? [Talk to Vida Digital Solutions on WhatsApp](https://wa.me/14382985740)
