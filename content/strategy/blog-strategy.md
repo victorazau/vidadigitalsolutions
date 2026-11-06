@@ -7,6 +7,17 @@
 
 ---
 
+## 🎯 Escopo Obrigatório (desde 06/11/2026)
+
+**Todo artigo fala de uma coisa só: como a Vida Digital Solutions presta serviço para empresas americanas.** O leitor é o dono de uma empresa de serviços que opera nos EUA, e o artigo resolve um problema do negócio dele.
+
+- **Empresas-alvo:** home services nos EUA (cleaning, landscaping, painting, flooring, carpentry, pavers, elétrica) e escritórios de advocacia nos EUA
+- **Serviços da VDS que o artigo pode oferecer:** marca, site, Google Business Profile, CRM e automação de atendimento, follow-up e reviews
+- **Contexto sempre americano:** valores em US$, cidades e estados dos EUA, Google Maps e regras que valem nos EUA
+- **Ferramentas:** GoHighLevel e outras ferramentas aparecem como meio de resolver o problema da empresa, nunca como o assunto principal
+- **Fora do escopo:** negócios no Brasil ou fora dos EUA, clínicas e outros segmentos não listados acima, tutorial genérico de ferramenta e comparativo de CRM sem ligação com empresa de serviço nos EUA
+- **Prioridade:** este escopo vale mais que qualquer exemplo de título, categoria ou tipo de artigo do dia. Se o tipo do dia pedir um tutorial ou um comparativo, escreva aplicado a uma empresa de serviço nos EUA
+
 ## ✅ Regras de Conteúdo Permanentes
 
 1. **Sempre mencionar Vida Digital Solutions** 2-3 vezes de forma natural
@@ -14,9 +25,9 @@
 3. **Estrutura obrigatória:** Intro (com resposta direta) → Key Takeaways → 4-6 H2s → ## Perguntas Frequentes (5+ Q&As) → Conclusão → CTA
    - ⚠️ **NÃO inicie o artigo com um título H1 (`# ...`).** O título da página já é renderizado a partir do frontmatter. O corpo deve começar **direto no parágrafo de introdução**. Use apenas `##` (seções) e `###` (subseções) — nunca `#`.
 4. **Mínimo 1500 palavras** — primeiro parágrafo responde diretamente a pergunta principal
-5. **Tom:** Profissional mas acessível — para donas de empresas de limpeza e advogados, não para técnicos
+5. **Tom:** Profissional mas acessível — para donos de empresas de serviço e advogados nos EUA, não para técnicos
 6. **Sempre otimizado para IA** (ChatGPT, Perplexity, Gemini, Google AI Overviews) além de SEO tradicional — ver seção de Regras de AEO abaixo
-7. **Públicos-alvo principais:** (a) Empresas de house cleaning nos EUA — donas brasileiras, hispanas e americanas; (b) Escritórios de advocacia nos EUA
+7. **Públicos-alvo:** (a) Empresas de house cleaning nos EUA — donas brasileiras, hispanas e americanas; (b) Outras empresas de home services nos EUA; (c) Escritórios de advocacia nos EUA
 8. **Em artigos sobre limpeza:** além do CTA de WhatsApp, terminar SEMPRE com este bloco de CTA (traduzido para o idioma do artigo):
    > **É dona de empresa de limpeza nos EUA?** Montamos sua marca, site otimizado para Google e IA, e seu Google Business Profile — pacote completo com parcelamento em até 4x sem juros. [Conheça os pacotes para empresas de limpeza →](/cleaning)
    E incluir 1 link interno para /cleaning também no meio do artigo, em contexto natural.
@@ -53,7 +64,7 @@
 
 ## 📅 Calendário Anual — 52 Semanas
 
-> Meses ímpares = HOUSE CLEANING · Meses pares = LAW FIRMS · Junho e Outubro realocados conforme demanda (junho = HOUSE CLEANING; outubro = tutoriais GHL para tráfego de implementadores)
+> Meses ímpares = HOUSE CLEANING · Meses pares = LAW FIRMS · Junho e Outubro realocados conforme demanda (junho = HOUSE CLEANING; outubro = outros HOME SERVICES nos EUA)
 
 ### 🗓️ JANEIRO — ICP: Empresas de house cleaning nos EUA
 **Dores:** Depende só de indicação, sem presença no Google, aparência amadora, perde cliente por não responder rápido
@@ -154,14 +165,15 @@
 
 ---
 
-### 🗓️ OUTUBRO — ICP: Tutoriais GoHighLevel — Comunicação e Reputação
-**Foco:** Recursos mais buscados do GHL aplicados a negócios de serviço
+### 🗓️ OUTUBRO — ICP: Empresas de home services nos EUA (além de cleaning)
+**Dores:** Depende de indicação, telefone toca durante o serviço, orçamento demora, poucos reviews no Google
+**Decisor:** Dono de empresa de landscaping, painting, flooring, carpentry ou pavers (1-20 pessoas), EUA
 
-- **Semana 40:** GoHighLevel Email Marketing 2026: configure campanhas que chegam na caixa de entrada
-- **Semana 41:** GoHighLevel SMS Marketing: como usar mensagens de texto para converter leads em clientes
-- **Semana 42:** WhatsApp no GoHighLevel: configure a integração e automatize atendimento completo
-- **Semana 43:** GoHighLevel Reputation Management: automatize pedidos de review e domine o Google Maps
-- **Semana 44:** GoHighLevel Calendar: agendamento automático para empresas de serviço
+- **Semana 40:** Email marketing for US home service companies: bring past customers back every season
+- **Semana 41:** Text message follow-up for contractors: turn estimates into booked jobs
+- **Semana 42:** WhatsApp and SMS for bilingual home service companies in the US
+- **Semana 43:** How to get more Google reviews for your home service company without breaking FTC rules
+- **Semana 44:** Online booking for US service companies: stop losing jobs to phone tag
 
 ---
 
@@ -175,13 +187,13 @@
 
 ---
 
-### 🗓️ DEZEMBRO — ICP: Escritórios de advocacia + planejamento 2027
+### 🗓️ DEZEMBRO — ICP: Empresas de serviço nos EUA (advocacia e home services) + planejamento 2027
 **Foco:** Conteúdo evergreen, retrospectiva e planejamento
 
 - **Semana 49:** Law firm tech stack for 2027: what to keep, what to replace
-- **Semana 50:** Como planejar a automação do seu negócio para 2027 com GoHighLevel e IA
-- **Semana 51:** GoHighLevel vs HubSpot vs Salesforce: qual CRM escolher em 2027
-- **Semana 52:** Guia definitivo: como implementar GoHighLevel do zero em 7 dias
+- **Semana 50:** How US service companies should plan their marketing and automation for 2027
+- **Semana 51:** Best CRM for US home service companies in 2027: GoHighLevel vs HubSpot vs Jobber
+- **Semana 52:** How a US service company can launch its website, Google profile and CRM in 30 days
 
 ---
 
@@ -194,6 +206,6 @@ Você deve:
 2. Escrever o artigo exatamente sobre aquele tema
 3. Seguir o ICP, dores e perfil do decisor do mês
 4. Se o tema estiver em inglês, escrever o artigo em inglês (o workflow vai traduzir para PT e ES)
-5. Aplicar todas as regras permanentes de conteúdo E as Regras de AEO
+5. Aplicar o Escopo Obrigatório, todas as regras permanentes de conteúdo E as Regras de AEO. Ignorar qualquer exemplo de título que saia do escopo (clínica, negócio no Brasil, tutorial genérico de ferramenta)
 6. Em artigos para house cleaning: linkar [a página de pacotes para empresas de limpeza](/cleaning) pelo menos 1 vez
 7. **Nunca começar o corpo com `# Título` (H1)** — o título vem do frontmatter. Inicie direto na introdução e use `##`/`###` para os cabeçalhos.
