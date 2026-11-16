@@ -1,0 +1,161 @@
+---
+title: "Como Manter a Agenda de Limpeza Cheia em Janeiro"
+description: "Veja como empresas de limpeza nos EUA usam GoHighLevel para manter a agenda cheia em janeiro com automação de follow-up e reativação de clientes."
+date: "2026-11-16"
+category: "GoHighLevel"
+slug: "how-to-keep-cleaning-schedule-full-january-gohighlevel"
+lang: "pt"
+keywords: ["empresa de limpeza agenda janeiro", "GoHighLevel para limpeza", "automação follow-up cleaning", "reativar clientes limpeza EUA", "CRM empresa de limpeza"]
+readTime: "9 min"
+author: "Vida Digital Solutions"
+---
+
+Para manter a agenda da sua empresa de limpeza cheia em janeiro, você precisa agir agora — em novembro. A estratégia é simples: use o GoHighLevel para criar sequências automáticas de follow-up, reativar clientes que pararam de contratar e transformar os jobs de fim de ano em recorrência garantida para o início de 2027. Empresas de cleaning nos EUA que fazem isso hoje chegam a janeiro com 70–80% da agenda já preenchida, sem precisar correr atrás de cliente novo.
+
+## Key Takeaways
+
+- Janeiro vazio é consequência de não plantar em novembro — clientes precisam ser reativados *antes* das festas
+- O GoHighLevel permite criar uma sequência de SMS + e-mail em menos de 30 minutos que roda sozinha
+- Oferecer desconto ou pacote de janeiro durante a limpeza de fim de ano é a tática com maior taxa de conversão
+- Clientes que não contratam há 60+ dias são os que mais respondem a campanhas de reativação
+- A Vida Digital Solutions já implementou esse tipo de automação para dezenas de empresas de limpeza nos EUA
+
+## Por Que Janeiro É o Mês Mais Perigoso Para Empresas de Cleaning
+
+Novembro e dezembro são os meses mais movimentados do ano para empresas de house cleaning nos EUA. Holiday deep cleaning, limpeza pós-festa, mudanças de fim de ano — a agenda transborda. O problema é que muita dona de empresa de limpeza fica tão ocupada *limpando* que esquece de plantar a semente do próximo mês.
+
+Resultado: janeiro chega e a agenda está vazia. Os clientes passaram as festas, as casas estão relativamente arrumadas, e ninguém está ligando para contratar uma faxina.
+
+A boa notícia é que esse problema tem solução — e ela começa hoje, na semana 46 do ano.
+
+Se você ainda não tem um sistema de CRM e automação, veja como outras empresas de limpeza resolveram exatamente isso: [como uma empresa de limpeza fechou clientes automaticamente com CRM](/blog/how-cleaning-company-closed-clients-automatically-crm).
+
+## Passo 1 — Segmente Sua Base de Clientes no GoHighLevel
+
+Antes de disparar qualquer mensagem, você precisa saber com quem está falando. No GoHighLevel, acesse o menu lateral esquerdo e clique em **Contacts**.
+
+**O que você verá na tela:** uma lista com todos os seus contatos, campos de filtro no topo (Last Activity, Tags, Pipeline Stage) e um botão azul "Add Filter" no canto superior direito.
+
+Crie três segmentos com os filtros:
+
+1. **Clientes ativos** — Last Activity nos últimos 30 dias. São os que você está servindo agora durante as festas. Estes são os mais fáceis de converter para janeiro.
+2. **Clientes inativos (60–120 dias)** — pararam de contratar no outono. Precisam de um empurrão para voltar.
+3. **Leads que nunca fecharam** — receberam orçamento mas não contrataram. Janeiro pode ser a oportunidade.
+
+Para salvar cada segmento, clique em **Save Segment** e dê um nome descritivo (ex: "Clientes Ativos Nov 2026", "Inativos 60d", "Leads Frios 2026").
+
+> **Dica prática:** Se você usa tags no GoHighLevel, adicione a tag "reativar-janeiro" nos contatos dos segmentos 2 e 3. Isso facilita disparar campanhas específicas depois.
+
+## Passo 2 — Crie a Oferta de Janeiro Antes do Natal
+
+Você precisa de uma razão concreta para entrar em contato. Sem oferta, a mensagem parece genérica. Com oferta, ela converte.
+
+Algumas opções que funcionam bem para empresas de cleaning nos EUA:
+
+- **Pacote mensal com desconto de janeiro:** "Book your January recurring cleaning this week and get 10% off the first month."
+- **Lock-in de preço:** "Lock in your 2026 rate before our January price adjustment."
+- **Slot limitado:** "We have 8 weekly slots for January — first come, first served."
+
+No GoHighLevel, vá em **Sites → Funnels** ou **Sites → Websites** e crie uma página simples de captura com a oferta. Você não precisa de nada elaborado — título, descrição da oferta, formulário com nome, telefone e endereço, e botão de envio.
+
+**O que você verá na tela:** o editor de arrastar e soltar (drag-and-drop) do GoHighLevel, com blocos à esquerda (Headline, Image, Form, Button) e a prévia da página à direita. Adicione um bloco de formulário conectado ao seu pipeline de "Recorrência Janeiro 2027".
+
+## Passo 3 — Monte a Sequência de Follow-up Automático
+
+Esta é a etapa central. Você vai criar um **Workflow** no GoHighLevel que dispara automaticamente quando um contato entra no segmento ou na campanha.
+
+Acesse **Automation → Workflows → + Create Workflow**. Escolha **Start from Scratch**.
+
+**Trigger (gatilho):** selecione "Contact Tag Added" e escolha a tag "reativar-janeiro". Assim, qualquer contato que receber essa tag entra automaticamente na sequência.
+
+**Estrutura da sequência (adicione as ações em ordem):**
+
+### Dia 0 — SMS inicial
+Adicione a ação **Send SMS**. Texto sugerido:
+
+*"Hi {{contact.first_name}}, it's [Seu Nome] from [Nome da Empresa]! 🎄 We're booking January cleanings now — and we'd love to keep your home spotless in 2027. Reply YES and I'll hold a slot for you. Limited availability!"*
+
+**O que você verá na tela:** um campo de texto com variáveis dinâmicas disponíveis à esquerda ({{contact.first_name}}, {{contact.phone}}, etc.). Clique na variável para inserir no texto.
+
+### Dia 2 — E-mail de seguimento
+Adicione um **Wait** de 2 dias e depois **Send Email**. No e-mail, explique o pacote com mais detalhes — fotos de antes/depois, depoimentos de clientes, e o link para a página de captura que você criou no Passo 2.
+
+### Dia 5 — Segundo SMS (urgência)
+*"Hi {{contact.first_name}}! Just checking in — we have 3 January slots left. Want me to hold one for you? Reply YES or call us at [número]."*
+
+### Dia 8 — Tarefa manual (ligação)
+Adicione a ação **Create Task** com a descrição "Ligar para {{contact.first_name}} — último follow-up janeiro". Isso aparece no painel do seu time como uma tarefa pendente.
+
+> **Dica:** Adicione uma condição "If/Else" antes de cada mensagem verificando se o contato já respondeu (campo "Last Reply"). Se respondeu, retire da sequência e mova para o pipeline de agendamento. O GoHighLevel faz isso nativamente com a ação **Go To** e condições de branch.
+
+Para entender melhor como construir workflows complexos, veja o [guia completo do GoHighLevel Workflow Builder](/blog/gohighlevel-workflow-builder-complete-guide-2026).
+
+## Passo 4 — Configure a Campanha de Reativação por SMS em Massa
+
+Além da sequência automática, você pode fazer um disparo pontual (broadcast) para toda a base de inativos.
+
+No GoHighLevel, acesse **Marketing → Campaigns → + New Campaign**.
+
+**O que você verá na tela:** um assistente de criação com quatro abas no topo — Recipients, Message, Schedule e Review. Siga cada aba:
+
+1. **Recipients:** selecione o segmento salvo "Inativos 60d"
+2. **Message:** escreva a mensagem de reativação (use o mesmo texto do Dia 0 acima, adaptado)
+3. **Schedule:** escolha uma terça ou quarta-feira entre 10h e 14h (horário local do seu mercado). Essas janelas têm as maiores taxas de abertura de SMS
+4. **Review:** confira o número estimado de destinatários e clique em **Send Campaign**
+
+> **Importante:** nos EUA, a regulamentação de SMS marketing exige que o contato tenha dado consentimento (opt-in) para receber mensagens de marketing. Certifique-se de que sua base tem esse histórico de consentimento. O GoHighLevel tem campos de compliance integrados para isso.
+
+## Passo 5 — Transforme o Job de Fim de Ano em Contrato Recorrente na Hora
+
+Esta é a tática com maior ROI de todas — e não exige nenhuma automação sofisticada.
+
+No momento da limpeza de fim de ano (ou logo depois, via SMS automático de pós-serviço), faça a oferta de recorrência. No GoHighLevel, crie um **Workflow com trigger "Appointment Status Changed to Completed"**:
+
+- **Imediatamente:** SMS automático de satisfação — *"Hi {{contact.first_name}}, hope your home is sparkling! 🌟 How was today's cleaning? Reply 1-5."*
+- **30 minutos depois:** SMS com oferta — *"Glad you loved it! 🎉 Want to lock in a recurring schedule for January? We're offering 10% off for clients who book this week. Reply YES!"*
+
+**O que você verá na tela ao configurar o trigger:** uma lista de eventos disponíveis no GoHighLevel. Escolha "Appointment" e depois filtre por status "Completed". Adicione as duas ações de SMS com o wait de 30 minutos entre elas.
+
+Essa sequência trabalha enquanto você está na próxima casa limpando. Clientes satisfeitos no momento certo convertem em taxas de 25–40%, segundo dados de operadores de GoHighLevel no setor de home services.
+
+Se quiser entender como integrar isso a um pipeline de vendas completo, veja [como criar um pipeline de vendas no GoHighLevel](/blog/how-to-create-sales-pipeline-gohighlevel).
+
+## Resultados Esperados: O Que Você Pode Alcançar em 30 Dias
+
+| Ação | Esforço | Resultado Esperado |
+|---|---|---|
+| Sequência de reativação (60-120 dias inativos) | 1–2h de setup | 15–25% de resposta, 8–12% de conversão |
+| Broadcast de SMS (base completa) | 30 min | 20–35% de taxa de abertura |
+| Automação pós-job (oferta recorrência) | 1h de setup | 25–40% de conversão em recorrência |
+| Página de captura com oferta de janeiro | 1–2h | Captura de novos leads via link no SMS |
+
+Uma empresa com 80 clientes na base, aplicando as três táticas, pode chegar a janeiro com 15–25 slots recorrentes fechados *antes* do Natal.
+
+A Vida Digital Solutions já implementou exatamente esse tipo de sistema para empresas de cleaning em Miami, Orlando, Houston e outras cidades dos EUA. O setup completo — incluindo segmentação, workflows e página de oferta — pode ser feito em um único dia de trabalho com o suporte certo.
+
+## Perguntas Frequentes
+
+**Q: Preciso ter o GoHighLevel já instalado para usar essas estratégias?**
+**A:** Sim, todas as táticas acima usam o GoHighLevel (ou o Quasar CRM, produto da Vida Digital Solutions baseado no GoHighLevel). Se você ainda não tem, o setup inicial pode ser feito em 1–3 dias. Entre em contato para um diagnóstico gratuito e veja o que pode ser implementado antes do fim de novembro.
+
+**Q: Posso enviar SMS de marketing para qualquer cliente nos EUA?**
+**A:** Não. A regulamentação americana (TCPA e regras da A2P 10DLC) exige que o contato tenha dado consentimento explícito para receber mensagens de marketing por SMS. O GoHighLevel tem campos de opt-in e compliance integrados. Enviar SMS sem consentimento pode gerar multas. Consulte sempre um profissional antes de disparar campanhas para toda a base.
+
+**Q: Quanto tempo leva para configurar tudo isso no GoHighLevel?**
+**A:** Com experiência na plataforma, o setup dos 5 passos deste tutorial leva entre 3 e 6 horas. Para quem está começando no GoHighLevel, pode levar um dia completo. Uma agência como a Vida Digital Solutions faz o setup em um dia e entrega tudo pronto para rodar.
+
+**Q: Que tipo de desconto funciona melhor para converter clientes em recorrência?**
+**A:** No setor de house cleaning nos EUA, descontos de 10–15% no primeiro mês de recorrência têm a melhor taxa de conversão. Ofertas de "lock-in de preço" (garantir o preço atual antes de reajuste de janeiro) também funcionam muito bem, especialmente com clientes que já conhecem o seu serviço e têm medo de inflação.
+
+**Q: E se minha empresa ainda não usa CRM nenhum — vale começar agora?**
+**A:** Sim, e o momento ideal é exatamente antes do pico de fim de ano. Começar agora significa que você captura os dados dos jobs de novembro e dezembro *no sistema*, já cria as tags certas e dispara a campanha de janeiro antes do Natal. Esperar até janeiro significa começar do zero quando a agenda já está vazia.
+
+## Conclusão
+
+Manter a agenda de limpeza cheia em janeiro começa em novembro — com segmentação da base, uma oferta clara e sequências automáticas de follow-up no GoHighLevel. Os cinco passos deste tutorial cobrem tudo: de como segmentar seus contatos até como transformar cada job de fim de ano em um contrato recorrente. Empresas que implementam isso hoje chegam a 2027 com a agenda já garantida, sem precisar correr atrás de cliente novo em pleno inverno.
+
+Quer implementar isso no seu negócio? [Fale com a Vida Digital Solutions no WhatsApp](https://wa.me/14382985740)
+
+---
+
+**É dona de empresa de limpeza nos EUA?** Montamos sua marca, site otimizado para Google e IA, e seu Google Business Profile — pacote completo com parcelamento em até 4x sem juros. [Conheça os pacotes para empresas de limpeza →](/cleaning)
