@@ -1,0 +1,165 @@
+---
+title: "Gift Cards e Indicação para Limpeza no GoHighLevel"
+description: "Aprenda a criar gift cards e programa de indicação para sua empresa de limpeza usando GoHighLevel em 5 passos práticos."
+date: "2026-11-23"
+category: "GoHighLevel"
+slug: "gift-cards-referral-program-cleaning-business-gohighlevel"
+lang: "pt"
+keywords: ["gift card empresa de limpeza", "programa de indicação limpeza GoHighLevel", "automação cleaning business", "referral program GoHighLevel", "GoHighLevel cleaning company"]
+readTime: "9 min"
+author: "Vida Digital Solutions"
+---
+
+Para criar um programa de gift cards e indicações que realmente funciona para sua empresa de limpeza nos EUA, você precisa de três elementos: uma forma de vender ou distribuir o gift card, um fluxo automático para rastrear quem indicou quem, e uma sequência de follow-up que recompense o cliente na hora certa. O GoHighLevel permite configurar tudo isso sem contratar um desenvolvedor — e neste tutorial você vai ver exatamente como fazer, passo a passo.
+
+## Key Takeaways
+
+- Gift cards digitais podem ser configurados via funil simples no GoHighLevel e enviados automaticamente por e-mail ou SMS
+- Um programa de indicação eficiente rastreia o cliente de origem com um link único e aciona recompensa automática quando o novo cliente fecha
+- A automação elimina o trabalho manual: você não precisa controlar planilha de quem indicou quem
+- Empresas de limpeza que implementam referral programs estruturados crescem 20–35% em receita recorrente sem gastar mais em ads
+- A Vida Digital Solutions já configurou esse tipo de automação para dezenas de cleaning businesses nos EUA
+
+---
+
+## Por Que Gift Cards e Indicações São Ouro para Cleaning Businesses
+
+O final de novembro e o mês de dezembro são os meses mais movimentados para empresas de limpeza nos EUA. Clientes querem a casa limpa antes das festas, pedem limpezas pós-feriado e presenteiam familiares com serviços de cleaning. Mas o que a maioria das donas de empresa de limpeza ignora é que esse pico de demanda é a janela perfeita para **construir uma base que enche o calendário em janeiro e fevereiro** — meses historicamente fracos.
+
+Gift cards resolvem dois problemas ao mesmo tempo:
+1. Geram receita imediata (você recebe antes de prestar o serviço)
+2. Trazem clientes novos que nunca teriam te encontrado por conta própria
+
+Já o programa de indicação transforma seus clientes satisfeitos em vendedores ativos do seu negócio — sem comissão de agência, sem custo de anúncio.
+
+O problema é que a maioria das empresas tenta controlar isso manualmente: post no Instagram, link de Venmo, planilha no Google Drive. Vira uma bagunça em semanas. Com o GoHighLevel, você automatiza toda a jornada.
+
+---
+
+## Passo 1 — Crie a Oferta do Gift Card no GoHighLevel
+
+**O que você verá na tela:** Acesse seu painel do GoHighLevel (ou do Quasar CRM, se você usa a versão da Vida Digital Solutions). No menu lateral esquerdo, clique em **"Sites"** e depois em **"Funnels"**.
+
+1. Clique em **"+ New Funnel"** no canto superior direito
+2. Escolha o template em branco ou use um dos templates de "Product Sales"
+3. Nomeie o funil como: `Gift Card - [Nome da Sua Empresa] - Holiday 2026`
+4. Adicione uma página de vendas simples com:
+   - Headline: *"Give the Gift of a Clean Home"*
+   - Três opções de valor: **US$ 75 / US$ 125 / US$ 200**
+   - Botão de compra conectado ao **GoHighLevel Payments** (Stripe integrado)
+5. Adicione uma página de confirmação com mensagem automática: *"Your gift card will arrive by email within 5 minutes!"*
+
+**Dica prática:** Use valores que cubram pelo menos um serviço inteiro. Para cleaning residencial padrão nos EUA, US$ 125 cobre uma limpeza de 2 quartos em cidades médias como Orlando, Charlotte ou Houston.
+
+---
+
+## Passo 2 — Configure a Entrega Automática do Gift Card
+
+Depois que o cliente paga, o GoHighLevel precisa entregar o gift card automaticamente por e-mail — sem você precisar fazer nada.
+
+**O que você verá na tela:** No menu lateral, vá em **"Automation"** → **"Workflows"** → **"+ Create Workflow"**.
+
+1. **Trigger (gatilho):** selecione *"Order Form Submission"* e escolha o funil do gift card
+2. **Ação 1 — Enviar e-mail:** crie um e-mail com o gift card em formato PDF ou imagem. No GoHighLevel, você pode usar o editor de e-mail para incluir um código único gerado automaticamente com a variável `{{contact.id}}` ou criar um código customizado
+3. **Ação 2 — Enviar SMS:** envie uma confirmação por texto: *"Your $125 gift card for [Nome da Empresa] is in your inbox! Questions? Text us here."*
+4. **Ação 3 — Criar tag:** adicione a tag `gift-card-comprado` ao contato para segmentar depois
+5. **Ação 4 — Notificação interna:** envie uma notificação para você ou sua equipe via app do GoHighLevel
+
+**Dica prática:** O código do gift card pode ser tão simples quanto os últimos 6 dígitos do ID do contato. Quando o cliente resgatar, você busca esse código no GoHighLevel e marca como usado.
+
+Se quiser ir mais longe, a [automação de vendas do GoHighLevel](/blog/gohighlevel-sales-automation-complete-guide) pode ser integrada com um webhook para gerar códigos únicos automaticamente via n8n.
+
+---
+
+## Passo 3 — Monte o Programa de Indicação com Link Rastreável
+
+Um programa de indicação é uma automação que identifica quem trouxe um cliente novo e aciona uma recompensa quando esse cliente fecha. No GoHighLevel, você faz isso com links UTM + campos customizados + workflow.
+
+**O que você verá na tela:** Vá em **"Contacts"** → **"Custom Fields"** → **"+ Add Field"**.
+
+1. Crie um campo do tipo *"Text"* chamado `Indicado Por` (ou `referred_by`)
+2. Volte em **"Sites" → "Funnels"** e abra o funil do seu formulário de orçamento (ou crie um novo)
+3. No URL do funil, adicione o parâmetro UTM: `?ref=NOME_DO_CLIENTE` — cada cliente que indica recebe um link personalizado com o nome dele
+4. Configure o funil para **capturar o parâmetro UTM** e salvar automaticamente no campo `Indicado Por` do novo contato
+
+**Como fazer a captura do UTM:** No GoHighLevel, edite o formulário dentro do funil, vá em **"Hidden Fields"** (Campos Ocultos) e adicione um campo oculto mapeado para `referred_by` com o valor `{{url_params.ref}}`. Assim, quando alguém abre o link `seusite.com/orcamento?ref=Maria`, o campo fica preenchido com "Maria" automaticamente.
+
+---
+
+## Passo 4 — Automatize a Recompensa para Quem Indicou
+
+Agora que você sabe quem indicou quem, precisa acionar a recompensa quando o novo cliente fechar o serviço.
+
+**O que você verá na tela:** Vá em **"Automation" → "Workflows" → "+ Create Workflow"**.
+
+1. **Trigger:** *"Pipeline Stage Changed"* — selecione o estágio *"Job Booked"* (ou equivalente no seu pipeline)
+2. **Condição:** verifique se o campo `Indicado Por` está preenchido (use o filtro *"Custom Field is not empty"*)
+3. **Ação 1 — Enviar SMS para o novo cliente:** *"Welcome to [Nome da Empresa]! We're excited to serve you. Your first cleaning is confirmed."*
+4. **Ação 2 — Buscar o contato que indicou:** use a ação *"Find Contact"* com o valor do campo `Indicado Por` para localizar o cliente original
+5. **Ação 3 — Enviar SMS de recompensa para quem indicou:** *"Hey [Nome]! Someone you referred just booked with us 🎉 Your $25 credit has been added to your account. Thank you!"*
+6. **Ação 4 — Adicionar nota e tag:** tag `referral-recompensado` + nota automática no contato
+
+**Dica prática:** A recompensa não precisa ser dinheiro. Um desconto de US$ 25 na próxima limpeza funciona melhor — garante que o cliente que indicou volte, e você não sai no prejuízo.
+
+Para entender melhor como estruturar os estágios do pipeline, veja nosso guia sobre [como criar um pipeline de vendas no GoHighLevel](/blog/how-to-create-sales-pipeline-gohighlevel).
+
+---
+
+## Passo 5 — Lance a Campanha e Meça os Resultados
+
+Com gift cards e referral program configurados, você precisa comunicar para sua base atual. Essa é a parte que a maioria das donas de empresa pula — e por isso o programa não decola.
+
+**O que você verá na tela:** Vá em **"Marketing" → "Email" → "+ New Campaign"** (ou SMS campaigns).
+
+1. Filtre seus contatos com a tag `cliente-ativo` ou `job-completed` nos últimos 6 meses
+2. Envie uma campanha de e-mail + SMS com dois CTAs claros:
+   - **Gift card:** *"Give a clean home as a gift this holiday season — from US$ 75"* → link do funil
+   - **Indicação:** *"Refer a friend and earn US$ 25 off your next cleaning"* → link personalizado com `?ref={{contact.first_name}}`
+3. Agende a campanha para **terça ou quarta-feira, entre 10h e 14h** (horário local do cliente) — maior taxa de abertura
+4. Monitore em **"Reporting" → "Campaigns"**: acompanhe taxa de abertura (meta: acima de 30%), cliques e conversões
+
+**Métricas que importam:**
+- Quantos gift cards foram comprados vs. quantos foram resgatados (diferença = receita garantida)
+- Quantos novos clientes vieram via link de indicação
+- Custo de aquisição via referral vs. via Google Ads (o referral costuma ser 5–10x mais barato)
+
+Se quiser entender como integrar essa estratégia com sequências de e-mail mais longas, o artigo sobre [automação de e-mail marketing no GoHighLevel](/blog/gohighlevel-email-marketing-automation) cobre isso em detalhes.
+
+---
+
+## Como a Vida Digital Solutions Implementa Isso Para Cleaning Businesses
+
+A Vida Digital Solutions já configurou programas de gift card e indicação para dezenas de empresas de limpeza nos EUA — de donas solo em Orlando a equipes de 8 pessoas em New Jersey. A diferença entre fazer você mesmo e ter especialistas configurando é o tempo: o que levaria semanas testando sozinha fica pronto em dias, já conectado ao seu CRM, seu Google Business Profile e suas campanhas de SMS.
+
+O Quasar CRM (produto próprio da VDS, baseado no GoHighLevel) já vem com templates prontos para cleaning businesses — incluindo o workflow de gift card e o rastreamento de indicações — sem precisar construir do zero.
+
+---
+
+## Perguntas Frequentes
+
+**Q: Preciso de integração de pagamento para vender gift cards no GoHighLevel?**
+**A:** Sim, você precisa conectar o Stripe ao GoHighLevel para processar pagamentos online. A configuração é feita em **"Settings" → "Payments" → "Integrations"** e leva menos de 15 minutos. O Stripe aceita cartões de crédito, débito e Apple Pay, que são os métodos mais usados por clientes nos EUA.
+
+**Q: Como o cliente resgata o gift card? Precisa de um sistema separado?**
+**A:** Não. O resgate pode ser feito de forma simples: o cliente entra em contato (via formulário, SMS ou ligação), informa o código do gift card, e você localiza no GoHighLevel pelo código e marca como usado em uma nota ou campo customizado. Para operações maiores, é possível integrar com um sistema de cupons via webhook.
+
+**Q: Posso rastrear quantas indicações cada cliente fez no GoHighLevel?**
+**A:** Sim. Usando o campo customizado `Indicado Por` combinado com relatórios filtrados, você consegue ver quantos contatos têm aquele nome no campo. Para uma visão mais detalhada, é possível criar uma Smart List no GoHighLevel filtrando por esse campo e exportar para análise.
+
+**Q: Qual é a recompensa ideal para um programa de indicação de empresa de limpeza nos EUA?**
+**A:** A faixa mais eficiente é entre US$ 20 e US$ 35 de desconto na próxima limpeza para quem indicou, e um desconto de 10–15% na primeira limpeza para quem foi indicado. Essa estrutura dupla aumenta a conversão do novo cliente e garante que quem indicou volte para usar o benefício.
+
+**Q: Quanto tempo leva para configurar isso no GoHighLevel do zero?**
+**A:** Se você já tem o GoHighLevel configurado com Stripe e um funil básico, o setup completo — gift card + automação de entrega + programa de indicação + campanha de lançamento — leva entre 4 e 8 horas para alguém familiarizado com a plataforma. Com a ajuda da Vida Digital Solutions, o mesmo setup é feito em 1 a 2 dias úteis, já testado.
+
+---
+
+## Conclusão
+
+Gift cards e programas de indicação são duas das estratégias de crescimento mais baratas e eficazes para cleaning businesses nos EUA — especialmente no final do ano. Com o GoHighLevel, você automatiza desde a venda do gift card até a recompensa de quem indicou, sem planilhas, sem processo manual e sem perder nenhuma indicação no caminho. Configure os cinco passos deste tutorial e você entra em 2027 com uma base de clientes maior, mais recorrente e custo de aquisição mais baixo.
+
+Quer implementar isso no seu negócio? [Fale com a Vida Digital Solutions no WhatsApp](https://wa.me/14382985740)
+
+---
+
+**É dona de empresa de limpeza nos EUA?** Montamos sua marca, site otimizado para Google e IA, e seu Google Business Profile — pacote completo com parcelamento em até 4x sem juros. [Conheça os pacotes para empresas de limpeza →](/cleaning)

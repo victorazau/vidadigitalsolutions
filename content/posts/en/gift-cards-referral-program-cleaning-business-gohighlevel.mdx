@@ -1,0 +1,165 @@
+---
+title: "Gift Cards & Referral Programs for Cleaning Businesses in GoHighLevel"
+description: "Learn how to set up gift cards and a referral program for your cleaning business using GoHighLevel in 5 practical steps. Automate everything — no developer needed."
+date: "2026-11-23"
+category: "GoHighLevel"
+slug: "gift-cards-referral-program-cleaning-business-gohighlevel"
+lang: "en"
+keywords: ["gift card cleaning business GoHighLevel", "referral program cleaning business", "GoHighLevel cleaning company automation", "referral program GoHighLevel", "cleaning business CRM automation"]
+readTime: "9 min"
+author: "Vida Digital Solutions"
+---
+
+To build a gift card and referral program that actually works for your cleaning business, you need three things: a way to sell or distribute the gift card, an automated flow to track who referred whom, and a follow-up sequence that rewards clients at exactly the right moment. GoHighLevel lets you set all of this up without hiring a developer — and in this tutorial, you'll see exactly how to do it, step by step.
+
+## Key Takeaways
+
+- Digital gift cards can be set up through a simple funnel in GoHighLevel and delivered automatically via email or SMS
+- An effective referral program tracks the referring client with a unique link and triggers an automatic reward when the new client books
+- Automation eliminates manual work — no more spreadsheets tracking who referred whom
+- Cleaning businesses that implement structured referral programs grow 20–35% in recurring revenue without spending more on ads
+- Vida Digital Solutions has already set up this type of automation for dozens of cleaning businesses across the US
+
+---
+
+## Why Gift Cards and Referrals Are Gold for Cleaning Businesses
+
+Late November and December are the busiest months for cleaning businesses in the US. Clients want their homes cleaned before the holidays, request post-holiday cleanups, and give cleaning services as gifts to family and friends. But what most cleaning business owners overlook is that this demand spike is the perfect window to **build a client base that fills up your calendar in January and February** — historically the slowest months of the year.
+
+Gift cards solve two problems at once:
+1. They generate immediate revenue (you get paid before you perform the service)
+2. They bring in new clients who would have never found you on their own
+
+A referral program, on the other hand, turns your satisfied clients into active advocates for your business — no agency commission, no ad spend.
+
+The problem is that most businesses try to manage this manually: an Instagram post, a Venmo link, a Google spreadsheet. It becomes a mess within weeks. With GoHighLevel, you automate the entire journey.
+
+---
+
+## Step 1 — Create Your Gift Card Offer in GoHighLevel
+
+**What you'll see on screen:** Log in to your GoHighLevel dashboard (or your Quasar CRM dashboard, if you're using the Vida Digital Solutions version). In the left-hand menu, click **"Sites"**, then **"Funnels"**.
+
+1. Click **"+ New Funnel"** in the top right corner
+2. Choose a blank template or use one of the **"Product Sales"** templates
+3. Name the funnel: `Gift Card - [Your Business Name] - Holiday 2026`
+4. Add a simple sales page with:
+   - Headline: *"Give the Gift of a Clean Home"*
+   - Three value options: **$75 / $125 / $200**
+   - A purchase button connected to **GoHighLevel Payments** (Stripe integrated)
+5. Add a confirmation page with an automatic message: *"Your gift card will arrive by email within 5 minutes!"*
+
+**Pro tip:** Use price points that cover at least one full service. For standard residential cleaning in the US, $125 covers a two-bedroom cleaning in mid-size markets like Orlando, Charlotte, or Houston.
+
+---
+
+## Step 2 — Set Up Automatic Gift Card Delivery
+
+After the client pays, GoHighLevel needs to deliver the gift card automatically by email — with zero manual effort on your end.
+
+**What you'll see on screen:** In the left-hand menu, go to **"Automation"** → **"Workflows"** → **"+ Create Workflow"**.
+
+1. **Trigger:** Select *"Order Form Submission"* and choose your gift card funnel
+2. **Action 1 — Send email:** Create an email with the gift card as a PDF or image attachment. In GoHighLevel, use the email editor to include a unique code generated automatically using the variable `{{contact.id}}`, or create a custom code
+3. **Action 2 — Send SMS:** Send a text confirmation: *"Your $125 gift card for [Business Name] is in your inbox! Questions? Text us here."*
+4. **Action 3 — Add tag:** Tag the contact as `gift-card-purchased` for future segmentation
+5. **Action 4 — Internal notification:** Send a notification to yourself or your team via the GoHighLevel mobile app
+
+**Pro tip:** The gift card code can be as simple as the last 6 digits of the contact's ID. When the client redeems it, search for that code in GoHighLevel and mark it as used in a note or custom field.
+
+If you want to take it further, [GoHighLevel sales automation](/blog/gohighlevel-sales-automation-complete-guide) can be integrated with a webhook to generate unique codes automatically via n8n.
+
+---
+
+## Step 3 — Build Your Referral Program with a Trackable Link
+
+A referral program is an automation that identifies who brought in a new client and triggers a reward once that client books. In GoHighLevel, you do this with UTM links + custom fields + a workflow.
+
+**What you'll see on screen:** Go to **"Contacts"** → **"Custom Fields"** → **"+ Add Field"**.
+
+1. Create a *"Text"* field called `Referred By` (or `referred_by`)
+2. Go back to **"Sites" → "Funnels"** and open your quote request funnel (or create a new one)
+3. Add a UTM parameter to the funnel URL: `?ref=CLIENT_NAME` — each referring client gets a personalized link with their name in it
+4. Configure the funnel to **capture the UTM parameter** and automatically save it to the `Referred By` field on the new contact's record
+
+**How to capture the UTM:** In GoHighLevel, edit the form inside your funnel, go to **"Hidden Fields"**, and add a hidden field mapped to `referred_by` with the value `{{url_params.ref}}`. This way, when someone opens the link `yoursite.com/quote?ref=Sarah`, the field is automatically populated with "Sarah."
+
+---
+
+## Step 4 — Automate the Reward for the Referring Client
+
+Now that you know who referred whom, you need to trigger the reward when the new client books a service.
+
+**What you'll see on screen:** Go to **"Automation" → "Workflows" → "+ Create Workflow"**.
+
+1. **Trigger:** *"Pipeline Stage Changed"* — select the *"Job Booked"* stage (or the equivalent stage in your pipeline)
+2. **Condition:** Check whether the `Referred By` field is filled in (use the filter *"Custom Field is not empty"*)
+3. **Action 1 — Send SMS to the new client:** *"Welcome to [Business Name]! We're so excited to serve you. Your first cleaning is confirmed."*
+4. **Action 2 — Look up the referring contact:** Use the *"Find Contact"* action with the value from the `Referred By` field to locate the original client
+5. **Action 3 — Send a reward SMS to the referring client:** *"Hey [Name]! Someone you referred just booked with us 🎉 Your $25 credit has been added to your account. Thank you!"*
+6. **Action 4 — Add note and tag:** Tag the contact as `referral-rewarded` and add an automatic note to their record
+
+**Pro tip:** The reward doesn't have to be cash. A $25 discount on the next cleaning works better — it ensures the referring client comes back, and you're not eating into your margins.
+
+To learn more about structuring your pipeline stages effectively, check out our guide on [how to create a sales pipeline in GoHighLevel](/blog/how-to-create-sales-pipeline-gohighlevel).
+
+---
+
+## Step 5 — Launch the Campaign and Track Your Results
+
+With your gift cards and referral program set up, you need to get the word out to your existing client base. This is the step most business owners skip — and it's exactly why the program never takes off.
+
+**What you'll see on screen:** Go to **"Marketing" → "Email" → "+ New Campaign"** (or SMS campaigns).
+
+1. Filter your contacts using the tag `active-client` or `job-completed` within the last 6 months
+2. Send an email + SMS campaign with two clear CTAs:
+   - **Gift card:** *"Give a clean home as a gift this holiday season — starting at just $75"* → link to your funnel
+   - **Referral:** *"Refer a friend and earn $25 off your next cleaning"* → personalized link with `?ref={{contact.first_name}}`
+3. Schedule the campaign for **Tuesday or Wednesday, between 10 AM and 2 PM** (client's local time) — this window consistently produces the highest open rates
+4. Monitor results under **"Reporting" → "Campaigns"**: track open rate (goal: above 30%), clicks, and conversions
+
+**Metrics that matter:**
+- Gift cards sold vs. gift cards redeemed (the difference = guaranteed revenue on your books)
+- New clients acquired through referral links
+- Cost per acquisition via referral vs. via Google Ads (referrals are typically 5–10x cheaper)
+
+If you want to learn how to integrate this strategy with longer email nurture sequences, our article on [GoHighLevel email marketing automation](/blog/gohighlevel-email-marketing-automation) covers it in detail.
+
+---
+
+## How Vida Digital Solutions Implements This for Cleaning Businesses
+
+Vida Digital Solutions has set up gift card and referral programs for dozens of cleaning businesses across the US — from solo owner-operators in Orlando to eight-person teams in New Jersey. The difference between doing it yourself and having specialists handle it comes down to time: what might take you weeks of trial and error gets done in days, already connected to your CRM, your Google Business Profile, and your SMS campaigns.
+
+The Quasar CRM (Vida Digital Solutions' own product, built on GoHighLevel) comes with ready-to-use templates built specifically for cleaning businesses — including the gift card workflow and referral tracking — so you're not starting from scratch.
+
+---
+
+## Frequently Asked Questions
+
+**Q: Do I need a payment integration to sell gift cards in GoHighLevel?**
+**A:** Yes, you'll need to connect Stripe to GoHighLevel to process online payments. The setup is done under **"Settings" → "Payments" → "Integrations"** and takes less than 15 minutes. Stripe accepts credit cards, debit cards, and Apple Pay — the most common payment methods used by clients in the US.
+
+**Q: How does the client redeem the gift card? Do I need a separate system?**
+**A:** No. Redemption can be handled simply: the client contacts you (via form, SMS, or phone call), provides their gift card code, and you look it up in GoHighLevel and mark it as used in a note or custom field. For larger operations, you can integrate a coupon system via webhook for a more automated experience.
+
+**Q: Can I track how many referrals each client has made in GoHighLevel?**
+**A:** Yes. By using the `Referred By` custom field combined with filtered reports, you can see how many contacts have that client's name in the field. For a more detailed view, create a Smart List in GoHighLevel filtered by that field and export it for analysis.
+
+**Q: What's the ideal reward structure for a cleaning business referral program in the US?**
+**A:** The most effective range is a $20–$35 discount on the next cleaning for the referring client, and a 10–15% discount on the first cleaning for the referred client. This double-sided structure increases conversion for the new client and ensures the referring client comes back to use their reward.
+
+**Q: How long does it take to set this up in GoHighLevel from scratch?**
+**A:** If you already have GoHighLevel set up with Stripe and a basic funnel, the full setup — gift card + delivery automation + referral program + launch campaign — takes between 4 and 8 hours for someone familiar with the platform. With Vida Digital Solutions handling it, the same setup is completed in 1 to 2 business days, fully tested and ready to go.
+
+---
+
+## Conclusion
+
+Gift cards and referral programs are two of the most cost-effective growth strategies available to cleaning businesses in the US — especially heading into the end of the year. With GoHighLevel, you can automate everything from selling the gift card to rewarding the referring client, with no spreadsheets, no manual processes, and no missed referrals slipping through the cracks. Set up the five steps in this tutorial and you'll head into 2027 with a larger, more loyal client base and a lower cost of acquisition.
+
+Ready to implement this in your business? [Talk to Vida Digital Solutions on WhatsApp](https://wa.me/14382985740)
+
+---
+
+**Do you own a cleaning business in the US?** We build your brand, an AI- and Google-optimized website, and your Google Business Profile — a complete package with flexible payment options. [Explore our cleaning business packages →](/cleaning)
